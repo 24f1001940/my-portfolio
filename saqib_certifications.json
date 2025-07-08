@@ -1,0 +1,285 @@
+[
+  {
+    "title": "R Programming - R Programming Language Beginners to Pro",
+    "issuer": "Udemy",
+    "issued": "Jun 2025",
+    "credential_id": "UC-96714476-5206-430e-b69e-dd1c8da8caa9",
+    "skills": [
+      "R (Programming Language)",
+      "Data Analysis",
+      "Data Visualization",
+      "Statistical Programming"
+    ]
+  },
+  {
+    "title": "Blockchain and its Applications",
+    "issuer": "NPTEL",
+    "issued": "May 2025",
+    "credential_id": "NPTEL25CS08S553703455",
+    "skills": [
+      "Blockchain"
+    ]
+  },
+  {
+    "title": "Building LLM Applications With Prompt Engineering",
+    "issuer": "NVIDIA",
+    "issued": "May 2025",
+    "credential_id": "v4rq1bLWQO-q2Ymc5WeYfw"
+  },
+  {
+    "title": "DLA Piper - Global Cyber with Data Privacy Job Simulation",
+    "issuer": "Forage",
+    "issued": "May 2025",
+    "credential_id": "jPdQR9hkxZi2xnByu"
+  },
+  {
+    "title": "Foundations of AI and Machine Learning",
+    "issuer": "Coursera",
+    "issued": "May 2025",
+    "credential_id": "6UGSKTVUYF21"
+  },
+  {
+    "title": "Fundamentals of digital marketing",
+    "issuer": "Google Digital Garage",
+    "issued": "May 2025",
+    "credential_id": "385511428"
+  },
+  {
+    "title": "Google AI Essentials",
+    "issuer": "Coursera",
+    "issued": "May 2025",
+    "skills": [
+      "Artificial Intelligence (AI)",
+      "Machine Learning",
+      "Prompt Engineering",
+      "Emerging Technologies",
+      "Generative AI",
+      "Data Ethics",
+      "Critical Thinking",
+      "Strategic Thinking"
+    ]
+  },
+  {
+    "title": "Google IT Support",
+    "issuer": "Google",
+    "issued": "May 2025",
+    "credential_id": "L6N954SVI6KW"
+  },
+  {
+    "title": "Introducing Generative AI with AWS",
+    "issuer": "Udacity",
+    "issued": "May 2025",
+    "credential_id": "e443737a-3c52-11f0-b3a3-e7d3d7b94855",
+    "skills": [
+      "Machine Learning",
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "title": "MLOps | Machine Learning Operations",
+    "issuer": "Duke University",
+    "issued": "May 2025",
+    "credential_id": "JUBMWZWC9X30",
+    "skills": [
+      "Microsoft Azure"
+    ]
+  },
+  {
+    "title": "Practical Quantum Computing with IBM Qiskit for Beginners",
+    "issuer": "Packt",
+    "issued": "May 2025",
+    "credential_id": "TMC5KZ0ILM1T",
+    "skills": [
+      "Theoretical Computer Science",
+      "Jupyter",
+      "Physics",
+      "Computer Science",
+      "Cryptography"
+    ]
+  },
+  {
+    "title": "Prompt Engineering for Everyone (Tool-Agnostic)",
+    "issuer": "Udemy",
+    "issued": "May 2025",
+    "credential_id": "UC-11de9d0e-6396-4463-ad2e-949a4a06d5a9",
+    "skills": [
+      "Prompt Engineering"
+    ]
+  },
+  {
+    "title": "Quantum Algorithms and Cryptography",
+    "issuer": "NPTEL",
+    "issued": "May 2025",
+    "credential_id": "NPTEL25CS61S653704198",
+    "skills": [
+      "Quantum Computing",
+      "Quantum Mechanics",
+      "Cryptography",
+      "Quantum Algorithms"
+    ]
+  },
+  {
+    "title": "Quantum Computing",
+    "issuer": "IBM",
+    "issued": "May 2025",
+    "credential_id": "PLAN-034A5530450D",
+    "skills": [
+      "Quantum Computing",
+      "Quantum Algorithms"
+    ]
+  },
+  {
+    "title": "Quantum Computing Fundamentals with Microsoft Azure Quantum",
+    "issuer": "Udemy",
+    "issued": "May 2025",
+    "credential_id": "UC-50225f5e-4aba-4f10-8c57-8ef05a49645e",
+    "skills": [
+      "Quantum Computing",
+      "Microsoft Azure"
+    ]
+  },
+  {
+    "title": "TCS iON Career Edge \u2013 Young Professional",
+    "issuer": "TCS iON",
+    "issued": "May 2025",
+    "credential_id": "240640-28283315-1016",
+    "skills": [
+      "Communication",
+      "Presentation Skills",
+      "Soft Skills",
+      "Resume Writing",
+      "Accounting",
+      "Artificial Intelligence (AI)",
+      "Time Management"
+    ]
+  },
+  {
+    "title": "The Complete Quantum Computing Course for Beginners",
+    "issuer": "Packt",
+    "issued": "May 2025",
+    "credential_id": "X75D12MNCYJ1",
+    "skills": [
+      "Algorithms"
+    ]
+  },
+  {
+    "title": "AWS Academy Graduate - AWS Academy Cloud Foundation",
+    "issuer": "Amazon Web Services (AWS)",
+    "issued": "Apr 2025",
+    "credential_id": "https://www.credly.com/badges/dc780f93-7435-46e3-abd1-0d8e554deb9c/print",
+    "skills": [
+      "AWS Pricing",
+      "AWS Architecture",
+      "AWS Cloud"
+    ]
+  },
+  {
+    "title": "Emotional Intelligence",
+    "issuer": "NPTEL",
+    "issued": "Apr 2025",
+    "skills": [
+      "Emotional Intelligence",
+      "Self-awareness",
+      "Leadership",
+      "Decision-Making",
+      "Interpersonal Skills"
+    ]
+  },
+  {
+    "title": "Introduction to Psychology",
+    "issuer": "NPTEL",
+    "issued": "Apr 2025",
+    "skills": [
+      "Cognitive Psychology",
+      "Emotional Intelligence",
+      "Behavioral Sciences"
+    ]
+  },
+  {
+    "title": "BCG - Data Science Job Simulation",
+    "issuer": "Forage",
+    "issued": "Mar 2025",
+    "credential_id": "PbsngJhxSy54qcKnw",
+    "skills": [
+      "Object-Oriented Programming (OOP)"
+    ]
+  },
+  {
+    "title": "City of Moreton Bay - Entrepreneurship and Innovation Job Simulation",
+    "issuer": "Forage",
+    "issued": "Mar 2025",
+    "credential_id": "vJTkXhuaCxqxvrem8"
+  },
+  {
+    "title": "Electronic Arts - Software Engineering Job Simulation",
+    "issuer": "Forage",
+    "issued": "Mar 2025",
+    "credential_id": "FygqshTwePyXZ2LXs"
+  },
+  {
+    "title": "Postman API Fundamentals Student Expert",
+    "issuer": "Canvas Credentials (Badgr)",
+    "issued": "Mar 2025",
+    "credential_id": "67cebd99193b202b45e8ad73"
+  },
+  {
+    "title": "Hewlett Packard Enterprise - Software Engineering Job Simulation",
+    "issuer": "Forage",
+    "issued": "Dec 2024",
+    "credential_id": "Z9oxTFYocRxyg7rtk",
+    "skills": [
+      "Spring Framework",
+      "Java"
+    ]
+  },
+  {
+    "title": "Cloud Computing",
+    "issuer": "Google Developer Groups",
+    "issued": "Dec 2024",
+    "skills": [
+      "Google Cloud Platform (GCP)",
+      "Cloud Computing"
+    ]
+  },
+  {
+    "title": "AI/ML for Geodata Analysis",
+    "issuer": "Indian Space Research Organisation (ISRO)",
+    "issued": "Aug 2024",
+    "credential_id": "4UTnw3WaNu",
+    "skills": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Data Visualisation: Empowering Business with Effective Insights",
+    "issuer": "Forage",
+    "issued": "Aug 2024",
+    "credential_id": "QL5QPegaNqcH6y7Ke"
+  },
+  {
+    "title": "GenAI Job Simulation",
+    "issuer": "Forage",
+    "issued": "Aug 2024",
+    "credential_id": "QL5QPegaNqcH6y7Ke"
+  },
+  {
+    "title": "Getting Started with Artificial Intelligence",
+    "issuer": "IBM SkillsBuild",
+    "issued": "Aug 2024",
+    "credential_id": "https://www.credly.com/badges/8cb38686-2628-46b6-afd2-a579741ccbeb/public_url"
+  },
+  {
+    "title": "Google Cloud Computing Foundations & Generative AI",
+    "issuer": "GDSC",
+    "issued": "Feb 2024",
+    "skills": [
+      "Machine Learning"
+    ]
+  },
+  {
+    "title": "Software Engineering Virtual Experience Program",
+    "issuer": "Forage",
+    "issued": "Aug 2023",
+    "credential_id": "QL5QPegaNqcH6y7Ke"
+  }
+]
