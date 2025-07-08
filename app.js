@@ -1,4 +1,5 @@
 // DOM Content Loaded
+import { Analytics } from "@vercel/analytics/react"
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all functionality
   initThemeToggle();
@@ -694,7 +695,6 @@ function renderCertifications() {
 
 // Call the function after DOM is ready
 document.addEventListener('DOMContentLoaded', renderCertifications);
-
 
 // Initialize mobile menu
 initMobileMenu();
