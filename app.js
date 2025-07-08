@@ -1,5 +1,5 @@
 // DOM Content Loaded
-import { Analytics } from "@vercel/analytics/react"
+// import { Analytics } from "@vercel/analytics/react"
 document.addEventListener('DOMContentLoaded', function() {
   // Initialize all functionality
   initThemeToggle();
