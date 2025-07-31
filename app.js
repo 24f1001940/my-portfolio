@@ -58,6 +58,13 @@ function initSmoothScrolling() {
           behavior: 'smooth'
         });
       }
+      // Collapse menu on click (for mobile)
+if (window.innerWidth < 768) {
+  document.querySelector('.nav-links').classList.remove('active');
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  if (toggle) toggle.classList.remove('active');
+}
+
     });
   });
 }
@@ -175,7 +182,7 @@ function initIntersectionObserver() {
 window.addEventListener('scroll', function() {
   const header = document.querySelector('.header');
   if (window.scrollY > 50) {
-    header.style.backgroundColor = 'rgba(255, 255, 253, 0.95)';
+    // header.style.backgroundColor = 'rgba(67, 64, 64, 0.9)';
     header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
   } else {
     header.style.backgroundColor = 'var(--color-surface)';

@@ -1,0 +1,304 @@
+[
+  {
+    "title": "Analog and Digital Communication",
+    "code": "CEN-305",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Analysis and Design of Algorithms",
+    "code": "CEN-601",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Automata Theory",
+    "code": "CEN-502",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Basics of Civil Engineering",
+    "code": "CE-101",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Basics of Electrical Engineering",
+    "code": "EE-101",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Basics of Electronics and Communication Engineering",
+    "code": "EC-101",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Basics of Mechanical Engineering (Theory + Lab)",
+    "code": "ME-101, ME-102",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Business Data Management",
+    "code": "BSMS2001",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "C Programming (Lab)",
+    "code": "CEN-392",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Class 10th Subjects",
+    "code": "184, 002, 041, 086, 087, 402",
+    "institution": "GBSSS Jangpura",
+    "type": "School"
+  },
+  {
+    "title": "Class 12th Subjects",
+    "code": "301, 041, 042, 043, 083, 048",
+    "institution": "RPVV Lajpat Nagar",
+    "type": "School"
+  },
+  {
+    "title": "Communication Skills (Theory + Lab)",
+    "code": "AS-101, AS-151",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Compiler Design (Theory + Lab)",
+    "code": "CEN-603, CEN-692",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Computer Network (Theory + Lab)",
+    "code": "CEN-505, CEN-593",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Computational Thinking",
+    "code": "CS1001",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Computer Architecture",
+    "code": "CEN-501",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Computer Organization",
+    "code": "CEN-402",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Data Structures (Theory + Lab)",
+    "code": "CEN-303",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Database Management System (Theory + Lab)",
+    "code": "CEN-405, CEN-491",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Database Management Systems",
+    "code": "CS2001",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  
+  {
+    "title": "Digital Logic (Theory + Lab)",
+    "code": "CEN-304",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Discrete Mathematics",
+    "code": "CEN-302",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Embedded System (Theory + Lab)",
+    "code": "CEN-604, CEN-691",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Engineering Chemistry I, II (Theory + Lab)",
+    "code": "AS-103, 153, AS-203, 253",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Engineering Graphics Lab",
+    "code": "ME-250",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Engineering Mathematics I, II",
+    "code": "AS-104, AS-204",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Engineering Mathematics III, IV",
+    "code": "CEN-301, CEN-401",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Engineering Physics I (Theory + Lab)",
+    "code": "AS-102, AS-152",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Engineering Physics II (Theory + Lab)",
+    "code": "AS-202, AS-252",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Emotional Intelligence",
+    "code": "NOC25-HS16",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Fundamentals of Computing",
+    "code": "CS-201",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Human Resource Management",
+    "code": "AS-201",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Internet Protocols",
+    "code": "CEN-605",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Innovative Technology and Bio-Sciences",
+    "code": "AS-105",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Introduction to Psychology",
+    "code": "NOC25-HS47",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Linux Fundamentals (Lab)",
+    "code": "CEN-492",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Mathematics for Data Science I, II",
+    "code": "MA1001, MA1003",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Microprocessor (Theory + Lab)",
+    "code": "CEN-503, CEN-592",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Machine Learning Foundations",
+    "code": "BSCS2004",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Machine Learning Techniques",
+    "code": "BSCS2007",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Object Oriented Programming (Theory + Lab)",
+    "code": "CEN-504, CEN-591",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Operating System (Theory + Lab)",
+    "code": "CEN-404, CEN-493",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Programming in Python",
+    "code": "CS1002",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Programming Concepts using Java",
+    "code": "CS2005",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Programming, Data Structures and Algorithms using Python",
+    "code": "CS2002",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Software Engineering",
+    "code": "CEN-602",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Statistics for Data Science I, II",
+    "code": "MA1002, MA1004",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "System Software",
+    "code": "CEN-403",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Tools in Data Science",
+    "code": "BSSE2002",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Workshop Practice (Lab)",
+    "code": "ME-151",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  }
+]
+

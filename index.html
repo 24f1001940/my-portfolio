@@ -22,7 +22,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 
   <!-- Font Awesome -->
   <link
@@ -33,6 +35,8 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
 
   <!-- Schema for SEO -->
   <script type="application/ld+json">
@@ -64,14 +68,63 @@
 
 
 <body>
+  <div id="particles-container"></div>
+<div id="loading-screen">
+    <div class="loader">
+        <div class="loader-text">Loading...</div>
+        <div class="loader-bar"></div>
+    </div>
+</div>
+
   <noscript>
   <img src="https://vercel.com/analytics/track.gif" alt="" referrerpolicy="no-referrer-when-downgrade" />
 </noscript>
 
+
+
+    <!-- 🧠 Your Name + Logo
+    <a href="#home" class="logo text-lg font-bold flex items-center gap-2">
+      <img src="./images/logo.png" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
+      Mohd Saqib
+    </a>
+
+    <🍔 Hamburger Menu (Mobile) -->
+    <!-- <button id="menu-toggle" class="md:hidden text-xl">
+      <i class="fa-solid fa-bars"></i>
+    </button> --> 
+
+    
+
   <!-- ========================= HEADER ========================= -->
   <header class="header " id="header">
-    <nav class="container flex justify-between items-center py-16 ">
-      <a href="#home" class="logo text-lg font-bold" style="text-decoration:none; color:var(--color-text);">Mohd Saqib</a>
+    <nav class="    container flex justify-between items-center py-16">
+            <!-- <img src="./images/profile.jpg" alt="Logo" width="32" height="32" style="border-radius: 50%; " /> -->
+      <button class="mobile-menu-toggle">
+  <i class="fa-solid fa-bars"></i>
+</button>
+  <img class="imagelogo" src="./images/profile.jpg" alt="Logo" width="32" height="32" style="border-radius: 50% ; 
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+  /* margin-right :auto; */
+  transition: transform 0.3s ease;;" /> 
+      <!-- <a href="#home" class="logo text-lg font-bold flex items-center gap-2">
+        <img src="./images/logo.png" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
+        Mohd Saqib
+      </a> -->
+
+<a href="#home" class="logo  font-bold animated-name ">
+  Mohd Saqib
+</a>
+
+
+      <!-- <a href="#home" class="logo text-lg font-bold flex" >Mohd Saqib</a> -->
+           <!-- <a href="#home" class="logo text-lg font-bold gap-4 ">
+      <img src="./images/profile.jpg" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
+      Mohd Saqib
+    </a> -->
+
+
       <ul class="nav-links flex gap-16">
         <li><a href="#home" class="nav-link">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
@@ -79,18 +132,28 @@
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li><a href="#courses" class="nav-link">Courses</a></li>
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#certifications" class="nav-link">Certifications</a></li>
+        <li><a href="#resources" class="nav-link">Resources</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
+        <!-- <li><a href="#contact" class="nav-link">Contact</a></li> -->
+        
         
       </ul>
       <button id="theme-toggle" class="btn btn--outline btn--sm" aria-label="Toggle dark/light theme">
         <i class="fa-solid fa-moon"></i>
       </button>
 <button onclick="document.body.classList.toggle('large-font')">A+</button>
-
-   
-
-
+<!-- search button  -->
+<!-- <button id="search-toggle" class="btn btn--outline btn--sm" aria-label="Toggle search bar">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button> -->
+<!-- <button onclick="document.body.classList.toggle('large-font')">A+</button> -->
+      <div id="search-bar" class="search-bar hidden">
+        <input type="text" placeholder="Search..." aria-label="Search" />
+        <button id="search-close" aria-label="Close search bar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
     </nav>
   </header>
 
@@ -112,13 +175,16 @@
       <h1>Hi, I'm <span style="color:var(--color-primary);">Mohd Saqib</span></h1>
       <h2 class="mt-8" style="font-weight: var(--font-weight-medium); max-width: 600px;">Computer Engineering Student | Data Science Enthusiast | Full-Stack Developer</h2>
       <div class="flex gap-16 mt-8">
-        <a href="#contact" class="btn btn--primary">Contact Me</a>
+
+        <a href="#contact" class="btn btn--primary"><i class="fa-solid fa-phone"></i>Contact Me</a>
+
+
         <!-- Home Section CTA -->
 <a href="#contact" class="btn btn--primary" >
   <i class="fa-solid fa-paper-plane"></i> Hire Me
 </a>
  
-        <a href="mohd saqib resume.pdf" class="btn btn--outline" target="_blank">View Resume</a>
+        <a href="mohd saqib resume.pdf" class="btn btn--outline" target="_blank"> <i class="fa-solid fa-eye"></i>View Resume</a>
         <!-- <a href="resume.pdf" class="btn btn--outline" download>Download Resume (PDF)</a> -->
         <!-- <a href="portfolio.pdf" download class="btn btn--primary">Download Portfolio (PDF)</a> -->
 
@@ -343,6 +409,19 @@
     <p>Short intro... <a href="#">Read more</a></p>
   </article>
 </section> 
+<!-- COURSES  SECTION -->
+
+
+<section id="courses" class="courses-section py-16">
+  <div class="container">
+    <h2 class="section-title">Courses Completed</h2>
+            <!-- <div class="projects-grid grid mt-16"> -->
+
+    <div id="courses-grid" class="projects-grid grid mt-16"></div>
+  </div>
+</section>
+
+
 
     <!-- ========= ACHIEVEMENTS ========= -->
     <section id="achievements" class="container py-16">
@@ -355,14 +434,18 @@
       </ul>
     </section>
     <section id="testimonials" class="container py-16">
-  <h2>Testimonials</h2>
+      <div class="container">
+  <h2 class="section-title">Testimonials</h2>
   <div class="testimonial-card">
     <p>"Saqib delivered a robust automation agent for our business. Highly recommended!"</p>
     <span>- Client Name, Company</span>
   </div>
+  </div>
 </section>
+
 <section id="certifications" class="section py-16">
-  <div class="section-header">
+  <div class="container">
+  <div class=" section-header">
     <h2 class="section-title">Certifications</h2>
   </div>
   <div class="certifications-grid">
@@ -376,7 +459,61 @@
     </div> -->
     <!-- End repeat -->
   </div>
+  </div>
 </section>
+
+<!-- // ========= RESOURCES ========= --> 
+<section id="resources" class="resources-section py-16">
+  <div class="container">
+    <h2 class="section-title">Resources</h2>
+    <div class="resources-grid  grid mt-16">
+      
+      <!-- Resume Download -->
+      <div class="project-card card">
+        <div class="card__body">
+          <h3>📄 Resume (1 Page)</h3>
+          <p class="mt-4">Professional 1-page resume PDF, updated July 2025.</p>
+          <a href="./files/resume-1page.pdf" class="btn btn--primary mt-4" download>Download</a>
+        </div>
+      </div>
+
+      <!-- GitHub Profile -->
+      <div class="project-card card">
+        <div class="card__body">
+          <h3>📦 GitHub Projects</h3>
+          <p class="mt-4">Explore my repositories, including full-stack apps, ML projects, and more.</p>
+          <a href="https://github.com/MOHDSAQIB123" class="btn btn--primary mt-4" target="_blank">Visit GitHub</a>
+        </div>
+      </div>
+
+      <!-- YouTube Project Demo -->
+      <div class="project-card card">
+        <div class="card__body">
+          <h3>🎥 Project Demos</h3>
+          <p class="mt-4">Watch short demos of my web projects, explaining features and code.</p>
+          <a href="https://youtube.com/@yourchannel" class="btn btn--primary mt-4" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <!-- Study Notes -->
+<div class="project-card card">
+  <div class="card__body">
+    <h3>🧠 Study Notes</h3>
+    <p class="mt-4">PDF notes and mind maps for Computer Science topics.</p>
+    <a href="drive.html" 
+       class="btn btn--primary mt-4" 
+       target="_blank" 
+       rel="noopener noreferrer">
+       Open Study Drive
+    </a>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</section>
+
 
 
     <!-- ========= CONTACT ========= -->
@@ -507,6 +644,40 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
+<script>
+  // Load and display courses from JSON
+  fetch('courses.json')
+    .then(response => response.json())
+    .then(courses => {
+      const grid = document.getElementById('courses-grid');
+
+      courses.forEach(course => {
+        const card = document.createElement('div');
+        card.className = 'project-card card';
+
+        card.innerHTML = `
+          <div class="card__body">
+            <h3>${course.title}</h3>
+            <p class="mt-4"><strong>Course Code:</strong> ${course.code}</p>
+            <p class="mt-2"><strong>Institution:</strong> ${course.institution}</p>
+            <p class="mt-2"><strong>Type:</strong> ${course.type}</p>
+            <button class="btn btn--primary mt-4" disabled>View Details</button>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error("Failed to load courses:", error);
+      const grid = document.getElementById('courses-grid');
+      grid.innerHTML = "<p>⚠️ Unable to load courses. Please try again later.</p>";
+    });
+</script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
 
 
 </body>
