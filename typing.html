@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master Pro - Professional Typing Game</title>
+    <meta name="description" content="Professional typing master game with real-time WPM tracking, multiple difficulty levels, and comprehensive performance analytics.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="typing.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container flex justify-between items-center py-16">
+            <div class="flex items-center gap-16">
+                <h1 class="logo">⌨️ Typing Master Pro</h1>
+                <div class="difficulty-selector">
+                    <select id="difficulty" class="form-control">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                        <option value="programming">Programming</option>
+                    </select>
+                </div>
+            </div>
+            <div class="header-controls flex items-center gap-16">
+                <button id="theme-toggle" class="btn btn--outline btn--sm" aria-label="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button id="settings-btn" class="btn btn--outline btn--sm" aria-label="Settings">
+                    <i class="fa-solid fa-gear"></i>
+                </button>
+                <button id="fullscreen-btn" class="btn btn--outline btn--sm" aria-label="Fullscreen">
+                    <i class="fa-solid fa-expand"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <!-- Game Mode Selection -->
+            <section class="game-modes card mb-8">
+                <div class="card__body">
+                    <h2 class="mb-8">Select Game Mode</h2>
+                    <div class="mode-buttons flex gap-8" style="flex-wrap: wrap;">
+                        <button class="mode-btn btn btn--secondary active" data-mode="time" data-value="30">30s Sprint</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="time" data-value="60">1 Minute</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="time" data-value="120">2 Minutes</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="time" data-value="300">5 Minutes</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="words" data-value="25">25 Words</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="words" data-value="50">50 Words</button>
+                        <button class="mode-btn btn btn--secondary" data-mode="words" data-value="100">100 Words</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Game Area -->
+            <div class="game-layout" style="display: grid; grid-template-columns: 1fr 300px; gap: var(--space-16);">
+                <!-- Typing Area -->
+                <div class="typing-area">
+                    <!-- Progress Bar -->
+                    <div class="progress-container mb-8">
+                        <div class="progress-bar-bg">
+                            <div id="progress-bar" class="progress-bar-fill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span id="progress-percentage">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Text Display -->
+                    <div class="text-display card mb-8">
+                        <div class="card__body">
+                            <div id="text-content" class="typing-text"></div>
+                        </div>
+                    </div>
+
+                    <!-- Typing Input -->
+                    <div class="typing-input-container card mb-8">
+                        <div class="card__body">
+                            <textarea 
+                                id="typing-input" 
+                                class="typing-input" 
+                                placeholder="Start typing here..." 
+                                disabled
+                                rows="3"
+                            ></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="control-buttons flex gap-8 mb-8">
+                        <button id="start-btn" class="btn btn--primary">
+                            <i class="fa-solid fa-play"></i> Start Test
+                        </button>
+                        <button id="pause-btn" class="btn btn--secondary hidden">
+                            <i class="fa-solid fa-pause"></i> Pause
+                        </button>
+                        <button id="restart-btn" class="btn btn--outline">
+                            <i class="fa-solid fa-refresh"></i> Restart
+                        </button>
+                        <button id="sound-toggle" class="btn btn--outline">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statistics Sidebar -->
+                <div class="stats-sidebar">
+                    <!-- Live Stats -->
+                    <div class="stats-card card mb-8">
+                        <div class="card__body">
+                            <h3 class="mb-8">Live Statistics</h3>
+                            <div class="stat-item flex justify-between mb-8">
+                                <span>Time:</span>
+                                <span id="timer">00:00</span>
+                            </div>
+                            <div class="stat-item flex justify-between mb-8">
+                                <span>WPM:</span>
+                                <span id="wpm">0</span>
+                            </div>
+                            <div class="stat-item flex justify-between mb-8">
+                                <span>CPM:</span>
+                                <span id="cpm">0</span>
+                            </div>
+                            <div class="stat-item flex justify-between mb-8">
+                                <span>Accuracy:</span>
+                                <span id="accuracy">100%</span>
+                            </div>
+                            <div class="stat-item flex justify-between mb-8">
+                                <span>Errors:</span>
+                                <span id="errors">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Best -->
+                    <div class="best-stats card mb-8">
+                        <div class="card__body">
+                            <h3 class="mb-8">Personal Best</h3>
+                            <div class="stat-item flex justify-between mb-4">
+                                <span>Best WPM:</span>
+                                <span id="best-wpm">0</span>
+                            </div>
+                            <div class="stat-item flex justify-between mb-4">
+                                <span>Best Accuracy:</span>
+                                <span id="best-accuracy">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="achievements card">
+                        <div class="card__body">
+                            <h3 class="mb-8">Achievements</h3>
+                            <div id="achievements-list">
+                                <div class="achievement-item locked mb-4">
+                                    <span>⚡ Speed Demon</span>
+                                    <small>50+ WPM</small>
+                                </div>
+                                <div class="achievement-item locked mb-4">
+                                    <span>🎯 Accuracy Master</span>
+                                    <small>98+ Accuracy</small>
+                                </div>
+                                <div class="achievement-item locked mb-4">
+                                    <span>🏃 Endurance Runner</span>
+                                    <small>5-minute test</small>
+                                </div>
+                                <div class="achievement-item locked">
+                                    <span>💯 Perfect Round</span>
+                                    <small>100% Accuracy</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Keyboard Heatmap -->
+            <section class="keyboard-heatmap card mt-16">
+                <div class="card__body">
+                    <h3 class="mb-8">Keyboard Heatmap</h3>
+                    <div id="keyboard-display" class="keyboard-layout">
+                        <!-- Keyboard will be generated by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="modal hidden">
+        <div class="modal-content card">
+            <div class="modal-header card__header flex justify-between items-center">
+                <h2>Test Results</h2>
+                <button id="close-modal" class="btn btn--outline btn--sm">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body card__body">
+                <div class="results-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16);">
+                    <div class="result-stat">
+                        <div class="result-number" id="final-wpm">0</div>
+                        <div class="result-label">Words Per Minute</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-number" id="final-accuracy">100%</div>
+                        <div class="result-label">Accuracy</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-number" id="final-cpm">0</div>
+                        <div class="result-label">Characters Per Minute</div>
+                    </div>
+                    <div class="result-stat">
+                        <div class="result-number" id="final-time">0s</div>
+                        <div class="result-label">Time Taken</div>
+                    </div>
+                </div>
+                <div class="result-details mt-16">
+                    <h3 class="mb-8">Detailed Breakdown</h3>
+                    <div class="detail-item flex justify-between">
+                        <span>Total Characters:</span>
+                        <span id="total-chars">0</span>
+                    </div>
+                    <div class="detail-item flex justify-between">
+                        <span>Correct Characters:</span>
+                        <span id="correct-chars">0</span>
+                    </div>
+                    <div class="detail-item flex justify-between">
+                        <span>Incorrect Characters:</span>
+                        <span id="incorrect-chars">0</span>
+                    </div>
+                </div>
+                <div class="modal-actions mt-16 flex gap-8">
+                    <button id="restart-test" class="btn btn--primary">Try Again</button>
+                    <button id="new-mode" class="btn btn--secondary">New Mode</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content card">
+            <div class="modal-header card__header flex justify-between items-center">
+                <h2>Settings</h2>
+                <button id="close-settings" class="btn btn--outline btn--sm">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body card__body">
+                <div class="setting-group mb-16">
+                    <label class="form-label">Font Size</label>
+                    <input type="range" id="font-size" min="14" max="24" value="18" class="slider">
+                </div>
+                <div class="setting-group mb-16">
+                    <label class="form-label">
+                        <input type="checkbox" id="sound-effects"> Sound Effects
+                    </label>
+                </div>
+                <div class="setting-group mb-16">
+                    <label class="form-label">
+                        <input type="checkbox" id="show-keyboard"> Show Keyboard Heatmap
+                    </label>
+                </div>
+                <div class="setting-group mb-16">
+                    <label class="form-label">
+                        <input type="checkbox" id="backspace-penalty"> Backspace Penalty
+                    </label>
+                </div>
+                <div class="setting-group">
+                    <button id="reset-stats" class="btn btn--outline">Reset All Statistics</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="typing.js"></script>
+</body>
+</html>

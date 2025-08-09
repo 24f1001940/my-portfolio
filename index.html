@@ -166,7 +166,185 @@
   <a href="#contact">📞</a>
 </nav>
 
-    <div id="chatbot"></div>
+
+
+
+    <!-- Floating Chatbot Icon -->
+    <div class="chatbot-float" id="chatbotFloat">
+        <div class="chatbot-icon">
+            <span class="icon">🤖</span>
+            <div class="pulse-ring"></div>
+            <div class="notification-badge" id="notificationBadge">1</div>
+        </div>
+        <div class="chatbot-tooltip">Chat with AI Assistant</div>
+    </div>
+
+    <!-- Chat Modal -->
+    <div class="modal hidden" id="chatModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="header-left">
+                    <div class="bot-avatar">🤖</div>
+                    <div class="bot-info">
+                        <h3>AI Assistant</h3>
+                        <span class="bot-status" id="botStatus">Online</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" id="settingsBtn" title="Settings">⚙️</button>
+                    <button class="icon-btn" id="exportBtn" title="Export Chat">📥</button>
+                    <button class="modal-close" id="closeModal">✕</button>
+                </div>
+            </div>
+
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="portfolio">
+                    <span class="mode-icon">💼</span>
+                    <span class="mode-text">Portfolio</span>
+                </button>
+                <button class="mode-btn" data-mode="study">
+                    <span class="mode-icon">📚</span>
+                    <span class="mode-text">Study</span>
+                </button>
+                <button class="mode-btn" data-mode="quiz">
+                    <span class="mode-icon">❓</span>
+                    <span class="mode-text">Quiz</span>
+                </button>
+                <button class="mode-btn" data-mode="assistant">
+                    <span class="mode-icon">🎯</span>
+                    <span class="mode-text">Assistant</span>
+                </button>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="chat-area" id="chatArea">
+                <div class="welcome-message" id="welcomeMessage">
+                    <div class="welcome-avatar">💼</div>
+                    <div class="welcome-content">
+                        <h4>Welcome to Portfolio Assistant!</h4>
+                        <p>I can help you learn about Alex Johnson's skills, projects, and experience. Ask me anything about the portfolio!</p>
+                        <div class="quick-questions">
+                            <button class="quick-btn" data-question="Tell me about Alex's skills">Skills</button>
+                            <button class="quick-btn" data-question="What projects has Alex worked on?">Projects</button>
+                            <button class="quick-btn" data-question="What is Alex's experience?">Experience</button>
+                            <button class="quick-btn" data-question="How can I contact Alex?">Contact</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- File Upload Area (for Study Mode) -->
+            <div class="file-upload hidden" id="fileUploadArea">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">
+                        <p><strong>Upload Study Materials</strong></p>
+                        <p>Drag & drop files here or click to browse</p>
+                        <p class="upload-formats">Supports: .txt, .md files</p>
+                    </div>
+                    <input type="file" id="fileInput" accept=".txt,.md" multiple hidden>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="typing-indicator hidden" id="typingIndicator">
+                    <div class="typing-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <span>AI is typing...</span>
+                </div>
+                <div class="input-container">
+                    <button class="attach-btn" id="attachBtn" title="Upload File">📎</button>
+                    <input type="text" class="message-input" id="messageInput" placeholder="Type your message..." maxlength="500">
+                    <button class="send-btn" id="sendBtn" title="Send Message">
+                        <span class="send-icon">➤</span>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <span class="char-count" id="charCount">0/500</span>
+                    <span class="mode-info" id="modeInfo">Portfolio Mode</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div class="settings-panel hidden" id="settingsPanel">
+        <div class="settings-header">
+            <h3>Chat Settings</h3>
+            <button class="icon-btn" id="closeSettings">✕</button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-group">
+                <label for="chatTheme">Theme</label>
+                <select id="chatTheme" class="form-control">
+                    <option value="auto">Auto</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label for="responseSpeed">Response Speed</label>
+                <select id="responseSpeed" class="form-control">
+                    <option value="fast">Fast</option>
+                    <option value="normal">Normal</option>
+                    <option value="slow">Slow</option>
+                </select>
+            </div>
+            <div class="setting-group">
+                <label>
+                    <input type="checkbox" id="soundEnabled" checked>
+                    Sound Effects
+                </label>
+            </div>
+            <div class="setting-group">
+                <button class="btn btn--secondary" id="clearChatBtn">Clear Chat History</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Results Panel -->
+    <div class="quiz-results hidden" id="quizResults">
+        <div class="results-header">
+            <h3>Quiz Results</h3>
+            <button class="icon-btn" id="closeResults">✕</button>
+        </div>
+        <div class="results-content">
+            <div class="score-display">
+                <div class="score-circle">
+                    <span class="score-number" id="finalScore">0</span>
+                    <span class="score-total">/ 5</span>
+                </div>
+                <div class="score-percentage" id="scorePercentage">0%</div>
+            </div>
+            <div class="results-breakdown">
+                <div class="stat-item">
+                    <span class="stat-label">Correct Answers:</span>
+                    <span class="stat-value" id="correctAnswers">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Questions:</span>
+                    <span class="stat-value" id="totalQuestions">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Time Taken:</span>
+                    <span class="stat-value" id="timeTaken">0s</span>
+                </div>
+            </div>
+            <div class="results-actions">
+                <button class="btn btn--primary" id="retakeQuizBtn">Take Another Quiz</button>
+                <button class="btn btn--outline" id="reviewAnswersBtn">Review Answers</button>
+            </div>
+        </div>
+    </div>
+
+  
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
 </script>
 
@@ -275,6 +453,48 @@
         </div>
       </div>
     </section>
+    <!-- ===== Hobbies & Interests ===== -->
+<section id="hobbies" class="container py-16">
+    <h2 class="section-title">Hobbies & Interests</h2>
+    <div class="hobbies-grid grid mt-16">
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-book-open fa-2x mb-4" style="color:#00bfae"></i>
+                <h3>Reading & Learning</h3>
+                <p>Diving into tech, psychology, and history books to feed my curiosity.</p>
+            </div>
+        </div>
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-person-running fa-2x mb-4" style="color:#ffc400"></i>
+                <h3>Fitness & Running</h3>
+                <p>I enjoy morning jogs and staying active for a healthy lifestyle.</p>
+            </div>
+        </div>
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-chess-knight fa-2x mb-4" style="color:#ff4081"></i>
+                <h3>Chess</h3>
+                <p>Chess helps sharpen my strategic thinking and patience.</p>
+            </div>
+        </div>
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-music fa-2x mb-4" style="color:#7e57c2"></i>
+                <h3>Music</h3>
+                <p>Instrumental music fuels my focus while working on projects.</p>
+            </div>
+        </div>
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-code fa-2x mb-4" style="color:#2196f3"></i>
+                <h3>Coding Side Projects</h3>
+                <p>Experimenting with new tech, open-source, and APIs for fun.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- ========= SKILLS ========= -->
     <section id="skills" class="container py-16">
@@ -409,6 +629,39 @@
     <p>Short intro... <a href="#">Read more</a></p>
   </article>
 </section> 
+<!-- ===== Publications & Articles ===== -->
+<section id="publications" class="container py-16">
+    <h2 class="section-title">Publications & Latest Articles</h2>
+    <div class="articles-grid grid mt-16">
+        <!-- Repeat for each article -->
+        <div class="article-card card">
+            <div class="card__body">
+                <h3>How I Built a Multi-User Quiz Portal</h3>
+                <span class="article-date">Jul 2025</span>
+                <p>From backend architecture to real-time scoring – see how I approached this project.</p>
+                <a href="/blog/quiz-portal.html" class="btn btn--primary btn--sm mt-4">Read More</a>
+            </div>
+        </div>
+        <div class="article-card card">
+            <div class="card__body">
+                <h3>LLM-based Automation in Modern Apps</h3>
+                <span class="article-date">Jun 2025</span>
+                <p>Exploring GPT-powered workflow automation for productivity and business.</p>
+                <a href="/blog/llm-automation.html" class="btn btn--primary btn--sm mt-4">Read More</a>
+            </div>
+        </div>
+        <div class="article-card card">
+            <div class="card__body">
+                <h3>Best Data Science Resources in 2025</h3>
+                <span class="article-date">May 2025</span>
+                <p>Curated notes, tools, and learning paths for CS & DS students.</p>
+                <a href="/blog/data-science-resources.html" class="btn btn--primary btn--sm mt-4">Read More</a>
+            </div>
+        </div>
+        <!-- ... Add more articles as needed ... -->
+    </div>
+</section>
+
 <!-- COURSES  SECTION -->
 
 
@@ -433,15 +686,33 @@
         <li class="achievement-item status status--info mt-8">Completed Memorization of the Qur'an</li>
       </ul>
     </section>
-    <section id="testimonials" class="container py-16">
-      <div class="container">
+   <!-- ===== Testimonials Carousel ===== -->
+<section id="testimonials" class="container py-16" aria-label="Client Testimonials">
   <h2 class="section-title">Testimonials</h2>
-  <div class="testimonial-card">
-    <p>"Saqib delivered a robust automation agent for our business. Highly recommended!"</p>
-    <span>- Client Name, Company</span>
-  </div>
+
+  <div class="testimonial-carousel card" style="max-width:540px;margin:auto;position:relative;">
+    <div class="testimonial-content">
+      <div class="testimonial-card active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+        <p>"Saqib delivered a robust automation agent for our business. Highly recommended!"</p>
+        <span>- Client Name, Company</span>
+      </div>
+      <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="2 of 3">
+        <p>"Impressed by his technical skills and professionalism. Reliable collaborator!"</p>
+        <span>- Team Lead, Tech Startup</span>
+      </div>
+      <div class="testimonial-card" role="group" aria-roledescription="slide" aria-label="3 of 3">
+        <p>"The Multi-User Quiz Portal helped streamline our training sessions."</p>
+        <span>- Faculty Member, University</span>
+      </div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <button class="carousel-btn prev" aria-label="Previous testimonial">&#10094;</button>
+    <button class="carousel-btn next" aria-label="Next testimonial">&#10095;</button>
   </div>
 </section>
+
+    
 
 <section id="certifications" class="section py-16">
   <div class="container">
@@ -461,6 +732,73 @@
   </div>
   </div>
 </section>
+
+<!-- ===== Fun Facts Section ===== -->
+<section id="fun-facts" class="container py-16">
+    <h2 class="section-title">Fun Facts About Me</h2>
+    <div class="fun-facts-grid grid mt-16">
+        <div class="fact-card card">
+            <div class="card__body flex items-center">
+                <i class="fa-solid fa-brain fa-2x mr-4" style="color:#ffa726"></i>
+                <p>I've memorized the entire Qur'an!</p>
+            </div>
+        </div>
+        <div class="fact-card card">
+            <div class="card__body flex items-center">
+                <i class="fa-solid fa-keyboard fa-2x mr-4" style="color:#42a5f5"></i>
+                <p>Fastest typing speed: 125 WPM on a real test.</p>
+            </div>
+        </div>
+        <div class="fact-card card">
+            <div class="card__body flex items-center">
+                <i class="fa-solid fa-chess fa-2x mr-4" style="color:#66bb6a"></i>
+                <p>I once beat a chess computer on “hard”!</p>
+            </div>
+        </div>
+        <div class="fact-card card">
+            <div class="card__body flex items-center">
+                <i class="fa-solid fa-plane fa-2x mr-4" style="color:#ab47bc"></i>
+                <p>I dream of coding while traveling the world.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ===== Reading List Section ===== -->
+<section id="reading-list" class="container py-16">
+    <h2 class="section-title">Reading List & Book Recommendations</h2>
+    <div class="books-grid grid mt-16">
+        <div class="book-card card">
+            <div class="card__body">
+                <h3>Atomic Habits</h3>
+                <p>by James Clear</p>
+                <span class="book-status">Currently Reading</span>
+            </div>
+        </div>
+        <div class="book-card card">
+            <div class="card__body">
+                <h3>Deep Work</h3>
+                <p>by Cal Newport</p>
+                <span class="book-status">Recommended</span>
+            </div>
+        </div>
+        <div class="book-card card">
+            <div class="card__body">
+                <h3>Zero to One</h3>
+                <p>by Peter Thiel</p>
+                <span class="book-status">Recommended</span>
+            </div>
+        </div>
+        <div class="book-card card">
+            <div class="card__body">
+                <h3>Python Data Science Handbook</h3>
+                <p>by Jake VanderPlas</p>
+                <span class="book-status">Currently Reading</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 <!-- // ========= RESOURCES ========= --> 
 <section id="resources" class="resources-section py-16">
@@ -508,10 +846,75 @@
     </a>
   </div>
 </div>
+<!-- Typing Master Card -->
+<!-- Typing Master Game -->
+<div class="project-card card">
+    <div class="card__body">
+        <h3>⌨️ Typing Master Pro</h3>
+        <p class="mt-4">Professional typing speed test game with real-time WPM tracking, multiple difficulty levels, and performance analytics.</p>
+        <a href="typing.html" class="btn btn--primary mt-4" target="_blank">Play Game</a>
+    </div>
+</div>
+<!-- games  -->
+<div class="project-card card">
+  <div class="card__body">
+    <h3>🎮 Games Arcade</h3>
+    <p class="mt-4">Play 20 small HTML/CSS/JS games — beginner to advanced. Open the arcade to try them all.</p>
+    <a href="game/index.html" class="btn btn--primary mt-4" target="_blank" rel="noopener noreferrer">Open Games Arcade</a>
+  </div>
+</div>
+
+<!-- Code Editor Feature -->
+<div class="project-card card">
+    <div class="card__body">
+        <h3>🖥️ Interactive Code Editor</h3>
+        <p class="mt-4">Run, edit, and compile code in the browser. Supports Python, C++, Java, JS & more.</p>
+        <a href="editor.html" class="btn btn--primary mt-4" target="_blank">Open Editor</a>
+    </div>
+</div>
+
+
+
 
 
     </div>
   </div>
+</section>
+
+<section id="faq" class="container py-16">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq-list mt-16">
+        <div class="faq-item card">
+            <button class="faq-question card__body" onclick="this.nextElementSibling.classList.toggle('open')">
+                What services do you provide?
+            </button>
+            <div class="faq-answer">I develop full-stack web applications, data science solutions, and automation agents tailored to client needs.</div>
+        </div>
+        <div class="faq-item card">
+            <button class="faq-question card__body" onclick="this.nextElementSibling.classList.toggle('open')">
+                Are you available for freelance projects or collaborations?
+            </button>
+            <div class="faq-answer">Yes! I'm open to freelance work and collaborations in software, data science, or tech consultancy.</div>
+        </div>
+        <div class="faq-item card">
+            <button class="faq-question card__body" onclick="this.nextElementSibling.classList.toggle('open')">
+                Can I see code samples or repositories?
+            </button>
+            <div class="faq-answer">Absolutely! Check my GitHub for code samples of my recent projects.</div>
+        </div>
+        <div class="faq-item card">
+            <button class="faq-question card__body" onclick="this.nextElementSibling.classList.toggle('open')">
+                What's your preferred communication method?
+            </button>
+            <div class="faq-answer">Email is best, but I'm also available on LinkedIn, WhatsApp, and phone for quick discussions.</div>
+        </div>
+        <div class="faq-item card">
+            <button class="faq-question card__body" onclick="this.nextElementSibling.classList.toggle('open')">
+                What is your typical project turnaround time?
+            </button>
+            <div class="faq-answer">It varies by project scope. For most apps, I deliver working prototypes within 1-2 weeks.</div>
+        </div>
+    </div>
 </section>
 
 
@@ -523,7 +926,19 @@
         <div class="contact-wrapper grid mt-16">
           <!-- Contact Info -->
           <div>
+            <!-- ===== Google Map Embed (Contact Section) ===== -->
+<div class="card mt-16" style="max-width:600px;margin:auto;">
+    <h3 class="card__body">Find Me in New Delhi</h3>
+    <div style="width:100%;border-radius:10px;overflow:hidden;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14010.501327756285!2d77.2308412!3d28.5934944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce394c35e5f23%3A0x724a7e5a1df4b9e9!2sNizamuddin%2C%20New%20Delhi%2C%20Delhi%20110013!5e0!3m2!1sen!2sin!4v1688851846791!5m2!1sen!2sin"
+            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
             <p class="mb-8"><i class="fa-solid fa-location-dot"></i> Nizamuddin, New Delhi, India&nbsp;110013</p>
+          
             <p class="mb-8"><i class="fa-solid fa-envelope"></i> <a href="mailto:saqib29abubkar@gmail.com">saqib29abubkar@gmail.com</a></p>
             <p class="mb-8"><i class="fa-solid fa-phone"></i> <a href="tel:+919625035483">+91-9625035483</a></p>
             <div class="social-links flex gap-16 mt-16">
@@ -606,7 +1021,11 @@
 
   <!-- Scripts -->
   <script src="app.js"></script>
+  <script src="chatbot.js"></script>
+  
+
  <script>
+
   const form = document.getElementById("contact-form");
   const status = document.getElementById("form-status");
 
@@ -673,7 +1092,56 @@
       const grid = document.getElementById('courses-grid');
       grid.innerHTML = "<p>⚠️ Unable to load courses. Please try again later.</p>";
     });
+
+    
+(function(){
+  const cards = document.querySelectorAll('.testimonial-card');
+  const nextBtn = document.querySelector('.carousel-btn.next');
+  const prevBtn = document.querySelector('.carousel-btn.prev');
+  let index = 0;
+  let autoSlide;
+
+  function showSlide(i) {
+    cards.forEach(card => card.classList.remove('active'));
+    cards[i].classList.add('active');
+  }
+
+  function nextSlide() {
+    index = (index + 1) % cards.length;
+    showSlide(index);
+  }
+
+  function prevSlide() {
+    index = (index - 1 + cards.length) % cards.length;
+    showSlide(index);
+  }
+
+  function startAutoSlide() {
+    autoSlide = setInterval(nextSlide, 5000);
+  }
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+  }
+
+  nextBtn.addEventListener('click', () => { nextSlide(); stopAutoSlide(); startAutoSlide(); });
+  prevBtn.addEventListener('click', () => { prevSlide(); stopAutoSlide(); startAutoSlide(); });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === "ArrowRight") { nextSlide(); stopAutoSlide(); startAutoSlide(); }
+    if (e.key === "ArrowLeft") { prevSlide(); stopAutoSlide(); startAutoSlide(); }
+  });
+
+  // Pause on hover
+  document.querySelector('.testimonial-carousel').addEventListener('mouseenter', stopAutoSlide);
+  document.querySelector('.testimonial-carousel').addEventListener('mouseleave', startAutoSlide);
+
+  startAutoSlide();
+})();
 </script>
+
+
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Online Code Editor</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style>
+        body {margin:0;font-family:Inter,sans-serif;background:#23272f;color:#fff;}
+        .container {max-width:900px;margin:40px auto;padding:24px;background:#24262e;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,0.12);}
+        .editor {border-radius:10px;overflow:hidden;}
+        #output {background:#15161b;color:#39ff14;min-height:60px;margin:16px 0;padding:12px;border-radius:8px;font-family:JetBrains Mono,monospace;}
+        select, button {margin:0 2px;padding:0.6em;border-radius:6px;border:none;}
+        .row {display:flex;align-items:center;}
+        @media (max-width:700px){
+            .editor {height:200px;}
+            .container {padding:10px;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2><i class="fa-solid fa-terminal"></i> Online Code Editor</h2>
+    <div class="row">
+        <label for="lang">Language:</label>
+        <select id="lang">
+            <option value="54">C++</option>
+            <option value="62">Java</option>
+            <option value="71" selected>Python</option>
+            <option value="63">JavaScript</option>
+        </select>
+        <button onclick="runCode()"><i class="fa-solid fa-play"></i> Run</button>
+        <button onclick="clearOutput()">Clear</button>
+    </div>
+    <div id="editor" class="editor" style="height:320px;width:100%;"></div>
+    <h3 style="margin-top:1em;">Output:</h3>
+    <pre id="output"></pre>
+</div>
+<!-- ACE Editor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.22.1/ace.js"></script>
+<script>
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/python");
+    document.getElementById('lang').onchange = function(){
+        let mode = {'54':'c_cpp','62':'java','71':'python','63':'javascript'}[this.value] || 'python';
+        editor.session.setMode("ace/mode/"+mode);
+    };
+    function runCode() {
+        let code = editor.getValue();
+        let lang = document.getElementById('lang').value;
+        let output = document.getElementById('output');
+        output.textContent = "Running...";
+        fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&wait=true",{
+            method:"POST",
+            headers:{
+                "content-type":"application/json",
+                "x-rapidapi-key":"b06676c5c1msh037b042ec84dfb0p18d38ejsn6cbc5f8e9584", // ← Replace with your free RapidAPI Key
+                "x-rapidapi-host":"judge0-ce.p.rapidapi.com"
+            },
+            body:JSON.stringify({source_code:code,language_id:lang})
+        })
+        .then(x=>x.json()).then(res=>{
+            output.textContent = res.stdout || res.stderr || "No output.";
+        });
+    }
+    function clearOutput(){document.getElementById('output').textContent="";}
+    // Default demo code:
+    editor.setValue("print('Hello from your online editor!')");
+</script>
+</body>
+</html>
