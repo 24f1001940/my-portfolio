@@ -875,10 +875,85 @@ select.form-control {
 
 
 /* faqs section  */
-.faq-question {width:100%; text-align:left; font-weight:bold; background: #eee; border:none; cursor:pointer;}
-.faq-answer {display:none; padding:1em; background:#f8f8f8;}
-.faq-answer.open {display:block;}
-.faq-item {margin-bottom:10px;}
+/* =========================
+   FAQ SECTION - PREMIUM STYLE
+   ========================= */
+
+#faq {
+  position: relative;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-card-border);
+  transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* Question Button */
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 18px 22px;
+  font-weight: 600;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: var(--color-secondary);
+}
+
+/* Add arrow indicator */
+.faq-question::after {
+  content: "+";
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+/* When open */
+.faq-question.active::after {
+  content: "–";
+}
+
+/* Answer */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 22px;
+  background: var(--color-background);
+  color: var(--color-text-secondary);
+  transition: all 0.4s ease;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Open State */
+.faq-answer.open {
+  max-height: 200px;
+  padding: 16px 22px 20px 22px;
+}
 
 /* reading list section */
 .book-status {display:inline-block;background:#d7ffd9;color:#388e3c;padding:2px 8px;border-radius:10px;font-size:0.85em;}
@@ -995,6 +1070,124 @@ select.form-control {
 
 .resources-section .btn:hover {
   background-color: #0056b3;
+}
+
+/* youtbe section */
+.youtube-section .yt-videos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 28px;
+}
+.yt-video-card {
+  width: 31%;
+  min-width: 260px;
+  background: #161927;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px #0002;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .16s;
+}
+.yt-video-card:hover { transform: scale(1.035); }
+.yt-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.yt-thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.yt-play-btn {
+  position: absolute; bottom: 10px; right: 10px;
+  background: #ff3333cc; color: #fff; border-radius: 50%;
+  width: 44px; height: 44px; font-size: 22px;
+  display: flex; justify-content: center; align-items: center;
+  box-shadow: 0 2px 6px #0007; pointer-events:none;
+}
+.yt-title {
+  padding: 12px 14px 10px 14px;
+  font-size: 1.02em;
+  font-weight: 500;
+  color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.yt-title a { color: #00d4ff; text-decoration: none; }
+.yt-channel-btn { text-align:center; margin-top: 20px; }
+
+/* Responsive: 3 per row desktop, 2 per tablet, 1 per mobile */
+@media (max-width: 900px) {
+  .yt-video-card { width: 46%; }
+}
+@media (max-width: 600px) {
+  .youtube-section .yt-videos-grid { gap:15px; }
+  .yt-video-card { width: 97%; min-width: 0; }
+  .yt-title { font-size: 1em; padding: 10px 8px 8px 8px; }
+}
+/* quran section */
+.moving-widget {
+  width: 320px;  /* lower width */
+  margin: 14px auto;
+  padding: 16px 12px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #dde9f7 0%, #f7faff 100%);
+  box-shadow: 0 8px 24px rgba(42, 56, 84, 0.18);
+  text-align: center;
+  border: 1.5px solid #aac7f4;
+
+  /* Animation for the whole box */
+  overflow: hidden;
+  position: relative;
+  animation: moveWidget 30s linear infinite;
+}
+
+@keyframes moveWidget {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-350px); }
+}
+
+/* Styling the Ayah text */
+.ayah-arabic {
+  font-family: 'Amiri', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  direction: rtl;
+  color: #1a2a6c;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 8px rgba(26, 42, 108, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Translation text */
+.ayah-translation {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #2e7d32;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+
+/* Meta info (Surah and ayah) */
+.ayah-meta {
+  font-size: 0.87rem;
+  color: #558b2f;
+  opacity: 0.75;
+  letter-spacing: 0.03em;
+}
+
+/* Responsive tweak */
+@media (max-width: 360px) {
+  .moving-widget {
+    width: 90vw;
+    animation-duration: 35s;
+  }
 }
 
 /* chatbot section hai*/
@@ -2348,6 +2541,12 @@ html {
   background: rgba(33,160,141,0.1); padding: 1rem; border-radius: 1rem;
 }
 .sidebar a { font-size: 2rem; color: var(--color-primary); }
+.sidebar2 {
+  position: fixed; right: 0; top: 50%; transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 2rem;
+  background: rgba(250, 250, 250, 0.1); padding: 1rem; border-radius: 1rem;
+}
+.sidebar2 a { font-size: 2rem; color: var(--color-primary); }
 
 .certifications-grid {
   display: grid;
@@ -2513,5 +2712,190 @@ html {
 
 
 
+/* =========================================
+   MY COURSES (INSTRUCTOR SECTION)
+   ========================================= */
 
+/* Grid Layout */
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* Card Container */
+.instructor-card {
+  background: var(--color-surface, #ffffff);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+[data-color-scheme="dark"] .instructor-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.instructor-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.2); /* Glow effect using primary color */
+  border-color: var(--color-primary, #6366f1);
+}
+
+/* Thumbnail Section */
+.course-thumb {
+  position: relative;
+  height: 190px;
+  overflow: hidden;
+}
+
+.course-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.instructor-card:hover .course-thumb img {
+  transform: scale(1.1);
+}
+
+/* Play Icon Overlay */
+.play-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.play-overlay i {
+  color: #fff;
+  font-size: 3rem;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.instructor-card:hover .play-overlay {
+  opacity: 1;
+}
+
+/* Badges (Best Seller, New) */
+.course-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fcd34d; /* Yellow */
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+  z-index: 2;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.new-badge {
+  background: var(--color-primary, #6366f1);
+  color: #fff;
+}
+
+.upcoming-badge {
+  background: #64748b;
+  color: #fff;
+}
+
+/* Details Section */
+.course-details {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.platform-tag {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-primary, #6366f1);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.course-details h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.course-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #64748b);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Stats (Students/Rating) */
+.course-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.text-yellow {
+  color: #fbbf24;
+}
+
+/* Footer (Price & Button) */
+.course-footer {
+  margin-top: auto; /* Pushes to bottom */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 1rem;
+}
+
+[data-color-scheme="dark"] .course-footer {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+}
+
+.original-price {
+  font-size: 0.85rem;
+  text-decoration: line-through;
+  color: var(--color-text-secondary, #94a3b8);
+}
+
+/* Add to style.css */
+.text-yellow {
+  color: #fbbf24;
+}
+
+.instructor-card .price .current-price {
+  font-size: 1.25rem;
+}
 

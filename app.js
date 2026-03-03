@@ -705,3 +705,4 @@ document.addEventListener('DOMContentLoaded', renderCertifications);
 
 // Initialize mobile menu
 initMobileMenu();
+

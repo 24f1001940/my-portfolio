@@ -139,8 +139,14 @@
     "type": "Theory + Lab"
   },
   {
-    "title": "Engineering Chemistry I, II (Theory + Lab)",
-    "code": "AS-103, 153, AS-203, 253",
+    "title": "Engineering Chemistry I (Theory + Lab)",
+    "code": "AS-103, 153",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory + Lab"
+  },
+  {
+    "title": "Engineering Chemistry  II (Theory + Lab)",
+    "code": "AS-203, 253",
     "institution": "Jamia Millia Islamia",
     "type": "Theory + Lab"
   },
@@ -241,6 +247,12 @@
     "type": "Online"
   },
   {
+    "title": "Machine Learning Practice",
+    "code": "BSCS2008",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
     "title": "Object Oriented Programming (Theory + Lab)",
     "code": "CEN-504, CEN-591",
     "institution": "Jamia Millia Islamia",
@@ -300,5 +312,78 @@
     "institution": "Jamia Millia Islamia",
     "type": "Lab"
   }
+
+  ,
+  {
+    "title": "Data Mining",
+    "code": "CEN-701",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Distributed and Cloud Computing",
+    "code": "CEN-704",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Computer Vision & Digital Image Processing",
+    "code": "CEN-707",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Mobile Computing and Internet of Things (IoT)",
+    "code": "CEN-708",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Data Mining Lab",
+    "code": "CEN-791",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Minor Project",
+    "code": "CEN-792",
+    "institution": "Jamia Millia Islamia",
+    "type": "Project"
+  }
+
+  ,
+  {
+    "title": "Quantum Algorithms and Cryptography",
+    "code": "NOC25CS61-S",
+    "institution": "Jamia Millia Islamia (NPTEL)",
+    "type": "Theory"
+  },
+  {
+    "title": "Blockchain and Its Applications",
+    "code": "NOC25CS08-S",
+    "institution": "Jamia Millia Islamia (NPTEL)",
+    "type": "Theory"
+  },
+  {
+    "title": "Introduction to Large Language Models (LLMs)",
+    "code": "NOC25CS161-S",
+    "institution": "Jamia Millia Islamia (NPTEL)",
+    "type": "Theory"
+  },
+  {
+    "title": "NLP Lab",
+    "code": "CEN-891",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Major Project",
+    "code": "CEN-892",
+    "institution": "Jamia Millia Islamia",
+    "type": "Project"
+  }
 ]
+
+
+
 

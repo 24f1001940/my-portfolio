@@ -7,6 +7,13 @@
   <meta name="description" content="Portfolio website of Mohd Saqib, Computer Engineer and Data Science enthusiast. Projects, skills, achievements, and contact info.">
   <meta name="keywords" content="Mohd Saqib, portfolio, computer engineering, data science, projects, resume">
   <meta name="author" content="Mohd Saqib">
+  <meta property="og:title" content="Mohd Saqib | Portfolio">
+<meta property="og:description" content="Full-stack & Data Science projects, achievements, and contact.">
+<meta property="og:image" content="/images/profile.jpg">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
 
   <title>Mohd Saqib | Portfolio</title>
 
@@ -32,6 +39,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     crossorigin="anonymous"
   />
+<link href="https://fonts.googleapis.com/css?family=Amiri&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
@@ -57,6 +65,195 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/profile.jpg">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b0b0b">
+<style>
+  /* =========================================
+     ENHANCEMENTS (Paste inside HTML <head>)
+     ========================================= */
+
+  /* 1. Modern Scrollbar (Chrome/Safari/Edge) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-background, #f8f9fa);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--color-primary, #6366f1), var(--color-secondary, #ec4899));
+    border-radius: 10px;
+    border: 2px solid var(--color-background, #f8f9fa);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-hover, #4f46e5);
+  }
+
+  /* 2. Glassmorphism Header */
+  .header {
+    background: rgba(255, 255, 255, 0.7) !important; /* Translucent */
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  /* Dark mode support for header */
+  [data-color-scheme="dark"] .header {
+    background: rgba(15, 23, 42, 0.7) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* 3. Text Gradient for Name & Titles */
+  .animated-name, 
+  .section-title {
+    background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+  }
+  
+  /* 4. Card Hover Lift & Glow */
+  .card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease !important;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+    border-color: var(--color-primary, #6366f1);
+  }
+
+  /* 5. Hero Button Pulse Animation */
+  .btn--primary {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn--primary::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+  }
+  .btn--primary:hover::after {
+    left: 100%;
+  }
+
+  /* 6. Chatbot Floating Animation */
+  .chatbot-float {
+    z-index: 9999 !important;
+    animation: floatBot 4s ease-in-out infinite;
+  }
+  @keyframes floatBot {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* 7. Skill Bars Animation Support */
+  .progress-bar {
+    transition: width 1.5s ease-out;
+    background: linear-gradient(90deg, var(--color-primary, #6366f1), #ec4899) !important;
+  }
+ .achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* .achievement-card {
+  background: #0f172a;
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  gap: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.05);
+} */
+
+/* .achievement-card:hover {
+  transform: translateY(-6px);
+  border-color: #10b981;
+} */
+/* 
+.achievement-icon {
+  font-size: 1.5rem;
+  color: #10b981;
+  min-width: 40px;
+}
+
+.achievement-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+}
+
+.achievement-content p {
+  margin: 0;
+  color: #cbd5e1;
+  font-size: 0.9rem;
+} */
+/* ================================
+   Achievements Theme Fix
+   ================================ */
+
+.achievement-card {
+  background: var(--color-surface);
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  gap: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-card-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.achievement-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary);
+}
+
+.achievement-icon {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  min-width: 40px;
+}
+
+.achievement-content h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.achievement-content p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+  /* 8. YouTube Card Polish */
+  .yt-video-card {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+  }
+  .yt-title {
+    background: var(--color-surface, #fff);
+    padding: 12px;
+  }
+  [data-color-scheme="dark"] .yt-title {
+    background: #1e293b;
+  }
+
+  /* 9. Mobile Menu Fix (Make sure it appears on top) */
+  @media (max-width: 768px) {
+    .nav-links {
+      background: var(--color-background, #ffffff) !important;
+      border-bottom: 2px solid var(--color-primary, #6366f1);
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+  }
+</style>
 </head>
 
 
@@ -67,8 +264,7 @@
 <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
 
 
-<body>
-  <div id="particles-container"></div>
+<body style="background-image: radial-gradient(#6366f1 0.5px, transparent 0.5px), radial-gradient(#6366f1 0.5px, var(--color-background) 0.5px); background-size: 20px 20px; background-position: 0 0, 10px 10px; background-attachment: fixed;">  <div id="particles-container"></div>
 <div id="loading-screen">
     <div class="loader">
         <div class="loader-text">Loading...</div>
@@ -156,10 +352,56 @@
       </div>
     </nav>
   </header>
+  <script>
+if (window.annyang) {
+  var commands = {
+    'go to :section': function(section) {
+      // Map common names to IDs
+      section = section.toLowerCase();
+      let map = {
+        home:'home', about:'about', projects:'projects', blog:'blog', courses:'courses',
+        achievements:'achievements', contact:'contact', faq:'faq', resources:'resources', skills:'skills'
+      };
+      let sectionId = map[section] || section;
+      let el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({behavior: "smooth"});
+        // Optional: Visual feedback
+        el.style.boxShadow = "0 0 0 7px #00bfae77";
+        setTimeout(()=>{el.style.boxShadow='';},800);
+      }
+    },
+    // Add more voice commands:
+    'scroll up':      ()=>window.scrollBy({top: -300, left:0, behavior:'smooth'}),
+    'scroll down':    ()=>window.scrollBy({top: 300, left:0, behavior:'smooth'})
+  };
+
+  annyang.addCommands(commands);
+  annyang.start();
+
+  // Optional: Show a little indicator
+  let indicator = document.createElement('div');
+  indicator.style="position:fixed;bottom:12px;left:12px;padding:8px 16px;background:#292c2c;color:#fff;border-radius:9px;font-size:1em;z-index:10000;opacity:0.75;";
+  indicator.textContent="🎤 Voice control ON: Try 'Go to Projects'";
+  document.body.appendChild(indicator);
+  setTimeout(()=>{indicator.style.opacity=0;},5000);
+}
+</script>
+
+<a class="skip-link" href="#home">Skip to content</a>
+<main id="main" role="main"> ... </main>
 
   <!-- ========================= MAIN ========================= -->
   <main>
     <nav class="sidebar">
+  <a href="#home">🏠</a>
+  <a href="#projects" >💼</a>
+  <a href="#blog">📝</a>
+  <a href="#contact">📞</a>
+</nav>
+<!-- right side navbar -->
+
+    <nav class="sidebar2">
   <a href="#home">🏠</a>
   <a href="#projects" >💼</a>
   <a href="#blog">📝</a>
@@ -225,12 +467,12 @@
                     <div class="welcome-avatar">💼</div>
                     <div class="welcome-content">
                         <h4>Welcome to Portfolio Assistant!</h4>
-                        <p>I can help you learn about Alex Johnson's skills, projects, and experience. Ask me anything about the portfolio!</p>
+                        <p>I can help you learn about Mohd Saqib Johnson's skills, projects, and experience. Ask me anything about the portfolio!</p>
                         <div class="quick-questions">
-                            <button class="quick-btn" data-question="Tell me about Alex's skills">Skills</button>
-                            <button class="quick-btn" data-question="What projects has Alex worked on?">Projects</button>
-                            <button class="quick-btn" data-question="What is Alex's experience?">Experience</button>
-                            <button class="quick-btn" data-question="How can I contact Alex?">Contact</button>
+                            <button class="quick-btn" data-question="Tell me about Mohd Saqib's skills">Skills</button>
+                            <button class="quick-btn" data-question="What projects has Mohd Saqib worked on?">Projects</button>
+                            <button class="quick-btn" data-question="What is Mohd Saqib's experience?">Experience</button>
+                            <button class="quick-btn" data-question="How can I contact Mohd Saqib?">Contact</button>
                         </div>
                     </div>
                 </div>
@@ -350,6 +592,7 @@
 
     <!-- ========= HERO ========= -->
     <section id="home" class="hero flex flex-col justify-center items-center text-center">
+    
       <h1>Hi, I'm <span style="color:var(--color-primary);">Mohd Saqib</span></h1>
       <h2 class="mt-8" style="font-weight: var(--font-weight-medium); max-width: 600px;">Computer Engineering Student | Data Science Enthusiast | Full-Stack Developer</h2>
       <div class="flex gap-16 mt-8">
@@ -425,8 +668,8 @@
             <div class="timeline-content card">
               <div class="card__body">
                 <h3>BS in Data Science & Applications (Online)</h3>
-                <p>IIT Madras, India | 2024-2027</p>
-                <p>CGPA: 9.0 (current)</p>
+                <p>IIT Madras, India | 2024-2026</p>
+                <p>CGPA: 7.19 (current)</p>
               </div>
             </div>
           </div>
@@ -455,43 +698,49 @@
     </section>
     <!-- ===== Hobbies & Interests ===== -->
 <section id="hobbies" class="container py-16">
-    <h2 class="section-title">Hobbies & Interests</h2>
+    <h2 class="section-title">Hobbies & Personal Interests</h2>
     <div class="hobbies-grid grid mt-16">
+        
         <div class="hobby-card card">
             <div class="card__body flex flex-col items-center">
-                <i class="fa-solid fa-book-open fa-2x mb-4" style="color:#00bfae"></i>
+                <i class="fa-solid fa-book-quran fa-2x mb-4" style="color:#2e7d32"></i>
+                <h3>Qur’an Reading & Reflection</h3>
+                <p>Spending time reciting and reflecting on the Qur’an to strengthen faith and character.</p>
+            </div>
+        </div>
+
+        <div class="hobby-card card">
+            <div class="card__body flex flex-col items-center">
+                <i class="fa-solid fa-book-open fa-2x mb-4" style="color:#00897b"></i>
                 <h3>Reading & Learning</h3>
-                <p>Diving into tech, psychology, and history books to feed my curiosity.</p>
+                <p>Exploring technology, psychology, and Islamic history to grow intellectually and spiritually.</p>
             </div>
         </div>
+
         <div class="hobby-card card">
             <div class="card__body flex flex-col items-center">
-                <i class="fa-solid fa-person-running fa-2x mb-4" style="color:#ffc400"></i>
-                <h3>Fitness & Running</h3>
-                <p>I enjoy morning jogs and staying active for a healthy lifestyle.</p>
+                <i class="fa-solid fa-person-running fa-2x mb-4" style="color:#f9a825"></i>
+                <h3>Fitness & Morning Walks</h3>
+                <p>Maintaining discipline and energy through regular walks and physical activity.</p>
             </div>
         </div>
+
         <div class="hobby-card card">
             <div class="card__body flex flex-col items-center">
-                <i class="fa-solid fa-chess-knight fa-2x mb-4" style="color:#ff4081"></i>
-                <h3>Chess</h3>
-                <p>Chess helps sharpen my strategic thinking and patience.</p>
+                <i class="fa-solid fa-microphone-lines fa-2x mb-4" style="color:#6a1b9a"></i>
+                <h3>Listening to Naat & Hamd</h3>
+                <p>Listening to Islamic nasheeds, naat, and hamd that inspire gratitude and remembrance.</p>
             </div>
         </div>
+
         <div class="hobby-card card">
             <div class="card__body flex flex-col items-center">
-                <i class="fa-solid fa-music fa-2x mb-4" style="color:#7e57c2"></i>
-                <h3>Music</h3>
-                <p>Instrumental music fuels my focus while working on projects.</p>
+                <i class="fa-solid fa-code fa-2x mb-4" style="color:#1565c0"></i>
+                <h3>Building Meaningful Tech</h3>
+                <p>Creating projects that aim to benefit people and solve real-world problems.</p>
             </div>
         </div>
-        <div class="hobby-card card">
-            <div class="card__body flex flex-col items-center">
-                <i class="fa-solid fa-code fa-2x mb-4" style="color:#2196f3"></i>
-                <h3>Coding Side Projects</h3>
-                <p>Experimenting with new tech, open-source, and APIs for fun.</p>
-            </div>
-        </div>
+
     </div>
 </section>
 
@@ -617,6 +866,46 @@
               <p class="mt-8"><strong>Tech Stack:</strong> Flask, SQLite, Flask-Login, Jinja2, Bootstrap, JavaScript, Chart.js</p>
             </div>
           </div>
+          <div class="project-card card">
+  <div class="card__body">
+    <h3>Visual Question Answering (VQA) System – Image & Video</h3>
+    <p class="mt-8">
+      Built a unified deep learning system that answers natural-language questions from both images and videos using a frame-based approach.
+      Implemented multimodal fusion with BLIP (ViT + BERT) to combine visual and textual features and generate accurate answers.
+    </p>
+    <p class="mt-8">
+      Designed image and video pipelines where keyframes are extracted from videos, processed independently, and aggregated using confidence-weighted selection.
+      Deployed an interactive web interface for real-time experimentation.
+    </p>
+    <p class="mt-8">
+      <strong>Tech Stack:</strong> Python, PyTorch, HuggingFace (BLIP), OpenCV, Flask, HTML, CSS, JavaScript
+    </p>
+    <p class="mt-8">
+      <strong>Academic:</strong> Minor Project (B.Tech, Computer Engineering) — Jamia Millia Islamia, 2025–26
+    </p>
+  </div>
+</div>
+
+<div class="project-card card">
+  <div class="card__body">
+    <h3>Smart Hospital Management System (HMS)</h3>
+    <p class="mt-8">
+      Designed and developed a full-stack, role-based Hospital Management System to streamline doctor, patient, and appointment workflows.
+      The system replaces manual processes with a secure, web-based platform for efficient coordination and record-keeping.
+    </p>
+    <p class="mt-8">
+      Implemented separate dashboards for Admin, Doctor, and Patient with features such as appointment booking, treatment history,
+      medicine inventory, prescriptions, PDF invoices, reviews, and analytics using charts.
+    </p>
+    <p class="mt-8">
+      <strong>Tech Stack:</strong> Flask, SQLite, Jinja2, Bootstrap 5, Chart.js, Flask-Login
+    </p>
+    <p class="mt-8">
+      <strong>Academic:</strong> Modern Application Development-I (MAD-I), IIT Madras BS — September 2025
+    </p>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
@@ -674,10 +963,116 @@
   </div>
 </section>
 
+<section id="my-courses" class="container py-16">
+  <h2 class="section-title">Courses I Teach</h2>
+  <p class="section-subtitle mt-4">Premium video courses on Udemy to help you master Tech & Data.</p>
+  
+  <div class="instructor-grid mt-16">
+    
+    <div class="instructor-card">
+  <div class="course-thumb">
+    <div class="course-badge new-badge">New</div>
+    <img src="images/udemybaner.png" onerror="this.src='https://img-c.udemycdn.com/course/480x270/placeholder.jpg'" alt="Python for Absolute Beginners">
+    <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+  </div>
+  
+  <div class="course-details">
+    <div class="flex justify-between items-center mb-2">
+      <span class="platform-tag" style="margin-bottom:0;">Udemy</span>
+      <span style="font-size: 0.8rem; color: var(--color-text-secondary);"><i class="fa-solid fa-clock"></i> 1hr 35min</span>
+    </div>
+    
+    <h3>Python for Absolute Beginners (Zero to Confidence)</h3>
+    <p class="course-desc">Learn Python from scratch with hands-on examples, conditions, loops, functions, and beginner-friendly mini projects.</p>
+    
+    <div class="course-stats">
+      <span><i class="fa-solid fa-users"></i> 600+ Students</span>
+      <span><i class="fa-solid fa-star text-yellow"></i> 4.7 (2)</span>
+    </div>
 
+    <div class="course-footer">
+      <div class="price">
+        <span class="current-price" style="color: #10b981;">Free</span>
+      </div>
+      <a href="https://www.udemy.com/course/python-for-absolute-beginners-zero-to-confidence/" target="_blank" class="btn btn--primary btn--sm">
+        Enroll Now <i class="fa-solid fa-angle-right"></i>
+      </a>
+    </div>
+  </div>
+</div>
+  
+<div class="instructor-card">
+      <div class="course-thumb">
+        <div class="course-badge new-badge">Live Now</div>
+        <img src="images/image.png" 
+             onerror="this.src='https://img-c.udemycdn.com/course/480x270/placeholder.jpg'" 
+             alt="Python for Data Science for Absolute Beginners">
+        <div class="play-overlay">
+          <i class="fa-solid fa-play"></i>
+        </div>
+      </div>
+      
+      <div class="course-details">
+        <div class="flex justify-between items-center mb-2">
+          <span class="platform-tag" style="margin-bottom:0;">Udemy</span>
+          <span style="font-size: 0.8rem; color: var(--color-text-secondary);">
+            <i class="fa-solid fa-clock"></i> 1hr 35min
+          </span>
+        </div>
+        
+        <h3>Python for Data Science – Absolute Beginners</h3>
+        <p class="course-desc">
+          Master Python fundamentals for Data Science with hands-on practice. 
+          Learn variables, loops, functions, logic building, and beginner mini-projects 
+          designed for complete beginners.
+        </p>
+        
+        <div class="course-stats">
+          <span><i class="fa-solid fa-users"></i> 293+ Students</span>
+          <span><i class="fa-solid fa-star text-yellow"></i> 4.7 Rating</span>
+        </div>
+
+        <div class="course-footer">
+          <div class="price">
+            <span class="current-price" style="color: #10b981;">Free</span>
+          </div>
+          <a href="https://www.udemy.com/course/python-for-data-science-for-absolute-beginners-c/?referralCode=F3CEDD55B4069F11B8B6" 
+             target="_blank" 
+             class="btn btn--primary btn--sm">
+            Enroll Now <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+<div class="instructor-card" style="opacity: 0.7;">
+  <div class="course-thumb">
+    <div class="course-badge upcoming-badge">Coming Soon</div>
+    <div style="width:100%; height:100%; background: #1e293b; display:flex; align-items:center; justify-content:center; color:#fff;">
+      <i class="fa-solid fa-code fa-3x"></i>
+    </div>
+  </div>
+  
+  <div class="course-details">
+    <span class="platform-tag">Udemy</span>
+    <h3>More Courses Coming Soon...</h3>
+    <p class="course-desc">I am currently working on advanced Data Science and Web Development courses. Stay tuned!</p>
+    
+    <div class="course-footer">
+      <div class="price">
+        <span class="current-price">---</span>
+      </div>
+      <button class="btn btn--outline btn--sm" disabled>
+        Waitlist
+      </button>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
 
     <!-- ========= ACHIEVEMENTS ========= -->
-    <section id="achievements" class="container py-16">
+    <!-- <section id="achievements" class="container py-16">
       <h2 class="section-title">Achievements</h2>
       <ul class="achievements-list mt-16">
         <li class="achievement-item status status--success mt-8">GATE CS&IT 2025 Qualified – CRL-19312</li>
@@ -685,7 +1080,95 @@
         <li class="achievement-item status status--success mt-8">JEE Main 2022 – CRL-13654</li>
         <li class="achievement-item status status--info mt-8">Completed Memorization of the Qur'an</li>
       </ul>
-    </section>
+    </section> -->
+    <!-- ========= ACHIEVEMENTS ========= -->
+<section id="achievements" class="container py-16">
+  <h2 class="section-title">Achievements & Milestones</h2>
+  <p class="section-subtitle mt-4">
+    Competitive excellence, academic consistency, and disciplined long-term growth.
+  </p>
+
+  <div class="achievements-grid mt-16">
+
+    <!-- GATE -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>GATE CS&IT 2025 – Qualified</h3>
+        <p><strong>CRL 19,312</strong> among 1.7+ lakh candidates nationwide.</p>
+      </div>
+    </div>
+
+    <!-- JEE Advanced -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-medal"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>JEE Advanced 2022 – Qualified</h3>
+        <p><strong>CRL 24,106</strong> among 1.6+ lakh top-ranked students.</p>
+      </div>
+    </div>
+
+    <!-- JEE Main -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-trophy"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>JEE Main 2022</h3>
+        <p><strong>CRL 13,654</strong> among 10+ lakh candidates nationwide.</p>
+      </div>
+    </div>
+
+    <!-- Department Rank -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-ranking-star"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>Top 20 – Computer Engineering</h3>
+        <p>Ranked among the top 20 students at Jamia Millia Islamia.</p>
+      </div>
+    </div>
+
+    <!-- Academic Consistency -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-chart-line"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>Exceptional Academic Consistency</h3>
+        <p>Ranked 1st–2nd (Grades 1–5), 1st (Grades 6–10), and Top 3 (Grades 11–12).</p>
+      </div>
+    </div>
+
+    <!-- Qur'an Memorization -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-book-quran"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>Completed Memorization of the Holy Qur’an</h3>
+        <p>Demonstrated exceptional retention ability and long-term disciplined commitment.</p>
+      </div>
+    </div>
+
+    <!-- LeetCode -->
+    <div class="achievement-card">
+      <div class="achievement-icon">
+        <i class="fa-solid fa-code"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>LeetCode Consistency</h3>
+        <p>Maintained a <strong>275+ day continuous coding streak</strong> and solved 500+ problems.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
    <!-- ===== Testimonials Carousel ===== -->
 <section id="testimonials" class="container py-16" aria-label="Client Testimonials">
   <h2 class="section-title">Testimonials</h2>
@@ -746,15 +1229,10 @@
         <div class="fact-card card">
             <div class="card__body flex items-center">
                 <i class="fa-solid fa-keyboard fa-2x mr-4" style="color:#42a5f5"></i>
-                <p>Fastest typing speed: 125 WPM on a real test.</p>
+                <p>Fastest typing speed: 100 WPM on a real test.</p>
             </div>
         </div>
-        <div class="fact-card card">
-            <div class="card__body flex items-center">
-                <i class="fa-solid fa-chess fa-2x mr-4" style="color:#66bb6a"></i>
-                <p>I once beat a chess computer on “hard”!</p>
-            </div>
-        </div>
+       
         <div class="fact-card card">
             <div class="card__body flex items-center">
                 <i class="fa-solid fa-plane fa-2x mr-4" style="color:#ab47bc"></i>
@@ -796,6 +1274,16 @@
             </div>
         </div>
     </div>
+</section>
+
+<section class=" youtube-section py-16">
+  <div class="container">
+    <h2 class="section-title">📺 My YouTube Channel – Latest Videos</h2>
+    <div id="youtube-videos-grid" class="yt-videos-grid"></div>
+    <div class="yt-channel-btn">
+      <a href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" target="_blank" class="btn btn--primary">View Full Channel &rarr;</a>
+    </div>
+  </div>
 </section>
 
 
@@ -939,7 +1427,7 @@
 
             <p class="mb-8"><i class="fa-solid fa-location-dot"></i> Nizamuddin, New Delhi, India&nbsp;110013</p>
           
-            <p class="mb-8"><i class="fa-solid fa-envelope"></i> <a href="mailto:saqib29abubkar@gmail.com">saqib29abubkar@gmail.com</a></p>
+            <p class="mb-8"><i class="fa-solid fa-envelope"></i> <a href="mailto:saqib29abubakar@gmail.com">saqib29abubakar@gmail.com</a></p>
             <p class="mb-8"><i class="fa-solid fa-phone"></i> <a href="tel:+919625035483">+91-9625035483</a></p>
             <div class="social-links flex gap-16 mt-16">
               <a href="https://github.com/MOHDSAQIB695786" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github fa-2x"></i></a>
@@ -974,6 +1462,14 @@
       </div>
     </section>
   </main>
+ <!-- <div id="daily-ayah-widget" class="ayah-widget moving-widget"> -->
+  <!-- <div class="ayah-marquee-container"> -->
+    <!-- <div class="ayah-arabic" id="ayahMarquee">Loading...</div> -->
+  <!-- </div> -->
+  <!-- <div class="ayah-translation"></div>
+  <div class="ayah-meta"></div>
+</div> -->
+
 
   <!-- ========================= FOOTER ========================= -->
   <footer class="footer">
@@ -985,7 +1481,7 @@
     <p>
       For more inquiries, reach out to us at
       <a href="mailto:saqib29abubakar@gmail.com">saqib29abubakar@gmail.com</a> /
-      <a href="mailto:vs25@gmail.com">vs25@gmail.com</a>
+      <a href="mailto:saqibjmi786695@gmail.com">saqibjmi786695@gmail.com</a>
       or call <a href="tel:+919625035483">+91-9625035483</a>.<br>
       Connect with us on social media for the latest updates.
     </p>
@@ -1008,12 +1504,16 @@
       <a href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" aria-label="Youtube">
         <img src="./images/3721679-youtube_108064.webp" alt="Youtube" />
       </a>
+      <a href="https://linktr.ee/mohdsaqib786695" aria-label="linktr">
+        <img src="./images/linktree.jpg" alt="linktr" />
+      </a>
 
     </div>
     <p style="margin-top: 2rem;">
       © <span id="year"></span> Mohd Saqib. All rights reserved.
     </p>
   
+
 </footer>
 
   
@@ -1021,6 +1521,17 @@
 
   <!-- Scripts -->
   <script src="app.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+<script type="module">
+  import { GoogleGenerativeAI } from "@google/generative-ai";
+  window.GoogleGenerativeAI = GoogleGenerativeAI;
+</script>
   <script src="chatbot.js"></script>
   
 
@@ -1146,6 +1657,142 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 
 
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker
+        .register("/service-worker.js")
+        .then((reg) => console.log("Service Worker registered:", reg))
+        .catch((err) => console.log("Service Worker registration failed:", err));
+    });
+  }
+</script>
+<script>
+  let deferredPrompt;
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    // Stop automatic prompt
+    e.preventDefault();
+    deferredPrompt = e;
+
+    // Show a custom install button
+    const installBtn = document.createElement("button");
+    installBtn.textContent = "📲 Install App";
+    installBtn.style.position = "fixed";
+    installBtn.style.bottom = "20px";
+    installBtn.style.right = "20px";
+    installBtn.style.padding = "10px 15px";
+    installBtn.style.background = "#0b0b0b";
+    installBtn.style.color = "#fff";
+    installBtn.style.borderRadius = "8px";
+    installBtn.style.zIndex = "9999";
+
+    document.body.appendChild(installBtn);
+
+    installBtn.addEventListener("click", () => {
+      installBtn.remove();
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choice) => {
+        if (choice.outcome === "accepted") {
+          console.log("User accepted install");
+        } else {
+          console.log("User dismissed install");
+        }
+        deferredPrompt = null;
+      });
+    });
+  });
+</script>
+
+<script>
+// --- Configuration ---
+const YOUTUBE_API_KEY = 'AIzaSyBdYzyt2j-Fqkzof-396A-hTsfx5i9XdOw'; // <-- Put your real API key here
+const YOUTUBE_CHANNEL_ID = 'UCbxEfgKTCsqz6g0eMNph_Hg';   // <-- Put your channel ID here
+const MAX_VIDEOS = 6;
+
+// --- Fetch Latest Videos ---
+fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_VIDEOS}`)
+  .then(response => response.json())
+  .then(data => {
+    const videos = data.items.filter(item => item.id.kind === "youtube#video");
+    const grid = document.getElementById('youtube-videos-grid');
+    grid.innerHTML = '';
+    videos.forEach((video, idx) => {
+      const videoDiv = document.createElement('div');
+      videoDiv.className = "yt-video-card";
+      videoDiv.innerHTML = `
+        <div class="yt-thumb">
+          <a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">
+            <img src="${video.snippet.thumbnails.medium.url}" alt="${video.snippet.title}">
+            <div class="yt-play-btn">&#9658;</div>
+          </a>
+        </div>
+        <div class="yt-title">
+          <a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">${video.snippet.title}</a>
+        </div>
+      `;
+      grid.appendChild(videoDiv);
+    });
+  })
+  .catch(() => {
+    document.getElementById('youtube-videos-grid').innerHTML = "<p>⚠️ Unable to load videos. Try again later.</p>";
+  });
+</script>
+<script>
+function getTodayNumber() {
+  // Always same for a calendar day, changes daily (so ayah rotates for all visitors)
+  const now = new Date();
+  // There are 6236 ayat in the Quran
+  return (now.getFullYear() * 366 + (now.getMonth()+1)*31 + now.getDate()) % 6236 + 1;
+}
+
+const ayahNum = getTodayNumber();
+fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
+  .then(r=>r.json())
+  .then(data=>{
+    document.querySelector('.ayah-arabic').textContent = data.data.text;
+    document.querySelector('.ayah-translation').textContent = '"' + data.data.translation + '"';
+    document.querySelector('.ayah-meta').textContent = `(${data.data.surah.englishName} ${data.data.numberInSurah})`;
+  }).catch(()=>{
+    document.querySelector('.ayah-widget').textContent = "Quote unavailable today. Try again later.";
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
+
+<script>
+  // 1. Mobile Menu Toggle Fix
+  const mobileBtn = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if(mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // 2. Animate Skill Bars on Scroll
+  const observerOptions = { threshold: 0.5 };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        const percentage = card.getAttribute('data-percentage');
+        const bar = card.querySelector('.progress-bar');
+        if(bar && percentage) {
+          bar.style.width = percentage + '%';
+        }
+        observer.unobserve(card); // Only animate once
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.skill-category').forEach(card => {
+    observer.observe(card);
+  });
+
+
+</script>
 
 
 </body>
