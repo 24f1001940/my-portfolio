@@ -3,7 +3,8 @@ const BASE_URL = 'https://www.googleapis.com/drive/v3';
 module.exports = async function handler(req, res) {
   const apiKey = process.env.GOOGLE_DRIVE_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'GOOGLE_DRIVE_API_KEY is not configured' });
+    // Return a friendly JSON response so the frontend can show a helpful message
+    return res.json({ files: [], _missing_key: true, message: 'GOOGLE_DRIVE_API_KEY is not configured' });
   }
 
   try {
