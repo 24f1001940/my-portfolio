@@ -2410,11 +2410,13 @@ fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
 <script>
   // 1. Mobile Menu Toggle Fix
   const mobileBtn = document.querySelector('.mobile-menu-toggle');
-  // const navLinks = document.querySelector('.nav-links');
+  const navLinks = document.querySelector('.nav-links');
   
   if(mobileBtn) {
     mobileBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      if (navLinks) {
+        navLinks.classList.toggle('active');
+      }
     });
   }
 
@@ -2442,13 +2444,31 @@ fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
 </script>
 
 <script>
-    // Preloader Logic
-    window.addEventListener('load', function() {
-        // Enforce a minimum 2.5 second delay before hiding
-        setTimeout(function() {
-            document.getElementById('global-preloader').classList.add('hide-preloader');
-        }, 2500); 
-    });
+    // Preloader Logic (with fail-safe so page never gets stuck)
+    (function () {
+      const preloader = document.getElementById('global-preloader');
+      if (!preloader) return;
+
+      let hidden = false;
+      function hidePreloader() {
+        if (hidden) return;
+        hidden = true;
+        preloader.classList.add('hide-preloader');
+      }
+
+      // Main path: after full load, hide quickly
+      window.addEventListener('load', function () {
+        setTimeout(hidePreloader, 900);
+      });
+
+      // Fallback path: if load is delayed, still hide after DOM is ready
+      document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(hidePreloader, 1800);
+      });
+
+      // Hard fail-safe: never let loader block forever
+      setTimeout(hidePreloader, 4500);
+    })();
 </script>
 <script>
   // Scroll Progress Bar Logic
