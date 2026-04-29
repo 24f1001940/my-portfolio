@@ -6,7 +6,32 @@ module.exports = async function handler(req, res) {
 
   const apiKey = process.env.YOUTUBE_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'YOUTUBE_API_KEY is not configured' });
+    // Return sample video list as a graceful fallback when API key is missing.
+    const sample = [
+      {
+        id: { videoId: 'dQw4w9WgXcQ' },
+        snippet: {
+          title: 'Sample Video 1',
+          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+1' } }
+        }
+      },
+      {
+        id: { videoId: 'kJQP7kiw5Fk' },
+        snippet: {
+          title: 'Sample Video 2',
+          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+2' } }
+        }
+      },
+      {
+        id: { videoId: '3JZ_D3ELwOQ' },
+        snippet: {
+          title: 'Sample Video 3',
+          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+3' } }
+        }
+      }
+    ];
+
+    return res.json({ videos: sample, _fallback: true });
   }
 
   try {

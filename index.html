@@ -2361,7 +2361,7 @@ function initYoutube() {
     .then(response => response.ok ? response.json() : null)
     .then(data => {
       if (data && data.viewCount) {
-        views.innerText = data.viewCount;
+        views.innerText = data.viewCount + (data._fallback ? ' (demo)' : '');
       }
     })
     .catch(() => {
@@ -2410,7 +2410,7 @@ fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
 <script>
   // 1. Mobile Menu Toggle Fix
   const mobileBtn = document.querySelector('.mobile-menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  // const navLinks = document.querySelector('.nav-links');
   
   if(mobileBtn) {
     mobileBtn.addEventListener('click', () => {
