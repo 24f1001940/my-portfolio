@@ -1,5 +1,9 @@
 {
   "functions": {
+    "server.js": {
+      "runtime": "@vercel/node@3.2.10",
+      "includeFiles": "**/*"
+    },
     "api/**/*.js": {
       "runtime": "@vercel/node@3.2.10"
     }
