@@ -1,11 +1,10 @@
-const CACHE_NAME = "portfolio-cache-v1";
+const CACHE_NAME = "portfolio-cache-v2";
 const urlsToCache = [
   "/",
   "/index.html",
   "/style.css",
   "/app.js",
   "/manifest.json",
-  "/images/profile.jpg",
   "/images/profile.jpg",
 ];
 
@@ -31,9 +30,29 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch requests
+// Fetch requests - Network first for HTML, cache first for static assets
 self.addEventListener("fetch", (event) => {
+  const { request } = event;
+  
+  // Network first for HTML pages
+  if (request.mode === 'navigate') {
+    event.respondWith(
+      fetch(request)
+        .then(response => {
+          // Cache the new version
+          if (response.ok) {
+            const cache = caches.open(CACHE_NAME);
+            cache.then(c => c.put(request, response.clone()));
+          }
+          return response;
+        })
+        .catch(() => caches.match(request))
+    );
+    return;
+  }
+  
+  // Cache first for other assets
   event.respondWith(
-    caches.match(event.request).then((response) => response || fetch(event.request))
+    caches.match(request).then((response) => response || fetch(request))
   );
 });

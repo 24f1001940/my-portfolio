@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Mohd Saqib</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="effects.css" />
+  
+  <style>
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-image: radial-gradient(var(--color-primary, #6366f1) 0.5px, transparent 0.5px), 
+                          radial-gradient(var(--color-primary, #6366f1) 0.5px, var(--color-background) 0.5px); 
+        background-size: 20px 20px; 
+        background-position: 0 0, 10px 10px;
+        margin: 0;
+        overflow: hidden;
+    }
+    
+    .error-container {
+        padding: 40px;
+        max-width: 600px;
+        background: var(--color-surface, #ffffff);
+        border: 1px solid var(--color-card-border, #e2e8f0);
+        border-radius: 16px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-color-scheme="dark"] .error-container {
+        background: #131722;
+        border-color: #2a2f3e;
+    }
+
+    .error-code {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 6rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+        line-height: 1;
+    }
+
+    .error-bot {
+        font-size: 4rem;
+        margin-bottom: 16px;
+        animation: floatBot 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBot {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+
+    .error-message {
+        font-size: 1.2rem;
+        color: var(--color-text-secondary, #64748b);
+        margin-bottom: 32px;
+        font-family: 'Inter', sans-serif;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="error-container">
+      <div class="error-bot">🤖</div>
+      <h1 class="error-code">404</h1>
+      <h2 style="margin-top: 16px; margin-bottom: 8px;">System Out of Bounds</h2>
+      <p class="error-message">Looks like this page got lost in the cloud. My AI assistant couldn't find the file you're looking for.</p>
+      
+      <a href="index.html" class="btn btn--primary">
+          Return to Base (Home)
+      </a>
+  </div>
+
+    <script src="effects.js"></script>
+</body>
+</html>

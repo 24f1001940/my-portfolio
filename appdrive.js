@@ -30,9 +30,11 @@
      * Replace with your actual Google Drive API key and folder ID
      */
     const CONFIG = {
-        API_KEY: 'AIzaSyDf2gH-hZ_jbsh2D8MhXyBplzXZGP16S1c', // Replace with your Google Drive API key
-        FOLDER_ID: '1wuCVLOmEvdzQ6G6BbWbvxjjEiMTUFz85', // Replace with your Google Drive folder ID
-        API_BASE_URL: 'https://www.googleapis.com/drive/v3',
+        // ⚠️ API_KEY moved to backend proxy for security
+        // Use /api/drive endpoint for all requests
+        API_KEY: '', // DEPRECATED - use backend proxy
+        FOLDER_ID: '1wuCVLOmEvdzQ6G6BbWbvxjjEiMTUFz85', // Public folder ID (reference only)
+        API_BASE_URL: '/api/drive',
         MAX_RESULTS: 100,
         DEBOUNCE_DELAY: 300,
         VIRTUAL_SCROLL_THRESHOLD: 50,
@@ -458,17 +460,13 @@
          * List files in a folder
          */
         async listFiles(folderId, query = '') {
-            if (!Utils.isValidApiKey(CONFIG.API_KEY)) {
-                throw new Error('Invalid API key. Please set your Google Drive API key.');
-            }
-
             let q = `'${folderId}' in parents and trashed=false`;
             
             if (query) {
                 q += ` and name contains '${query.replace(/'/g, "\\'")}'`;
             }
 
-            const endpoint = `/files?key=${CONFIG.API_KEY}&q=${encodeURIComponent(q)}&fields=files(id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}`;
+                        const endpoint = `/files?q=${encodeURIComponent(q)}&fields=files(id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}`;
 
             return this.makeRequest(endpoint);
         },
@@ -477,7 +475,7 @@
          * Get file metadata
          */
         async getFileMetadata(fileId) {
-            const endpoint = `/files/${fileId}?key=${CONFIG.API_KEY}&fields=id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink,parents,owners,permissions`;
+            const endpoint = `/files/${fileId}?fields=id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink,parents,owners,permissions`;
             return this.makeRequest(endpoint);
         },
 
@@ -485,8 +483,19 @@
          * Get file content for preview
          */
         async getFileContent(fileId) {
-            const endpoint = `/files/${fileId}?key=${CONFIG.API_KEY}&alt=media`;
-            return this.makeRequest(endpoint);
+            const endpoint = `/files/${fileId}?alt=media`;
+            const response = await fetch(`${CONFIG.API_BASE_URL}${endpoint}`);
+
+            if (!response.ok) {
+                throw new Error(`File content request failed: ${response.status} ${response.statusText}`);
+            }
+
+            const contentType = response.headers.get('content-type') || '';
+            if (contentType.includes('application/json')) {
+                return response.json();
+            }
+
+            return response.text();
         },
 
         /**
@@ -501,7 +510,7 @@
             
             q += ' and trashed=false';
 
-            const endpoint = `/files?key=${CONFIG.API_KEY}&q=${encodeURIComponent(q)}&fields=files(id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink,parents)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}`;
+            const endpoint = `/files?q=${encodeURIComponent(q)}&fields=files(id,name,mimeType,size,modifiedTime,thumbnailLink,iconLink,webViewLink,webContentLink,parents)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}&supportsAllDrives=true&includeItemsFromAllDrives=true`;
 
             return this.makeRequest(endpoint);
         },
@@ -511,7 +520,7 @@
          */
         async getFolderTree(folderId) {
             const q = `'${folderId}' in parents and mimeType='application/vnd.google-apps.folder' and trashed=false`;
-            const endpoint = `/files?key=${CONFIG.API_KEY}&q=${encodeURIComponent(q)}&fields=files(id,name,mimeType)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}`;
+            const endpoint = `/files?q=${encodeURIComponent(q)}&fields=files(id,name,mimeType)&orderBy=name&pageSize=${CONFIG.MAX_RESULTS}&supportsAllDrives=true&includeItemsFromAllDrives=true`;
             
             return this.makeRequest(endpoint);
         }
@@ -1927,9 +1936,9 @@
                 document.documentElement.setAttribute('data-theme', STATE.theme);
                 
                 // Validate configuration
-                if (!Utils.isValidApiKey(CONFIG.API_KEY) || !Utils.isValidFolderId(CONFIG.FOLDER_ID)) {
-                    UI.showEmptyState('Please configure your API key and folder ID');
-                    UI.showSnackbar('Configuration required. Please set your Google Drive API key and folder ID.', 'Learn More', () => {
+                if (!Utils.isValidFolderId(CONFIG.FOLDER_ID)) {
+                    UI.showEmptyState('Please configure your folder ID');
+                    UI.showSnackbar('Configuration required. Please set your Google Drive folder ID.', 'Learn More', () => {
                         window.open('https://developers.google.com/drive/api/v3/quickstart/js', '_blank');
                     });
                     return;

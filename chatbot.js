@@ -112,11 +112,12 @@ class PortfolioChatbot {
         };
 
         // --- 2. AI Configuration ---
-        // ⚠️ WARNING: Exposing API Keys in client-side code is risky. 
-        // For production, use a backend server to proxy requests.
-        this.API_KEY = "AIzaSyBjkjY7YYlVjveXjRFdYYMpxjSyxM-VEH0"; 
+        // ⚠️ API Key removed for security. Use backend proxy instead.
+        // Set this.API_KEY from environment or leave null for proxy mode
+        this.API_KEY = null; // Use backend /api/chat endpoint instead
         this.genAI = null;
         this.model = null;
+        this.backendEndpoint = '/api/chat';
 
         // --- 3. Static Data (Quiz/Study) ---
         this.studyTopics = {
@@ -215,20 +216,58 @@ class PortfolioChatbot {
 
     // --- AI SETUP ---
   initAI() {
-        if (window.GoogleGenerativeAI) {
-            try {
-                this.genAI = new window.GoogleGenerativeAI(this.API_KEY);
-                
-                // FIX: Use the stable version which has a Free Tier
-                this.model = this.genAI.getGenerativeModel({ model: "gemini-flash-latest" });
-                
-                console.log("Gemini AI Initialized with model: gemini-flash-latest");
-            } catch (error) {
-                console.error("Failed to initialize Gemini AI:", error);
-            }
-        } else {
-            console.warn("Gemini SDK not loaded. Ensure the script tag is in index.html");
+        this.genAI = null;
+        this.model = null;
+        console.log('Chatbot configured to use backend /api/chat');
+        // Check backend health and update status indicator
+        this.checkBackendLive();
+    }
+
+    setBotStatus(text) {
+        const el = document.getElementById('botStatus');
+        if (el) {
+            el.textContent = text;
         }
+    }
+
+    async checkBackendLive() {
+        try {
+            const res = await fetch('/api/health');
+            if (res.ok) {
+                this.setBotStatus('Live (backend)');
+                this.backendLive = true;
+            } else {
+                this.setBotStatus('Demo');
+                this.backendLive = false;
+            }
+        } catch (e) {
+            this.setBotStatus('Demo');
+            this.backendLive = false;
+        }
+    }
+
+    async attemptLiveChat(prompt, maxRetries = 2) {
+        let attempt = 0;
+        let lastErr = null;
+        while (attempt <= maxRetries) {
+            try {
+                const res = await fetch(this.backendEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Backend error');
+                return data;
+            } catch (err) {
+                lastErr = err;
+                attempt += 1;
+                const waitMs = Math.pow(2, attempt) * 400;
+                await new Promise(r => setTimeout(r, waitMs));
+            }
+        }
+        throw lastErr;
     }
 
     getSystemPrompt() {
@@ -512,9 +551,10 @@ class PortfolioChatbot {
                 title: 'Welcome to AI Assistant!',
                 description: 'I can provide general assistance, answer tech questions, or just chat.',
                 questions: [
-                    "Tell me a programming joke",
-                    "Share a tech fact",
-                    "What can you do?"
+                    "Tell me about the projects",
+                    "What are the main skills?",
+                    "How to contact Saqib?",
+                    "Tell me interesting facts"
                 ]
             }
         };
@@ -615,16 +655,11 @@ class PortfolioChatbot {
             }
         }
 
-        // 3. AI GENERATION (Gemini)
+        // 3. AI GENERATION (Gemini via backend)
         // Show typing indicator
         this.showTypingIndicator();
 
         try {
-            if (!this.model) {
-                // Fallback if AI not loaded
-                throw new Error("AI Model not initialized");
-            }
-
             // Construct prompt
             const systemInstruction = this.getSystemPrompt();
             
@@ -651,13 +686,32 @@ class PortfolioChatbot {
             AI RESPONSE:
             `;
 
-            // Call API
-            const result = await this.model.generateContent(prompt);
-            const response = await result.response;
-            const text = response.text();
+            // Attempt live backend chat with retries
+            try {
+                this.setBotStatus('Trying live...');
+                const data = await this.attemptLiveChat(prompt);
+                let text = data.text || this.processRuleBasedFallback(message);
+                this.hideTypingIndicator();
 
-            this.hideTypingIndicator();
-            this.addMessage(text, 'bot');
+                if (data.fallback) {
+                    // Backend is reachable but upstream AI is unavailable (quota/rate/billing etc.)
+                    this.setBotStatus('Demo (quota fallback)');
+                    this.backendLive = false;
+                    text = `Live AI is temporarily unavailable, so I switched to demo responses.\n\n${text}`;
+                } else {
+                    this.setBotStatus('Live (backend)');
+                    this.backendLive = true;
+                }
+
+                this.addMessage(text, 'bot');
+            } catch (liveErr) {
+                console.warn('Live chat failed, falling back:', liveErr);
+                this.setBotStatus('Demo (backend fallback)');
+                this.backendLive = false;
+                this.hideTypingIndicator();
+                const fallbackResponse = this.processRuleBasedFallback(message);
+                this.addMessage(fallbackResponse, 'bot');
+            }
 
         } catch (error) {
             console.error("AI Error:", error);
@@ -669,16 +723,62 @@ class PortfolioChatbot {
     }
 
     // --- FALLBACK LOGIC (Rule Based) ---
-    // Used if AI fails or API key is invalid
+    // Used if AI fails or the backend is unavailable
     processRuleBasedFallback(message) {
         const lowerMessage = message.toLowerCase();
         const data = this.portfolioData;
 
-        if (lowerMessage.includes('skill')) return `Fallback: ${data.name} knows Python, JS, C++, and more.`;
-        if (lowerMessage.includes('project')) return `Fallback: Check out the Quiz Master and Automation Agent projects.`;
-        if (lowerMessage.includes('contact')) return `Fallback: Email at ${data.email}.`;
+        // Skills queries
+        if (lowerMessage.includes('skill') || lowerMessage.includes('expertise')) {
+            const skills = Object.entries(data.skills)
+                .map(([cat, list]) => `**${cat}:** ${Array.isArray(list) ? list.join(', ') : list}`)
+                .join('\n');
+            return `${data.name} specializes in:\n\n${skills}`;
+        }
         
-        return "⚠️ I'm having trouble connecting to my AI brain. Please try again later, or contact Saqib directly.";
+        // Project queries
+        if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+            const projects = data.projects.slice(0, 3)
+                .map(p => `• **${p.name}** - ${p.description}`)
+                .join('\n');
+            return `Here are ${data.name}'s top projects:\n\n${projects}\n\n👉 See the full portfolio section for more!`;
+        }
+        
+        // Experience queries
+        if (lowerMessage.includes('experience') || lowerMessage.includes('work history')) {
+            return `${data.name} has interned at ${data.experience[0]?.company} as a ${data.experience[0]?.position} (${data.experience[0]?.duration}). Currently a ${data.title}.`;
+        }
+        
+        // Education queries
+        if (lowerMessage.includes('education') || lowerMessage.includes('degree') || lowerMessage.includes('study')) {
+            const edu = data.education[0];
+            return `**${edu.degree}** from ${edu.school} (${edu.year})\nCGPA: ${edu.cgpa || edu.percentage}`;
+        }
+        
+        // Contact queries
+        if (lowerMessage.includes('contact') || lowerMessage.includes('email') || lowerMessage.includes('phone')) {
+            return `📧 Email: ${data.email}\n☎️ Phone: ${data.phone}\n💼 LinkedIn: ${data.linkedin}\n🐙 GitHub: ${data.github}`;
+        }
+        
+        // Social media
+        if (lowerMessage.includes('twitter') || lowerMessage.includes('instagram') || lowerMessage.includes('facebook')) {
+            return `Connect with ${data.name} on social media:\n\n📱 Instagram, Twitter, Facebook, LinkedIn available in the footer!`;
+        }
+        
+        // About queries
+        if (lowerMessage.includes('about') || lowerMessage.includes('who') || lowerMessage.includes('tell me')) {
+            return `👋 Hi! I'm ${data.name}, a ${data.title}.\n\n${data.summary}`;
+        }
+        
+        // Default friendly response
+        const defaultResponses = [
+            `I'm here to help! Try asking about ${data.name}'s skills, projects, education, or contact info.`,
+            `You can ask me about projects, experience, skills, or how to contact ${data.name}! 😊`,
+            `Curious about something? Ask about projects, experience, or get contact details!`,
+            `Tell me what you'd like to know - I have lots of info about ${data.name}'s experience and skills!`
+        ];
+        
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
     }
 
     // --- STUDY LOGIC ---

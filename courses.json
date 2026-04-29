@@ -381,8 +381,40 @@
     "code": "CEN-892",
     "institution": "Jamia Millia Islamia",
     "type": "Project"
+  },
+   
+  {
+    "title": "Software Engineering",
+    "code": "BSCS3001",
+    "institution": "IIT Madras",
+    "type": "Online Course"
+  },
+  {
+    "title": "Software Testing",
+    "code": "BSCS3002",
+    "institution": "IIT Madras",
+    "type": "Online Course"
+  },
+  {
+    "title": "AI: Search Methods for Problem Solving",
+    "code": "BSCS3003",
+    "institution": "IIT Madras",
+    "type": "Online Course"
+  },
+  {
+    "title": "Deep Learning",
+    "code": "BSCS3004",
+    "institution": "IIT Madras",
+    "type": "Online Course"
+  },
+  {
+    "title": "Strategies for Professional Growth",
+    "code": "BSGN3001",
+    "institution": "IIT Madras",
+    "type": "Online Course"
   }
 ]
+
 
 
 

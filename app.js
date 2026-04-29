@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initContactForm();
   setCurrentYear();
   initIntersectionObserver();
+  initFloating3D();
 });
 
 // Theme Toggle Functionality
@@ -364,6 +365,33 @@ function scrollFunction() {
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+function initFloating3D() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const floatingEl = document.createElement('div');
+  floatingEl.id = 'floating-3d';
+  floatingEl.className = 'floating-3d';
+  floatingEl.innerHTML = '<div class="orb"></div>';
+  document.body.appendChild(floatingEl);
+
+  if (prefersReducedMotion) {
+    return;
+  }
+
+  let frameId = null;
+
+  window.addEventListener('mousemove', (event) => {
+    if (frameId) {
+      cancelAnimationFrame(frameId);
+    }
+
+    frameId = requestAnimationFrame(() => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 24;
+      const y = (event.clientY / window.innerHeight - 0.5) * 18;
+      floatingEl.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    });
+  });
 }
 
 

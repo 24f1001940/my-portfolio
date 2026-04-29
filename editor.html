@@ -5,6 +5,7 @@
     <title>Online Code Editor</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="effects.css"/>
     <style>
         body {margin:0;font-family:Inter,sans-serif;background:#23272f;color:#fff;}
         .container {max-width:900px;margin:40px auto;padding:24px;background:#24262e;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,0.12);}
@@ -50,23 +51,28 @@
         let code = editor.getValue();
         let lang = document.getElementById('lang').value;
         let output = document.getElementById('output');
+
         output.textContent = "Running...";
-        fetch("https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=false&wait=true",{
+
+        fetch('/api/judge0', {
             method:"POST",
             headers:{
-                "content-type":"application/json",
-                "x-rapidapi-key":"b06676c5c1msh037b042ec84dfb0p18d38ejsn6cbc5f8e9584", // ← Replace with your free RapidAPI Key
-                "x-rapidapi-host":"judge0-ce.p.rapidapi.com"
+                "content-type":"application/json"
             },
             body:JSON.stringify({source_code:code,language_id:lang})
         })
         .then(x=>x.json()).then(res=>{
             output.textContent = res.stdout || res.stderr || "No output.";
+        })
+        .catch(err => {
+            output.textContent = "Error: Unable to execute code right now. Please try again later.";
+            output.style.color = '#ff6b6b';
         });
     }
     function clearOutput(){document.getElementById('output').textContent="";}
     // Default demo code:
     editor.setValue("print('Hello from your online editor!')");
 </script>
+<script src="effects.js"></script>
 </body>
 </html>

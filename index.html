@@ -10,7 +10,7 @@
   <meta property="og:title" content="Mohd Saqib | Portfolio">
 <meta property="og:description" content="Full-stack & Data Science projects, achievements, and contact.">
 <meta property="og:image" content="/images/profile.jpg">
-<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta property="og:url" content="https://my-portfolio-website-five-tau.vercel.app/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -32,7 +32,7 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"> -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
@@ -107,6 +107,7 @@
   .animated-name, 
   .section-title {
     background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, #ec4899 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
@@ -253,25 +254,394 @@
       box-shadow: 0 10px 15px rgba(0,0,0,0.1);
     }
   }
+
+  /* =========================================
+   YouTube Live Views Badge
+   ========================================= */
+/* =========================================
+   YouTube Live Views Badge (Theme Support)
+   ========================================= */
+/* Light Mode (Default) */
+.yt-views-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-surface, #ffffff);
+    border: 1px solid var(--color-card-border, #e2e8f0);
+    border-radius: 12px;
+    padding: 12px 24px;
+    gap: 16px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 24px;
+    transition: transform 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.yt-views-badge:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary, #6366f1);
+}
+
+.yt-views-icon {
+    color: var(--color-primary, #6366f1); 
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.yt-views-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.yt-views-count {
+    color: var(--color-primary, #6366f1); 
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+}
+
+.yt-views-label {
+    color: var(--color-text-secondary, #64748b);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Dark Mode Overrides */
+[data-color-scheme="dark"] .yt-views-badge {
+    background-color: #131722;
+    border-color: #2a2f3e;
+}
+[data-color-scheme="dark"] .yt-views-badge:hover {
+    border-color: #10b981;
+}
+[data-color-scheme="dark"] .yt-views-icon,
+[data-color-scheme="dark"] .yt-views-count {
+    color: #10b981; /* Bright green for dark mode */
+}
+[data-color-scheme="dark"] .yt-views-label {
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   Preloader Animation
+   ========================================= */
+#global-preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--color-background, #f8f9fa);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+}
+
+/* Adapts to dark mode immediately */
+[data-color-scheme="dark"] #global-preloader {
+    background: #0b0b0b;
+}
+
+.code-loader {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-primary, #6366f1);
+    display: flex;
+    gap: 10px;
+    animation: bounceBracket 2s infinite ease-in-out;
+}
+
+.code-loader .slash {
+    animation: spinSlash 2s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-block;
+}
+
+.preloader-name {
+    margin-top: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text, #333);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: pulseText 1.5s infinite;
+}
+
+[data-color-scheme="dark"] .preloader-name {
+    color: #fff;
+}
+
+@keyframes bounceBracket {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes spinSlash {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Class to hide the preloader smoothly */
+.hide-preloader {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+/* =========================================
+   Scroll Progress Indicator
+   ========================================= */
+.scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Thickness of the bar */
+    background: transparent;
+    z-index: 9999999; /* Ensures it stays above your header */
+}
+
+.scroll-progress-bar {
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary, #6366f1), var(--color-secondary, #ec4899));
+    width: 0%;
+    border-radius: 0 2px 2px 0;
+}
+
+.cursor-blink {
+    animation: blink 0.8s infinite;
+    color: var(--color-primary, #6366f1);
+    font-weight: bold;
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Custom Cursor */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary, #6366f1);
+}
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-primary, #6366f1);
+}
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 99999999;
+    pointer-events: none;
+}
+/* Hide default cursor globally */
+body, html { cursor: none; }
+a, button { cursor: none; }
+
+/* Infinite Skills Marquee */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 20px 0;
+    background: var(--color-surface, #ffffff);
+    border-top: 1px solid var(--color-card-border, #e2e8f0);
+    border-bottom: 1px solid var(--color-card-border, #e2e8f0);
+    display: flex;
+    align-items: center;
+}
+
+[data-color-scheme="dark"] .marquee-container {
+    background: #131722;
+    border-color: #2a2f3e;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: scrollMarquee 25s linear infinite;
+}
+
+.marquee-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    margin: 0 10px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text, #333);
+    background: var(--color-background, #f8f9fa);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+[data-color-scheme="dark"] .marquee-item {
+    color: #e2e8f0;
+    background: #1e293b;
+}
+
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Scrolls exactly half to loop seamlessly */
+}
+
+/* =========================================
+   COLOR PALETTE WIDGET STYLES
+   ========================================= */
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+  border-color: var(--color-surface);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* Smooth pop-up animation for the palette menu */
+#palette-menu:not(.hidden) {
+  display: flex !important; /* Overrides hidden */
+  animation: popUpMenu 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popUpMenu {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+    /* Add this style to handle the active state */
+    .nav-link-active {
+        color: var(--color-primary) !important;
+        font-weight: 800;
+    }
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--color-primary);
+        border-radius: 2px;
+    }
+    nav a { position: relative; } /* Needed for the underline */
+    
+    /* Spotlight Hover Effect */
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.spotlight-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y), 
+        rgba(99, 102, 241, 0.15), /* Indigo glow */
+        transparent 40%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+/* Ensure card content stays above the glow */
+.spotlight-card > * {
+    position: relative;
+    z-index: 1;
+}
+/* Ambient Orbs */
+.ambient-orb {
+    position: absolute;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    animation: floatOrb 20s infinite ease-in-out alternate;
+    mix-blend-mode: screen;
+}
+
+@keyframes floatOrb {
+    0% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(5%, 10%) scale(1.1); }
+    100% { transform: translate(-5%, 5%) scale(0.9); }
+}
 </style>
 </head>
 
 
 
+
+<body style="background-image: radial-gradient(#6366f1 0.5px, transparent 0.5px), radial-gradient(#6366f1 0.5px, var(--color-background) 0.5px); background-size: 20px 20px; background-position: 0 0, 10px 10px; background-attachment: fixed;">  <div id="particles-container"></div>
+  <!-- 3D Background Canvas -->
+<canvas id="canvas-3d" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none;"></canvas>
+<div class="scroll-progress-container">
+  <div class="scroll-progress-bar" id="myScrollBar"></div>
+</div>
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
 <button id="backToTop" title="Back to top" style="display:none;position:fixed;bottom:32px;right:32px;z-index:1000;">
   
 </button>
-<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-
-<body style="background-image: radial-gradient(#6366f1 0.5px, transparent 0.5px), radial-gradient(#6366f1 0.5px, var(--color-background) 0.5px); background-size: 20px 20px; background-position: 0 0, 10px 10px; background-attachment: fixed;">  <div id="particles-container"></div>
-<div id="loading-screen">
-    <div class="loader">
-        <div class="loader-text">Loading...</div>
-        <div class="loader-bar"></div>
-    </div>
+<!-- === THEME COLOR PALETTE BUTTON === -->
+<div id="color-palette-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999;">
+  <button id="palette-toggle-btn" class="btn btn--primary" style="width: 50px; height: 50px; border-radius: 50%; padding: 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;">
+    <i class="fa-solid fa-palette" style="font-size: 1.2rem;"></i>
+  </button>
+  
+  <div id="palette-menu" class="hidden card" style="position: absolute; bottom: 65px; right: 0; padding: 16px; display: flex; gap: 12px; flex-wrap: wrap; width: 160px; justify-content: center; transform-origin: bottom right; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+    <!-- Color Swatches (Using RGB values in data-color) -->
+    <button class="color-swatch" data-color="33, 128, 141" style="background-color: rgb(33, 128, 141);" title="Default Teal"></button>
+    <button class="color-swatch" data-color="99, 102, 241" style="background-color: rgb(99, 102, 241);" title="Indigo"></button>
+    <button class="color-swatch" data-color="236, 72, 153" style="background-color: rgb(236, 72, 153);" title="Pink"></button>
+    <button class="color-swatch" data-color="16, 185, 129" style="background-color: rgb(16, 185, 129);" title="Emerald"></button>
+    <button class="color-swatch" data-color="245, 158, 11" style="background-color: rgb(245, 158, 11);" title="Amber"></button>
+    <button class="color-swatch" data-color="139, 92, 246" style="background-color: rgb(139, 92, 246);" title="Violet"></button>
+  </div>
 </div>
 
+<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div id="global-preloader">
+    <div class="code-loader">
+        <span>&lt;</span>
+        <span class="slash">/</span>
+        <span>&gt;</span>
+    </div>
+    <div class="preloader-name">Mohd Saqib</div>
+</div>
   <noscript>
   <img src="https://vercel.com/analytics/track.gif" alt="" referrerpolicy="no-referrer-when-downgrade" />
 </noscript>
@@ -305,7 +675,7 @@
   /* margin-right :auto; */
   transition: transform 0.3s ease;;" /> 
       <!-- <a href="#home" class="logo text-lg font-bold flex items-center gap-2">
-        <img src="./images/logo.png" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
+        <img src="./images/profile.jpg" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
         Mohd Saqib
       </a> -->
 
@@ -388,8 +758,8 @@ if (window.annyang) {
 }
 </script>
 
-<a class="skip-link" href="#home">Skip to content</a>
-<main id="main" role="main"> ... </main>
+<!-- <a class="skip-link" href="#home">Skip to content</a>
+<main id="main" role="main"> ... </main> -->
 
   <!-- ========================= MAIN ========================= -->
   <main>
@@ -589,12 +959,20 @@ if (window.annyang) {
   
 <script src="https://cdn.jsdelivr.net/npm/@widgetbot/crate@3" async defer>
 </script>
-
+<!-- Ambient Background Orbs -->
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-[-1]">
+    <div class="ambient-orb bg-indigo-600/20 top-[-10%] left-[-10%]"></div>
+    <div class="ambient-orb bg-pink-600/20 bottom-[-10%] right-[-10%]" style="animation-delay: -5s;"></div>
+    <div class="ambient-orb bg-emerald-600/10 top-[40%] right-[20%]" style="animation-delay: -2s;"></div>
+</div>
     <!-- ========= HERO ========= -->
     <section id="home" class="hero flex flex-col justify-center items-center text-center">
     
       <h1>Hi, I'm <span style="color:var(--color-primary);">Mohd Saqib</span></h1>
-      <h2 class="mt-8" style="font-weight: var(--font-weight-medium); max-width: 600px;">Computer Engineering Student | Data Science Enthusiast | Full-Stack Developer</h2>
+      <h2 class="mt-8" style="font-weight: 500; height: 30px;">
+    <span id="typewriter-text" style="color: var(--color-primary);"></span><span class="cursor-blink">|</span>
+</h2>
+      <!-- <h2 class="mt-8" style="font-weight: var(--font-weight-medium); max-width: 600px;">Computer Engineering Student | Data Science Enthusiast | Full-Stack Developer</h2> -->
       <div class="flex gap-16 mt-8">
 
         <a href="#contact" class="btn btn--primary"><i class="fa-solid fa-phone"></i>Contact Me</a>
@@ -605,10 +983,12 @@ if (window.annyang) {
   <i class="fa-solid fa-paper-plane"></i> Hire Me
 </a>
  
-        <a href="mohd saqib resume.pdf" class="btn btn--outline" target="_blank"> <i class="fa-solid fa-eye"></i>View Resume</a>
+        <a href="mohd saqib resume.pdf" class="btn btn--outline" target="_blank" rel="noopener noreferrer"> <i class="fa-solid fa-eye"></i>View Resume</a>
         <!-- <a href="resume.pdf" class="btn btn--outline" download>Download Resume (PDF)</a> -->
         <!-- <a href="portfolio.pdf" download class="btn btn--primary">Download Portfolio (PDF)</a> -->
-
+        <a href="portfolio.pdf" class="btn btn--outline" download>
+  <i class="fa-solid fa-file-pdf"></i> Download Portfolio PDF
+</a>
    
       </div>
     </section>
@@ -621,7 +1001,7 @@ if (window.annyang) {
      <div class="stats grid mt-16">
      
       <p class="mt-8 card card__body flex flex-col items-center" style="max-width: 800px;">I'm a passionate Computer Engineering undergrad at Jamia Millia Islamia and a BS Data Science student at IIT Madras. I love building full-stack applications and exploring data to derive meaningful insights. My interests span across software engineering, machine learning, and cloud technologies. I'm always eager to learn, collaborate, and contribute to impactful tech projects.</p>
-      <div class="profile-image  mt-16 flex justify-center">
+      <div class="profile-image  mt-16 flex justify-center" data-aos="zoom-in" data-aos-delay="200">
 <img src="images/profile.jpg" alt="Mohd Saqib"
      style="border-radius: 16px; width: 180px; height: auto; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
 </div>
@@ -647,7 +1027,32 @@ if (window.annyang) {
         </div>
       </div>
     </section>
-
+<section id="now" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">What I'm Doing Now</h2>
+  <div class="grid mt-8" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+    <div class="card card__body flex items-center gap-4">
+      <i class="fa-solid fa-robot fa-2x" style="color: var(--color-primary);"></i>
+      <div>
+        <h4 style="margin:0;">Building AI Agents</h4>
+        <p style="font-size:0.9rem; color:var(--color-text-secondary); margin:0;">Creating LLM-based automation tools.</p>
+      </div>
+    </div>
+    <div class="card card__body flex items-center gap-4">
+      <i class="fa-solid fa-chalkboard-user fa-2x" style="color: #10b981;"></i>
+      <div>
+        <h4 style="margin:0;">Teaching on Udemy</h4>
+        <p style="font-size:0.9rem; color:var(--color-text-secondary); margin:0;">Recording Python & Data Science courses.</p>
+      </div>
+    </div>
+    <div class="card card__body flex items-center gap-4">
+      <i class="fa-solid fa-laptop-code fa-2x" style="color: #ec4899;"></i>
+      <div>
+        <h4 style="margin:0;">Full-Stack Dev</h4>
+        <p style="font-size:0.9rem; color:var(--color-text-secondary); margin:0;">Working on EventOps & Hospital Management apps.</p>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- ========= EDUCATION ========= -->
     <section id="education" class="education-section py-16">
       <div class="container">
@@ -696,6 +1101,65 @@ if (window.annyang) {
         </div>
       </div>
     </section>
+
+    <section id="experience" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">Experience</h2>
+  <div class="grid mt-16" style="gap: 24px;">
+    <div class="card card__body border-left-primary">
+      <div class="flex justify-between items-center mb-4">
+        <h3 style="margin:0;">Instructor & Content Creator</h3>
+        <span class="badge">Dec 2025 - Present</span>
+      </div>
+      <h4 style="color: var(--color-text-secondary); margin-bottom: 12px;">Udemy, Remote</h4>
+      <ul style="padding-left: 20px; color: var(--color-text-secondary); margin-bottom: 16px;">
+        <li>Designed, developed, and published 3 technical courses including Machine Learning and Python.</li>
+        <li>Educating an active community of 550+ monthly enrolled students with strong ratings up to 4.2/5.</li>
+        <li>Architected structured curricula and built practical coding exercises to simplify complex concepts.</li>
+      </ul>
+      <p><strong>Stack:</strong> Python, Data Science, Video Production</p>
+    </div>
+
+    <div class="card card__body border-left-primary">
+      <div class="flex justify-between items-center mb-4">
+        <h3 style="margin:0;">Space Technology Intern</h3>
+        <span class="badge">June 2024 - July 2024</span>
+      </div>
+      <h4 style="color: var(--color-text-secondary); margin-bottom: 12px;">Agnirva Space Community</h4>
+      <ul style="padding-left: 20px; color: var(--color-text-secondary); margin-bottom: 16px;">
+        <li>Gained comprehensive knowledge in satellite communication and spacecraft systems.</li>
+        <li>Demonstrated strong potential to apply space technology knowledge to real-world software systems.</li>
+      </ul>
+      <p><strong>Domain:</strong> Satellite Comm, Spacecraft Systems</p>
+    </div>
+</div>
+</section>
+
+<section id="journey" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">My Journey</h2>
+  <div class="journey-timeline mt-16">
+    <div class="journey-item">
+      <div class="journey-dot"></div>
+      <div class="journey-content card card__body">
+        <h4>2026 - Expanding Horizons</h4>
+        <p>Preparing for Masters in Islamic Studies & growing Udemy audience.</p>
+      </div>
+    </div>
+    <div class="journey-item">
+      <div class="journey-dot"></div>
+      <div class="journey-content card card__body">
+        <h4>2024 - Dual Degree</h4>
+        <p>Started BS in Data Science at IIT Madras while continuing B.Tech.</p>
+      </div>
+    </div>
+    <div class="journey-item">
+      <div class="journey-dot"></div>
+      <div class="journey-content card card__body">
+        <h4>2022 - The Beginning</h4>
+        <p>Joined Jamia Millia Islamia for Computer Engineering. Wrote my first line of code.</p>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- ===== Hobbies & Interests ===== -->
 <section id="hobbies" class="container py-16">
     <h2 class="section-title">Hobbies & Personal Interests</h2>
@@ -753,16 +1217,25 @@ if (window.annyang) {
         <div class="skill-category card" data-percentage="90">
           <div class="card__body">
             <h3>Programming Languages</h3>
-            <p>C++, C, Python, R, JavaScript, Java, SQL</p>
+            <p>C++, C, Python, R, JavaScript, Java, SQL,Kotlin</p>
             <div class="progress-bar-wrapper mt-8">
               <div class="progress-bar" style="width:0;"></div>
             </div>
           </div>
         </div>
+        <div class="skill-category card" data-percentage="75">
+  <div class="card__body">
+    <h3>Mobile Development</h3>
+    <p>Android SDK, Kotlin, Jetpack Compose, XML Layouts, Room DB, Firebase</p>
+    <div class="progress-bar-wrapper mt-8">
+      <div class="progress-bar" style="width:0;"></div>
+    </div>
+  </div>
+</div>
         <div class="skill-category card" data-percentage="85">
           <div class="card__body">
             <h3>Web Development</h3>
-            <p>HTML, CSS, Bootstrap, JavaScript, React.js, Node.js, Express.js, Flask</p>
+            <p>HTML, CSS, Bootstrap, JavaScript, React.js, Node.js, Express.js, Flask,Tailwind CSS</p>
             <div class="progress-bar-wrapper mt-8">
               <div class="progress-bar" style="width:0;"></div>
             </div>
@@ -806,19 +1279,114 @@ if (window.annyang) {
         </div>
       </div>
     </section>
+    <div class="marquee-container">
+    <div class="marquee-content">
+        <span class="marquee-item"><i class="fa-brands fa-python" style="color:#3776AB; margin-right:8px;"></i> Python</span>
+        <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61DAFB; margin-right:8px;"></i> React.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-node-js" style="color:#339933; margin-right:8px;"></i> Node.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-aws" style="color:#FF9900; margin-right:8px;"></i> AWS</span>
+        <span class="marquee-item"><i class="fa-solid fa-database" style="color:#4479A1; margin-right:8px;"></i> SQL</span>
+        <span class="marquee-item"><i class="fa-brands fa-docker" style="color:#2496ED; margin-right:8px;"></i> Docker</span>
+        <span class="marquee-item"><i class="fa-brands fa-github" style="margin-right:8px;"></i> Git</span>
+        <span class="marquee-item"><i class="fa-brands fa-python" style="color:#3776AB; margin-right:8px;"></i> Python</span>
+        <span class="marquee-item"><i class="fa-brands fa-react" style="color:#61DAFB; margin-right:8px;"></i> React.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-node-js" style="color:#339933; margin-right:8px;"></i> Node.js</span>
+        <span class="marquee-item"><i class="fa-brands fa-aws" style="color:#FF9900; margin-right:8px;"></i> AWS</span>
+        <span class="marquee-item"><i class="fa-solid fa-database" style="color:#4479A1; margin-right:8px;"></i> SQL</span>
+        <span class="marquee-item"><i class="fa-brands fa-docker" style="color:#2496ED; margin-right:8px;"></i> Docker</span>
+        <span class="marquee-item"><i class="fa-brands fa-github" style="margin-right:8px;"></i> Git</span>
+        <span class="marquee-item"><i class="fa-brands fa-kotlin" style="color:#7387B8; margin-right:8px;"></i> Kotlin</span>
+        <span class="marquee-item"><i class="fa-brands fa-java" style="color:#007396; margin-right:8px;"></i> Java</span>
 
+
+    </div>
+</div>
+<section id="tech-visual" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">Tech Stack</h2>
+  <div class="tech-grid mt-16">
+    <div class="tech-category">
+      <h4 class="text-center mb-4">Frontend</h4>
+      <div class="flex flex-wrap justify-center gap-16">
+        <i class="fa-brands fa-html5 tech-icon" title="HTML5"></i>
+        <i class="fa-brands fa-css3-alt tech-icon" title="CSS3"></i>
+        <i class="fa-brands fa-js tech-icon" title="JavaScript"></i>
+        <i class="fa-brands fa-react tech-icon" title="React.js"></i>
+        <i class="fa-brands fa-bootstrap tech-icon" title="Bootstrap"></i>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4 class="text-center mb-4">Backend & DB</h4>
+      <div class="flex flex-wrap justify-center gap-16">
+        <i class="fa-brands fa-node-js tech-icon" title="Node.js"></i>
+        <i class="fa-brands fa-python tech-icon" title="Python (Flask)"></i>
+        <i class="fa-solid fa-database tech-icon" title="SQL"></i>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4 class="text-center mb-4">Data Science & ML</h4>
+      <div class="flex flex-wrap justify-center gap-16">
+        <i class="fa-brands fa-python tech-icon" title="Python"></i>
+        <i class="fa-solid fa-chart-line tech-icon" title="Data Visualization"></i>
+        <i class="fa-solid fa-robot tech-icon" title="Machine Learning"></i>
+      </div>
+    </div>
+      <div class="tech-category">
+      <h4 class="text-center mb-4">Mobile Development</h4>
+      <div class="flex flex-wrap justify-center gap-16">
+        <i class="fa-brands fa-android tech-icon" title="Android SDK"></i>
+        <i class="fa-brands fa-kotlin tech-icon" title="Kotlin
+"></i>
+      </div>
+    </div>
+    <div class="tech-category">
+      <h4 class="text-center mb-4">DevOps & Tools</h4>
+      <div class="flex flex-wrap justify-center gap-16">
+        <i class="fa-brands fa-git-alt tech-icon" title="Git"></i>
+        <i class="fa-brands fa-github tech-icon" title="GitHub"></i>
+        <i class="fa-brands fa-docker tech-icon" title="Docker"></i>
+        <i class="fa-brands fa-aws tech-icon" title="AWS"></i>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- ========= PROJECTS ========= -->
     <section id="projects" class="projects-section py-16">
       <div class="container">
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid grid mt-16">
           <!-- Template repeated for each project -->
+           <div class="project-card card">
+  <div class="card__body">
+    <h3>Vision-Based Queue Analytics System</h3>
+    <span class="badge" style="display:inline-block; margin-top:8px; margin-bottom:12px;">Jan 2026 - Present</span>
+    <p>Developing an automated system using YOLOv8 for person detection and multi-object tracking to estimate queue metrics from live CCTV feeds.</p>
+    <p class="mt-4">Evaluating system performance on high-density datasets like ShanghaiTech and building an intuitive real-time dashboard using Streamlit/Flask.</p>
+    <p class="mt-8"><strong>Tech Stack:</strong> Python, YOLOv8, OpenCV, Streamlit, Deep Learning</p>
+  </div>
+</div>
+
+<div class="project-card card">
+  <div class="card__body">
+    <h3>EventFlow: Rental Operations Platform</h3>
+    <span class="badge" style="display:inline-block; margin-top:8px; margin-bottom:12px;">Feb 2026 - Present</span>
+    <p>Architecting a scalable monorepo-based operations platform managing 18+ database tables and 12+ type-safe API routers using oRPC and Drizzle ORM.</p>
+    <p class="mt-4">Implemented a robust RBAC system (Admin, Manager, Staff) using Better Auth and delivered a high-performance UI in an agile Scrum framework.</p>
+    <p class="mt-8"><strong>Tech Stack:</strong> React 19, Tailwind v4, Bun, Drizzle ORM</p>
+  </div>
+</div>
           <div class="project-card card">
             <div class="card__body">
               <h3>Quiz Master V2 – Multi-User Exam Portal</h3>
               <p class="mt-8">Developed a full-stack multi-user web app for quiz management using Flask, VueJS, SQLite, Redis, Celery, and Bootstrap.</p>
               <p class="mt-8"><strong>Tech Stack:</strong> Flask, VueJS, SQLite, Redis, Celery, Bootstrap</p>
-              
+              <div class="flex gap-16 mt-16">
+        <a href="#" class="btn btn--primary btn--sm" target="_blank" rel="noopener noreferrer" disabled title="Demo link coming soon">
+            <i class="fa-solid fa-earth-americas"></i> Live Demo
+        </a>
+        <a href="https://github.com/MOHDSAQIB695786" class="btn btn--outline btn--sm" target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-github"></i> Source Code
+        </a>
+    </div>
             </div>
           </div>
           <div class="project-card card">
@@ -994,7 +1562,7 @@ if (window.annyang) {
       <div class="price">
         <span class="current-price" style="color: #10b981;">Free</span>
       </div>
-      <a href="https://www.udemy.com/course/python-for-absolute-beginners-zero-to-confidence/" target="_blank" class="btn btn--primary btn--sm">
+      <a href="https://www.udemy.com/course/python-for-absolute-beginners-zero-to-confidence/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
         Enroll Now <i class="fa-solid fa-angle-right"></i>
       </a>
     </div>
@@ -1092,14 +1660,13 @@ if (window.annyang) {
 
     <!-- GATE -->
     <div class="achievement-card">
-      <div class="achievement-icon">
-        <i class="fa-solid fa-graduation-cap"></i>
-      </div>
-      <div class="achievement-content">
-        <h3>GATE CS&IT 2025 – Qualified</h3>
-        <p><strong>CRL 19,312</strong> among 1.7+ lakh candidates nationwide.</p>
-      </div>
-    </div>
+  <div class="achievement-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+  <div class="achievement-content">
+    <h3>GATE Qualified (2025 & 2026)</h3>
+    <p><strong>2026:</strong> AIR 4412 (Data Science & AI) | AIR 5633 (CS & IT)</p>
+    <p><strong>2025:</strong> AIR 19312 (CS & IT)</p>
+  </div>
+</div>
 
     <!-- JEE Advanced -->
     <div class="achievement-card">
@@ -1155,9 +1722,15 @@ if (window.annyang) {
         <p>Demonstrated exceptional retention ability and long-term disciplined commitment.</p>
       </div>
     </div>
-
+<div class="achievement-card">
+  <div class="achievement-icon"><i class="fa-solid fa-mosque"></i></div>
+  <div class="achievement-content">
+    <h3>Zad Academy (Islamic Studies)</h3>
+    <p>Pursuing a 2-year academic program in 7 core subjects. Dedicating 15 hours weekly alongside dual-degree engineering studies.</p>
+  </div>
+</div>
     <!-- LeetCode -->
-    <div class="achievement-card">
+    <!-- <div class="achievement-card">
       <div class="achievement-icon">
         <i class="fa-solid fa-code"></i>
       </div>
@@ -1166,6 +1739,19 @@ if (window.annyang) {
         <p>Maintained a <strong>275+ day continuous coding streak</strong> and solved 500+ problems.</p>
       </div>
     </div>
+
+    <div class="achievement-card" style="flex-direction: column; align-items: center; text-align: center; padding: 16px;">
+  <h3 style="margin-bottom: 12px; align-self: flex-start; padding-left: 8px;">🚀 Live LeetCode Stats</h3>
+  <img src="https://leetcard.jacoblin.cool/saqib29abubakar?theme=dark&font=Inter&ext=activity" alt="LeetCode Stats" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+</div> -->
+
+<div class="achievement-card" style="flex-direction: column; align-items: center; text-align: center; padding: 16px;">
+  <h3 style="margin-bottom: 12px; align-self: flex-start; padding-left: 8px;">🚀 Live LeetCode Stats</h3>
+  
+  <img src="https://img.shields.io/badge/Current_Streak-300+_Days-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode Streak" style="margin-bottom: 12px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+
+  <img src="https://leetcard.jacoblin.cool/saqib29abubakar?theme=dark&font=Inter&ext=heatmap" alt="LeetCode Stats" style="width: 100%; max-width: 400px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+</div>
 
   </div>
 </section>
@@ -1279,9 +1865,19 @@ if (window.annyang) {
 <section class=" youtube-section py-16">
   <div class="container">
     <h2 class="section-title">📺 My YouTube Channel – Latest Videos</h2>
+    
+    <div class="yt-views-badge">
+        <div class="yt-views-icon">
+            <i class="fa-regular fa-eye"></i>
+        </div>
+        <div class="yt-views-text">
+            <div class="yt-views-count" id="yt-live-views">Loading...</div>
+            <div class="yt-views-label">YouTube Views</div>
+        </div>
+    </div>
     <div id="youtube-videos-grid" class="yt-videos-grid"></div>
     <div class="yt-channel-btn">
-      <a href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" target="_blank" class="btn btn--primary">View Full Channel &rarr;</a>
+      <a href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" target="_blank" class="btn btn--primary">View Full Channel →</a>
     </div>
   </div>
 </section>
@@ -1299,7 +1895,7 @@ if (window.annyang) {
         <div class="card__body">
           <h3>📄 Resume (1 Page)</h3>
           <p class="mt-4">Professional 1-page resume PDF, updated July 2025.</p>
-          <a href="./files/resume-1page.pdf" class="btn btn--primary mt-4" download>Download</a>
+          <a href="./mohd saqib resume.pdf" class="btn btn--primary mt-4" download>Download</a>
         </div>
       </div>
 
@@ -1308,7 +1904,7 @@ if (window.annyang) {
         <div class="card__body">
           <h3>📦 GitHub Projects</h3>
           <p class="mt-4">Explore my repositories, including full-stack apps, ML projects, and more.</p>
-          <a href="https://github.com/MOHDSAQIB123" class="btn btn--primary mt-4" target="_blank">Visit GitHub</a>
+          <a href="https://github.com/MOHDSAQIB695786" class="btn btn--primary mt-4" target="_blank" rel="noopener noreferrer">Visit GitHub</a>
         </div>
       </div>
 
@@ -1317,7 +1913,7 @@ if (window.annyang) {
         <div class="card__body">
           <h3>🎥 Project Demos</h3>
           <p class="mt-4">Watch short demos of my web projects, explaining features and code.</p>
-          <a href="https://youtube.com/@yourchannel" class="btn btn--primary mt-4" target="_blank">Watch on YouTube</a>
+          <a href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" class="btn btn--primary mt-4" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
         </div>
       </div>
 
@@ -1325,7 +1921,7 @@ if (window.annyang) {
 <div class="project-card card">
   <div class="card__body">
     <h3>🧠 Study Notes</h3>
-    <p class="mt-4">PDF notes and mind maps for Computer Science topics.</p>
+    <p class="mt-4">PDF notes and mind maps for Computer Science topics. <br><small style="color: #888; font-size: 0.9em;">💡 Live folder access requires backend setup (see drive for details)</small></p>
     <a href="drive.html" 
        class="btn btn--primary mt-4" 
        target="_blank" 
@@ -1340,7 +1936,7 @@ if (window.annyang) {
     <div class="card__body">
         <h3>⌨️ Typing Master Pro</h3>
         <p class="mt-4">Professional typing speed test game with real-time WPM tracking, multiple difficulty levels, and performance analytics.</p>
-        <a href="typing.html" class="btn btn--primary mt-4" target="_blank">Play Game</a>
+        <a href="typing.html" class="btn btn--primary mt-4" target="_blank" rel="noopener noreferrer">Play Game</a>
     </div>
 </div>
 <!-- games  -->
@@ -1356,8 +1952,8 @@ if (window.annyang) {
 <div class="project-card card">
     <div class="card__body">
         <h3>🖥️ Interactive Code Editor</h3>
-        <p class="mt-4">Run, edit, and compile code in the browser. Supports Python, C++, Java, JS & more.</p>
-        <a href="editor.html" class="btn btn--primary mt-4" target="_blank">Open Editor</a>
+        <p class="mt-4">Run, edit, and compile code in the browser. Supports Python, C++, Java, JS & more. <br><small style="color: #888; font-size: 0.9em;">💡 Code execution requires backend setup (see editor for details)</small></p>
+        <a href="editor.html" class="btn btn--primary mt-4" target="_blank" rel="noopener noreferrer">Open Editor</a>
     </div>
 </div>
 
@@ -1435,7 +2031,7 @@ if (window.annyang) {
             </div>
           </div>
           <!-- Contact Form -->
-          <form id="contact-form" action="https://formspree.io/f/mdkzrepj" method="POST" class="card">
+          <form id="contact-form" action="/api/contact" method="POST" class="card">
   <div class="card__body">
     <div class="form-group">
       <label for="name" class="form-label">Name</label>
@@ -1476,7 +2072,28 @@ if (window.annyang) {
   <div class="container">
     <!-- <h2 class="section-title">Connect with Me</h2>
     <p class="mt-8">I'm always open to new opportunities and collaborations. Feel free to reach out via email or connect with me on social media.</p> -->
-  
+  <div id="visitor-stats" class="mt-8 mb-8 flex justify-center gap-16 text-sm" style="color: var(--color-text-secondary);">
+    <span><i class="fa-solid fa-users"></i> Total Views: <span id="global-views">Loading...</span></span>
+    <span><i class="fa-solid fa-eye"></i> Your Visits: <span id="local-visits">Loading...</span></span>
+</div>
+
+<div id="dev-terminal" class="hidden terminal-window">
+    <div class="terminal-header">
+        <span>guest@mohd-saqib:~$</span>
+        <button onclick="document.getElementById('dev-terminal').classList.add('hidden')" class="terminal-close">✖</button>
+    </div>
+    <div id="terminal-output" class="terminal-body">
+        Welcome to SaqibOS (v1.0.0).<br>Type 'help' to see available commands.<br>
+    </div>
+    <div class="terminal-input-wrapper">
+        <span class="prompt">></span>
+        <input type="text" id="terminal-input" autocomplete="off">
+    </div>
+</div>
+
+<button onclick="document.getElementById('dev-terminal').classList.toggle('hidden'); document.getElementById('terminal-input').focus();" class="btn btn--outline btn-terminal-toggle" title="Open Developer Terminal">
+    <i class="fa-solid fa-terminal"></i>
+</button>
     <h2 class="section-title">Contact Information</h3>
     <p>
       For more inquiries, reach out to us at
@@ -1521,17 +2138,6 @@ if (window.annyang) {
 
   <!-- Scripts -->
   <script src="app.js"></script>
-  <script type="importmap">
-  {
-    "imports": {
-      "@google/generative-ai": "https://esm.run/@google/generative-ai"
-    }
-  }
-</script>
-<script type="module">
-  import { GoogleGenerativeAI } from "@google/generative-ai";
-  window.GoogleGenerativeAI = GoogleGenerativeAI;
-</script>
   <script src="chatbot.js"></script>
   
 
@@ -1543,15 +2149,21 @@ if (window.annyang) {
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const formData = new FormData(form);
+    const payload = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      message: form.message.value.trim(),
+      subject: 'Portfolio contact form'
+    };
 
     try {
       const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
+        method: 'POST',
         headers: {
-          'Accept': 'application/json'
-        }
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
       });
 
       if (response.ok) {
@@ -1705,38 +2317,73 @@ if (window.annyang) {
 </script>
 
 <script>
-// --- Configuration ---
-const YOUTUBE_API_KEY = 'AIzaSyBdYzyt2j-Fqkzof-396A-hTsfx5i9XdOw'; // <-- Put your real API key here
-const YOUTUBE_CHANNEL_ID = 'UCbxEfgKTCsqz6g0eMNph_Hg';   // <-- Put your channel ID here
+// === YOUTUBE INTEGRATION (BACKEND-POWERED) ===
+const YOUTUBE_CHANNEL_ID = 'UCbxEfgKTCsqz6g0eMNph_Hg';
 const MAX_VIDEOS = 6;
 
-// --- Fetch Latest Videos ---
-fetch(`https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${YOUTUBE_CHANNEL_ID}&part=snippet,id&order=date&maxResults=${MAX_VIDEOS}`)
-  .then(response => response.json())
-  .then(data => {
-    const videos = data.items.filter(item => item.id.kind === "youtube#video");
-    const grid = document.getElementById('youtube-videos-grid');
-    grid.innerHTML = '';
-    videos.forEach((video, idx) => {
-      const videoDiv = document.createElement('div');
-      videoDiv.className = "yt-video-card";
-      videoDiv.innerHTML = `
-        <div class="yt-thumb">
-          <a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">
-            <img src="${video.snippet.thumbnails.medium.url}" alt="${video.snippet.title}">
-            <div class="yt-play-btn">&#9658;</div>
-          </a>
-        </div>
-        <div class="yt-title">
-          <a href="https://youtube.com/watch?v=${video.id.videoId}" target="_blank">${video.snippet.title}</a>
-        </div>
-      `;
-      grid.appendChild(videoDiv);
-    });
-  })
-  .catch(() => {
-    document.getElementById('youtube-videos-grid').innerHTML = "<p>⚠️ Unable to load videos. Try again later.</p>";
+// Function to display videos
+function displayYoutubeVideos(videos) {
+  const grid = document.getElementById('youtube-videos-grid');
+  grid.innerHTML = '';
+
+  if (!videos || !videos.length) {
+    grid.innerHTML = '<p style="grid-column: 1 / -1; color: var(--color-text-secondary);">No videos available right now.</p>';
+    return;
+  }
+  
+  videos.forEach((video, idx) => {
+    const videoDiv = document.createElement('div');
+    videoDiv.className = "yt-video-card";
+    
+    const videoLink = `https://youtube.com/watch?v=${video.id.videoId}`;
+    
+    videoDiv.innerHTML = `
+      <div class="yt-thumb">
+        <a href="${videoLink}" target="_blank" rel="noopener noreferrer">
+          <img src="${video.snippet.thumbnails.medium.url}" alt="${video.snippet.title}" loading="lazy">
+          <div class="yt-play-btn">►</div>
+        </a>
+      </div>
+      <div class="yt-title">
+        <a href="${videoLink}" target="_blank" rel="noopener noreferrer">${video.snippet.title}</a>
+      </div>
+    `;
+    grid.appendChild(videoDiv);
   });
+}
+
+// Fetch live data from backend
+function initYoutube() {
+  const views = document.getElementById('yt-live-views');
+  views.innerText = 'Loading...';
+
+  fetch(`/api/youtube/stats?channel=${YOUTUBE_CHANNEL_ID}`)
+    .then(response => response.ok ? response.json() : null)
+    .then(data => {
+      if (data && data.viewCount) {
+        views.innerText = data.viewCount;
+      }
+    })
+    .catch(() => {
+      views.innerText = 'Unavailable';
+    });
+
+  fetch(`/api/youtube/videos?channel=${YOUTUBE_CHANNEL_ID}&limit=${MAX_VIDEOS}`)
+    .then(response => response.ok ? response.json() : null)
+    .then(data => {
+      if (data && data.videos && data.videos.length > 0) {
+        displayYoutubeVideos(data.videos);
+      } else {
+        displayYoutubeVideos([]);
+      }
+    })
+    .catch(() => {
+      displayYoutubeVideos([]);
+    });
+}
+
+// Initialize YouTube section
+initYoutube();
 </script>
 <script>
 function getTodayNumber() {
@@ -1763,7 +2410,7 @@ fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
 <script>
   // 1. Mobile Menu Toggle Fix
   const mobileBtn = document.querySelector('.mobile-menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  // const navLinks = document.querySelector('.nav-links');
   
   if(mobileBtn) {
     mobileBtn.addEventListener('click', () => {
@@ -1794,6 +2441,584 @@ fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
 
 </script>
 
+<script>
+    // Preloader Logic
+    window.addEventListener('load', function() {
+        // Enforce a minimum 2.5 second delay before hiding
+        setTimeout(function() {
+            document.getElementById('global-preloader').classList.add('hide-preloader');
+        }, 2500); 
+    });
+</script>
+<script>
+  // Scroll Progress Bar Logic
+  window.addEventListener('scroll', function() {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("myScrollBar").style.width = scrolled + "%";
+  });
+</script>
+<script>
+    const phrases = ["Computer Engineering Student.", "Data Science Enthusiast.", "Full-Stack Developer.", "Problem Solver."];
+    let i = 0;
+    let j = 0;
+    let currentPhrase = [];
+    let isDeleting = false;
+    let isEnd = false;
 
+    function loop() {
+        isEnd = false;
+        document.getElementById('typewriter-text').innerHTML = currentPhrase.join('');
+
+        if (i < phrases.length) {
+            if (!isDeleting && j <= phrases[i].length) {
+                currentPhrase.push(phrases[i][j]);
+                j++;
+            }
+            if (isDeleting && j <= phrases[i].length) {
+                currentPhrase.pop(phrases[i][j]);
+                j--;
+            }
+            if (j == phrases[i].length) {
+                isEnd = true;
+                isDeleting = true;
+            }
+            if (isDeleting && j === 0) {
+                currentPhrase = [];
+                isDeleting = false;
+                i++;
+                if (i === phrases.length) { i = 0; }
+            }
+        }
+        const spedUp = Math.random() * (80 - 50) + 50;
+        const normalSpeed = Math.random() * (150 - 100) + 100;
+        const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+        setTimeout(loop, time);
+    }
+    window.addEventListener('load', loop);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script>
+    VanillaTilt.init(document.querySelectorAll(".card"), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.1,
+        scale: 1.02
+    });
+</script>
+<script>
+    const cursorDot = document.getElementById("cursor-dot");
+    const cursorOutline = document.getElementById("cursor-outline");
+
+    window.addEventListener("mousemove", function(e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+
+        // Smooth trailing effect for the outline
+        cursorOutline.animate({
+            left: `${posX}px`,
+            top: `${posY}px`
+        }, { duration: 500, fill: "forwards" });
+    });
+
+    // Expand cursor on links/buttons
+    document.querySelectorAll("a, button").forEach(link => {
+        link.addEventListener("mouseenter", () => {
+            cursorOutline.style.transform = "translate(-50%, -50%) scale(1.5)";
+            cursorOutline.style.backgroundColor = "rgba(99, 102, 241, 0.1)";
+        });
+        link.addEventListener("mouseleave", () => {
+            cursorOutline.style.transform = "translate(-50%, -50%) scale(1)";
+            cursorOutline.style.backgroundColor = "transparent";
+        });
+    });
+</script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 800, // Animation lasts 0.8 seconds
+        once: true,    // Whether animation should happen only once - while scrolling down
+        offset: 100    // Offset (in px) from the original trigger point
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    /* Add basic styling to make it cover the background */
+    document.getElementById('particles-container').style.position = 'fixed';
+    document.getElementById('particles-container').style.top = '0';
+    document.getElementById('particles-container').style.left = '0';
+    document.getElementById('particles-container').style.width = '100vw';
+    document.getElementById('particles-container').style.height = '100vh';
+    document.getElementById('particles-container').style.zIndex = '-1';
+    document.getElementById('particles-container').style.pointerEvents = 'none';
+
+    particlesJS("particles-container", {
+      "particles": {
+        "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#6366f1" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.3, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#6366f1",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 2,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "window",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+
+    // ==========================================
+// NEW FEATURES LOGIC
+// ==========================================
+
+// 1. Project Category Filtering
+const filterBtns = document.querySelectorAll('.filter-btn');
+const filterItems = document.querySelectorAll('.filter-item');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        filterItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                item.style.display = 'block';
+                // Small animation reset
+                item.style.animation = 'fadeIn 0.5s ease forwards';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+});
+
+// 2. Visitor Analytics (LocalStorage Approach)
+function updateVisitorStats() {
+    const localVisitsEl = document.getElementById('local-visits');
+    const globalViewsEl = document.getElementById('global-views');
+    
+    if(!localVisitsEl || !globalViewsEl) return;
+
+    // Local visits logic
+    let visits = localStorage.getItem('portfolio_visits');
+    if (!visits) {
+        visits = 1;
+    } else {
+        visits = parseInt(visits) + 1;
+    }
+    localStorage.setItem('portfolio_visits', visits);
+    localVisitsEl.innerText = visits;
+
+    // Simulated Global Views (Starts at a high number and increments randomly for effect)
+    // In a real production app, replace this with a hit counter API fetch
+    let globalViews = localStorage.getItem('mock_global_views');
+    if(!globalViews) {
+        globalViews = 15420 + Math.floor(Math.random() * 100);
+    } else {
+        globalViews = parseInt(globalViews) + Math.floor(Math.random() * 3);
+    }
+    localStorage.setItem('mock_global_views', globalViews);
+    globalViewsEl.innerText = globalViews.toLocaleString();
+}
+window.addEventListener('load', updateVisitorStats);
+
+
+// 3. Developer Terminal Logic
+const termInput = document.getElementById('terminal-input');
+const termOutput = document.getElementById('terminal-output');
+
+if(termInput && termOutput) {
+    termInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            const command = termInput.value.toLowerCase().trim();
+            // Safe DOM creation instead of innerHTML to prevent XSS
+            const cmdLine = document.createElement('div');
+            const cmdSpan = document.createElement('span');
+            cmdSpan.style.color = '#94a3b8';
+            cmdSpan.textContent = '> ';
+            cmdLine.appendChild(cmdSpan);
+            const cmdText = document.createElement('span');
+            cmdText.textContent = command;
+            cmdLine.appendChild(cmdText);
+            termOutput.appendChild(cmdLine);
+            
+            // Terminal Responses
+            if (command === 'help') {
+                const msg = document.createElement('div');
+                msg.style.color = '#fbbf24';
+                msg.textContent = 'Available commands: projects, skills, contact, github, clear';
+                termOutput.appendChild(msg);
+            } else if (command === 'projects') {
+                const msg = document.createElement('div');
+                msg.style.color = '#60a5fa';
+                msg.textContent = 'Current active projects: Quiz Master V2, EventOps, Hospital Management System. Filter above to see more.';
+                termOutput.appendChild(msg);
+            } else if (command === 'skills') {
+                const msg = document.createElement('div');
+                msg.style.color = '#f472b6';
+                msg.textContent = 'Frontend, Backend, ML, DevOps. See Tech Stack section above.';
+                termOutput.appendChild(msg);
+            } else if (command === 'contact') {
+                const msg = document.createElement('div');
+                msg.style.color = '#10b981';
+                msg.textContent = 'Email: saqib29abubakar@gmail.com | Phone: +91-9625035483';
+                termOutput.appendChild(msg);
+            } else if (command === 'github') {
+                termOutput.innerHTML += `<div style="color: #cbd5e1;">Opening GitHub profile...</div>`;
+                setTimeout(() => window.open('https://github.com/MOHDSAQIB695786', '_blank'), 800);
+            } else if (command === 'clear') {
+                termOutput.innerHTML = `Welcome to SaqibOS (v1.0.0).<br>Type 'help' to see available commands.<br>`;
+            } else if (command !== '') {
+                const msg = document.createElement('div');
+                msg.style.color = '#ef4444';
+                msg.textContent = `Command not found: '${command}'. Type 'help'.`;
+                termOutput.appendChild(msg);
+            }
+            
+            termInput.value = '';
+            // Auto-scroll to bottom
+            termOutput.scrollTop = termOutput.scrollHeight;
+        }
+    });
+}
+</script>
+<!-- Three.js Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- 3D Objects Logic -->
+<script>
+    // 1. Setup Scene, Camera, and Renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+        canvas: document.querySelector('#canvas-3d'),
+        alpha: true, // Keeps the background transparent so your CSS gradient shows
+        antialias: true
+    });
+    
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.setZ(30);
+
+    // 2. Create Materials (Using your theme colors)
+    // Using wireframe for a cool, technical "Computer Engineer" aesthetic
+    const materialPrimary = new THREE.MeshStandardMaterial({ color: 0x6366f1, wireframe: true });
+    const materialSecondary = new THREE.MeshStandardMaterial({ color: 0xec4899, wireframe: true });
+
+    // 3. Create Shapes
+    // Shape 1: Torus (Donut)
+    const torus = new THREE.Mesh(new THREE.TorusGeometry(10, 3, 16, 100), materialPrimary);
+    torus.position.set(-20, 15, -10);
+    scene.add(torus);
+
+    // Shape 2: Icosahedron (20-sided polygon)
+    const icosahedron = new THREE.Mesh(new THREE.IcosahedronGeometry(7, 0), materialSecondary);
+    icosahedron.position.set(25, -15, -20);
+    scene.add(icosahedron);
+
+    // Shape 3: Octahedron (8-sided polygon)
+    const octahedron = new THREE.Mesh(new THREE.OctahedronGeometry(5, 0), materialPrimary);
+    octahedron.position.set(-15, -20, -15);
+    scene.add(octahedron);
+
+    // 4. Lighting
+    const pointLight = new THREE.PointLight(0xffffff);
+    pointLight.position.set(5, 5, 5);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
+    scene.add(pointLight, ambientLight);
+
+    // 5. Animation Loop
+    function animate3D() {
+        requestAnimationFrame(animate3D);
+
+        // Continuous Rotation
+        torus.rotation.x += 0.005;
+        torus.rotation.y += 0.002;
+        torus.rotation.z += 0.005;
+
+        icosahedron.rotation.x -= 0.005;
+        icosahedron.rotation.z -= 0.005;
+
+        octahedron.rotation.y += 0.005;
+        octahedron.rotation.z += 0.005;
+
+        // Gentle floating up and down using Math.sin
+        const time = Date.now() * 0.001;
+        torus.position.y += Math.sin(time) * 0.02;
+        icosahedron.position.y += Math.sin(time + 1) * 0.02;
+        octahedron.position.y += Math.cos(time) * 0.02;
+
+        renderer.render(scene, camera);
+    }
+    animate3D();
+
+    // 6. Handle Window Resizing
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+// ==========================================
+// COLOR PALETTE SWITCHER LOGIC
+// ==========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const paletteToggleBtn = document.getElementById('palette-toggle-btn');
+    const paletteMenu = document.getElementById('palette-menu');
+    const swatches = document.querySelectorAll('.color-swatch');
+
+    // 1. Toggle menu visibility
+    paletteToggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Prevents click from bubbling up to document
+        paletteMenu.classList.toggle('hidden');
+    });
+
+    // 2. Close menu when clicking outside of it
+    document.addEventListener('click', (e) => {
+        if (!paletteToggleBtn.contains(e.target) && !paletteMenu.contains(e.target)) {
+            paletteMenu.classList.add('hidden');
+        }
+    });
+
+    // 3. Handle color changing
+    swatches.forEach(swatch => {
+        swatch.addEventListener('click', (e) => {
+            const rgbString = e.target.getAttribute('data-color');
+            applyThemeColor(rgbString);
+            
+            // Save preference to localStorage so it persists on reload
+            localStorage.setItem('portfolio_theme_color', rgbString);
+            
+            // Close menu after selection
+            paletteMenu.classList.add('hidden');
+        });
+    });
+
+    // 4. Function to apply the CSS variables globally
+    function applyThemeColor(rgbString) {
+        const root = document.documentElement;
+        // Set variables used in your CSS architecture
+        root.style.setProperty('--color-primary', `rgba(${rgbString}, 1)`);
+        root.style.setProperty('--color-primary-hover', `rgba(${rgbString}, 0.9)`);
+        root.style.setProperty('--color-primary-active', `rgba(${rgbString}, 0.8)`);
+        root.style.setProperty('--color-success', `rgba(${rgbString}, 1)`);
+        
+        // Target the RGB specific variables
+        root.style.setProperty('--color-success-rgb', rgbString);
+        
+        // Optional: Target specific elements if CSS vars miss them
+        document.querySelectorAll('.animated-name, .section-title').forEach(el => {
+            el.style.background = `linear-gradient(135deg, rgba(${rgbString}, 1) 0%, var(--color-secondary) 100%)`;
+            el.style.webkitBackgroundClip = 'text';
+            el.style.webkitTextFillColor = 'transparent';
+        });
+    }
+
+    // 5. Load saved color on startup
+    const savedColor = localStorage.getItem('portfolio_theme_color');
+    if (savedColor) {
+        applyThemeColor(savedColor);
+    }
+});
+
+</script>
+<!-- === 3D MAGNETIC CARDS === -->
+<script>
+    document.querySelectorAll('.card-hover').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+            
+            // Calculate rotation (max 10 degrees)
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+            
+            // Optional: Add a dynamic glare effect based on cursor
+            card.style.boxShadow = `
+                ${-rotateY}px ${rotateX}px 20px rgba(0,0,0,0.2),
+                inset 0 0 20px rgba(255,255,255,0.05)
+            `;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            // Reset to default on mouse exit
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            card.style.boxShadow = 'none';
+        });
+    });
+</script>
+<script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            // When the user has scrolled past 1/3 of the section
+            if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('nav-link-active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('nav-link-active');
+            }
+        });
+    });
+</script>
+<!-- === PROCEDURAL UI SOUNDS === -->
+<script>
+    // Initialize Web Audio API (Must be created after user interaction due to browser policies)
+    let audioCtx;
+    let audioInitialized = false;
+
+    function initAudio() {
+        if (!audioInitialized) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            audioInitialized = true;
+        }
+    }
+
+    // Generate a soft "Tick" sound for hovering over buttons
+    function playHoverTick() {
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        
+        const osc = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(300, audioCtx.currentTime + 0.05);
+        
+        // Very quiet volume so it's not annoying
+        gainNode.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+        
+        osc.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.05);
+    }
+
+    // Initialize audio on first click anywhere on the page
+    document.body.addEventListener('click', initAudio, { once: true });
+
+    // Attach hover sound to all buttons, links, and cards
+    document.querySelectorAll('button, a, .card-hover, .color-swatch').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            if (audioInitialized) playHoverTick();
+        });
+    });
+
+    // Add sound to your terminal input!
+    const termInputBox = document.getElementById('terminal-input');
+    if(termInputBox) {
+        termInputBox.addEventListener('keydown', (e) => {
+            if (audioInitialized && e.key !== 'Enter') {
+                playHoverTick(); // Plays a tiny tick every time you type a letter
+            }
+        });
+    }
+</script>
+
+<script>
+    // Apply spotlight class to all your existing cards
+    document.querySelectorAll('.card, .glass').forEach(card => {
+        card.classList.add('spotlight-card');
+        
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Set CSS variables for the exact mouse position inside the card
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+</script>
+
+<script>
+    // Secret Code Easter Egg
+    const secretCode = ['s', 'a', 'q', 'i', 'b'];
+    let inputSequence = [];
+
+    window.addEventListener('keydown', (e) => {
+        // Ignore if typing in an input or textarea
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        inputSequence.push(e.key.toLowerCase());
+        
+        // Keep the array the same length as the secret code
+        if (inputSequence.length > secretCode.length) {
+            inputSequence.shift();
+        }
+
+        // Check if the sequence matches
+        if (inputSequence.join('') === secretCode.join('')) {
+            triggerMatrixEasterEgg();
+        }
+    });
+
+    function triggerMatrixEasterEgg() {
+        // Alert the user
+        alert("System Override Activated. Welcome, Admin.");
+        
+        // Change theme colors temporarily to Matrix Green
+        document.documentElement.style.setProperty('--color-primary', '#00ff41');
+        document.documentElement.style.setProperty('--color-secondary', '#008F11');
+        document.body.style.backgroundColor = '#0D0208';
+        document.body.style.color = '#00ff41';
+        
+        // Change fonts to monospace globally
+        document.body.style.fontFamily = "'JetBrains Mono', monospace";
+        
+        // Reset sequence
+        inputSequence = [];
+    }
+</script>
 </body>
 </html>
