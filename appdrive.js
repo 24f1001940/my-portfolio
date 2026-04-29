@@ -1157,7 +1157,17 @@
                 UI.showLoading(true);
                 
                 const response = await API.listFiles(folderId, searchQuery);
-                STATE.files = response.files || [];
+                // If backend indicates missing Drive API key, show actionable UI
+                if (response && response._missing_key) {
+                    UI.showEmptyState('Drive API not configured (server)');
+                    UI.updateStatus('Drive API key missing', 'error');
+                    UI.showSnackbar('Google Drive API key is not set on the server. Set `GOOGLE_DRIVE_API_KEY` in your deployment.', 'Docs', () => {
+                        window.open('https://vercel.com/docs/environment-variables', '_blank');
+                    });
+                    STATE.files = [];
+                } else {
+                    STATE.files = response.files || [];
+                }
                 
                 // Apply sorting and filtering
                 this.sortFiles();

@@ -38,7 +38,9 @@ app.post('/api/contact', contact);
 app.use('/api/drive', async (req, res) => {
   const apiKey = process.env.GOOGLE_DRIVE_API_KEY;
   if (!apiKey) {
-    return res.status(500).json({ error: 'GOOGLE_DRIVE_API_KEY is not configured' });
+    // Return a friendly response that the frontend can detect and show
+    // a clear message to the user instead of a generic 500 error.
+    return res.json({ files: [], _missing_key: true, message: 'GOOGLE_DRIVE_API_KEY is not configured' });
   }
 
   const requestPath = (req.path || '').replace(/^\//, '');
