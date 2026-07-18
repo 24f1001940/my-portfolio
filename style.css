@@ -3280,3 +3280,83 @@ html {
     left: 0;
   }
 }
+
+/* Additive portfolio upgrades */
+.services-subtitle {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  color: var(--color-text-secondary);
+}
+
+.services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.service-card {
+  height: 100%;
+}
+
+.service-points {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--color-text-secondary);
+}
+
+.service-points li {
+  margin-bottom: 0.45rem;
+}
+
+.live-stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.live-stat-card {
+  text-align: center;
+}
+
+.live-stat-label {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.live-stat-number {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-top: 0.6rem;
+}
+
+.live-stat-static {
+  font-size: clamp(1.35rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 0.75rem;
+}
+
+.availability-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#availability-text {
+  font-weight: 600;
+}
+
+#india-clock {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  letter-spacing: 0.4px;
+}
+
+@media (max-width: 768px) {
+  .availability-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

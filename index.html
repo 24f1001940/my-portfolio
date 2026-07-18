@@ -702,6 +702,7 @@ a, button { cursor: none; }
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
         <li><a href="#certifications" class="nav-link">Certifications</a></li>
         <li><a href="#resources" class="nav-link">Resources</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
         <!-- <li><a href="#contact" class="nav-link">Contact</a></li> -->
         
@@ -1965,6 +1966,87 @@ if (window.annyang) {
   </div>
 </section>
 
+
+
+<section id="services" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">Services & Collaboration</h2>
+  <p class="text-center mt-8 services-subtitle">
+    I help teams and founders turn ideas into production-ready products with clean architecture, performance-first design, and measurable outcomes.
+  </p>
+  <div class="services-grid grid mt-16">
+    <article class="service-card card">
+      <div class="card__body">
+        <h3>⚡ Full-Stack MVP Development</h3>
+        <p class="mt-8">From wireframe to deployment with scalable backend APIs, responsive frontend, and clean modular code.</p>
+        <ul class="service-points mt-8">
+          <li>Rapid prototype to launch-ready build</li>
+          <li>REST API integration and optimization</li>
+          <li>Deployment support with best practices</li>
+        </ul>
+      </div>
+    </article>
+    <article class="service-card card">
+      <div class="card__body">
+        <h3>📊 Data & Analytics Solutions</h3>
+        <p class="mt-8">Data pipelines, insights dashboards, and analytics workflows that convert raw data into clear decisions.</p>
+        <ul class="service-points mt-8">
+          <li>Data cleaning and modeling workflows</li>
+          <li>Python-based analytics automation</li>
+          <li>Insight-focused dashboards and reports</li>
+        </ul>
+      </div>
+    </article>
+    <article class="service-card card">
+      <div class="card__body">
+        <h3>🤝 Technical Mentorship</h3>
+        <p class="mt-8">Personalized guidance for students and early professionals in DSA, web development, and project building.</p>
+        <ul class="service-points mt-8">
+          <li>Hands-on project architecture reviews</li>
+          <li>Interview and problem-solving mentorship</li>
+          <li>Career-focused learning roadmaps</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="live-stats" class="container py-16" data-aos="fade-up">
+  <h2 class="section-title">Live Snapshot</h2>
+  <div class="live-stats-grid grid mt-16">
+    <div class="live-stat-card card">
+      <div class="card__body">
+        <span class="live-stat-label">Projects Delivered</span>
+        <p class="live-stat-number" data-target="22">0</p>
+      </div>
+    </div>
+    <div class="live-stat-card card">
+      <div class="card__body">
+        <span class="live-stat-label">Certifications Earned</span>
+        <p class="live-stat-number" data-target="18">0</p>
+      </div>
+    </div>
+    <div class="live-stat-card card">
+      <div class="card__body">
+        <span class="live-stat-label">Tech Stack Tools</span>
+        <p class="live-stat-number" data-target="30">0</p>
+      </div>
+    </div>
+    <div class="live-stat-card card">
+      <div class="card__body">
+        <span class="live-stat-label">Response Time</span>
+        <p class="live-stat-static">&lt; 24 Hours</p>
+      </div>
+    </div>
+  </div>
+  <div class="availability-card card mt-16">
+    <div class="card__body availability-wrapper">
+      <p><strong>Current Status:</strong> <span id="availability-text">Checking...</span></p>
+      <p><strong>Local Time (India):</strong> <span id="india-clock">--:--:--</span></p>
+      <a href="#contact" class="btn btn--primary btn--sm">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
 <section id="faq" class="container py-16">
     <h2 class="section-title">Frequently Asked Questions</h2>
     <div class="faq-list mt-16">
@@ -2278,6 +2360,66 @@ if (window.annyang) {
         .catch((err) => console.log("Service Worker registration failed:", err));
     });
   }
+</script>
+<script>
+  (function () {
+    const statsSection = document.getElementById('live-stats');
+    const statNumbers = document.querySelectorAll('.live-stat-number');
+    if (!statsSection || statNumbers.length === 0) return;
+
+    let hasAnimated = false;
+    const animateCount = (element) => {
+      const target = Number(element.dataset.target || 0);
+      const duration = 1200;
+      const startTime = performance.now();
+
+      const step = (now) => {
+        const progress = Math.min((now - startTime) / duration, 1);
+        const value = Math.floor(progress * target);
+        element.textContent = String(value);
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          element.textContent = String(target);
+        }
+      };
+
+      requestAnimationFrame(step);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          statNumbers.forEach(animateCount);
+        }
+      });
+    }, { threshold: 0.35 });
+
+    observer.observe(statsSection);
+  })();
+</script>
+<script>
+  (function () {
+    const availabilityEl = document.getElementById('availability-text');
+    const clockEl = document.getElementById('india-clock');
+    if (!availabilityEl || !clockEl) return;
+
+    const updateStatus = () => {
+      const now = new Date();
+      const indiaString = now.toLocaleTimeString('en-IN', { timeZone: 'Asia/Kolkata', hour12: false });
+      clockEl.textContent = indiaString;
+
+      const indiaHour = Number(
+        now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', hour12: false })
+      );
+      const isAvailable = indiaHour >= 9 && indiaHour < 22;
+      availabilityEl.textContent = isAvailable ? '🟢 Available for meetings' : '🟡 Usually replies within 24 hours';
+    };
+
+    updateStatus();
+    setInterval(updateStatus, 1000);
+  })();
 </script>
 <script>
   let deferredPrompt;
