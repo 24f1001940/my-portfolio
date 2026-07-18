@@ -889,3 +889,199 @@ initMobileMenu();
     initPortfolioEnhancements();
   }
 })();
+
+
+// === Search, contact, and performance utilities (additive) ===
+(function () {
+  function initPortfolioUtilities() {
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const searchBar = document.getElementById('search-bar');
+    const searchInput = searchBar && searchBar.querySelector('input');
+    const searchClose = document.getElementById('search-close');
+
+    let announcer = document.getElementById('site-announcer');
+    if (!announcer) {
+      announcer = document.createElement('div');
+      announcer.id = 'site-announcer';
+      announcer.setAttribute('role', 'status');
+      announcer.setAttribute('aria-live', 'polite');
+      document.body.appendChild(announcer);
+    }
+
+    const announce = (message) => {
+      announcer.textContent = '';
+      window.setTimeout(() => {
+        announcer.textContent = message;
+      }, 50);
+    };
+
+    if (searchBar && searchInput) {
+      searchBar.setAttribute('role', 'search');
+      searchInput.id = searchInput.id || 'portfolio-search-input';
+
+      let results = document.getElementById('portfolio-search-results');
+      if (!results) {
+        results = document.createElement('ul');
+        results.id = 'portfolio-search-results';
+        results.setAttribute('role', 'listbox');
+        results.hidden = true;
+        searchBar.appendChild(results);
+      }
+
+      searchInput.setAttribute('aria-controls', results.id);
+      searchInput.setAttribute('aria-expanded', 'false');
+
+      const sections = Array.from(document.querySelectorAll('section[id]')).map((section) => {
+        const heading = section.querySelector('h1, h2, h3');
+        return {
+          id: section.id,
+          label: (heading ? heading.textContent : section.id).replace(/\s+/g, ' ').trim(),
+          content: section.textContent.replace(/\s+/g, ' ').trim()
+        };
+      });
+
+      const hideResults = () => {
+        results.hidden = true;
+        searchInput.setAttribute('aria-expanded', 'false');
+      };
+
+      const showSearch = () => {
+        searchBar.classList.remove('hidden');
+        searchInput.focus();
+      };
+
+      const renderResults = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        results.replaceChildren();
+
+        if (query.length < 2) {
+          hideResults();
+          return;
+        }
+
+        const matches = sections.filter((section) =>
+          (section.label + ' ' + section.content).toLowerCase().includes(query)
+        ).slice(0, 6);
+
+        if (!matches.length) {
+          const empty = document.createElement('li');
+          empty.className = 'portfolio-search-empty';
+          empty.textContent = 'No matching sections found.';
+          results.appendChild(empty);
+        } else {
+          matches.forEach((match) => {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#' + match.id;
+            link.setAttribute('role', 'option');
+            link.textContent = match.label;
+            link.addEventListener('click', (event) => {
+              event.preventDefault();
+              const section = document.getElementById(match.id);
+              if (!section) return;
+              section.tabIndex = -1;
+              section.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+              window.setTimeout(() => section.focus({ preventScroll: true }), reducedMotion ? 0 : 350);
+              searchInput.value = '';
+              hideResults();
+              announce(match.label + ' section opened.');
+            });
+            item.appendChild(link);
+            results.appendChild(item);
+          });
+        }
+
+        results.hidden = false;
+        searchInput.setAttribute('aria-expanded', 'true');
+      };
+
+      let searchTrigger = document.getElementById('portfolio-search-trigger');
+      if (!searchTrigger) {
+        searchTrigger = document.createElement('button');
+        searchTrigger.id = 'portfolio-search-trigger';
+        searchTrigger.type = 'button';
+        searchTrigger.className = 'btn btn--outline btn--sm portfolio-search-trigger';
+        searchTrigger.setAttribute('aria-label', 'Search this portfolio');
+        searchTrigger.innerHTML = '<i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span>Search</span>';
+        searchBar.parentNode.insertBefore(searchTrigger, searchBar);
+      }
+
+      searchTrigger.addEventListener('click', showSearch);
+      searchInput.addEventListener('input', renderResults);
+      searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          searchInput.value = '';
+          hideResults();
+          searchBar.classList.add('hidden');
+          searchTrigger.focus();
+        }
+      });
+
+      if (searchClose) {
+        searchClose.addEventListener('click', () => {
+          searchInput.value = '';
+          hideResults();
+          searchBar.classList.add('hidden');
+          searchTrigger.focus();
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        const activeTag = document.activeElement && document.activeElement.tagName;
+        const typing = activeTag === 'INPUT' || activeTag === 'TEXTAREA' || activeTag === 'SELECT';
+        const commandK = (event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k';
+        const slash = event.key === '/' && !typing;
+
+        if (commandK || slash) {
+          event.preventDefault();
+          showSearch();
+        }
+      });
+    }
+
+    const emailLink = document.querySelector('#contact a[href^="mailto:"]');
+    if (emailLink && !document.getElementById('portfolio-copy-email')) {
+      const copyEmail = document.createElement('button');
+      copyEmail.id = 'portfolio-copy-email';
+      copyEmail.type = 'button';
+      copyEmail.className = 'portfolio-copy-email';
+      copyEmail.textContent = 'Copy email';
+      copyEmail.setAttribute('aria-label', 'Copy email address');
+      emailLink.insertAdjacentElement('afterend', copyEmail);
+
+      copyEmail.addEventListener('click', async () => {
+        const email = emailLink.href.replace(/^mailto:/i, '');
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch (_) {
+          const temporary = document.createElement('textarea');
+          temporary.value = email;
+          document.body.appendChild(temporary);
+          temporary.select();
+          document.execCommand('copy');
+          temporary.remove();
+        }
+        copyEmail.textContent = 'Copied!';
+        announce('Email address copied to the clipboard.');
+        window.setTimeout(() => {
+          copyEmail.textContent = 'Copy email';
+        }, 1800);
+      });
+    }
+
+    document.querySelectorAll('main img').forEach((image) => {
+      if (!image.hasAttribute('loading')) image.loading = 'lazy';
+      image.decoding = 'async';
+    });
+
+    document.querySelectorAll('iframe').forEach((frame) => {
+      if (!frame.title) frame.title = 'Embedded location map';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortfolioUtilities, { once: true });
+  } else {
+    initPortfolioUtilities();
+  }
+})();
