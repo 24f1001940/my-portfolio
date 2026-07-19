@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initIntersectionObserver();
   initFloating3D();
   initHeroDepthScene();
+  initHeroActionMagnet();
 });
 
 // Theme Toggle Functionality
@@ -404,10 +405,12 @@ function initHeroDepthScene() {
 
   const heading = hero.querySelector('h1');
   const subHeading = hero.querySelector('h2');
-  const actions = hero.querySelector('.flex.gap-16');
+  const summary = hero.querySelector('.hero-summary');
+  const actions = hero.querySelector('.hero-actions') || hero.querySelector('.flex.gap-16');
 
   if (heading) heading.classList.add('hero-depth-layer', 'hero-depth-front');
   if (subHeading) subHeading.classList.add('hero-depth-layer', 'hero-depth-mid');
+  if (summary) summary.classList.add('hero-depth-layer', 'hero-depth-mid');
   if (actions) actions.classList.add('hero-depth-layer', 'hero-depth-back');
 
   if (prefersReducedMotion) return;
@@ -440,6 +443,30 @@ function initHeroDepthScene() {
     hero.style.setProperty('--hero-glow-x', '50%');
     hero.style.setProperty('--hero-glow-y', '50%');
     hero.classList.remove('hero-3d-active');
+  });
+}
+
+function initHeroActionMagnet() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const actionButtons = document.querySelectorAll('.hero-cta');
+  if (!actionButtons.length) return;
+
+  actionButtons.forEach((button) => {
+    button.addEventListener('mousemove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left - rect.width / 2;
+      const y = event.clientY - rect.top - rect.height / 2;
+      const offsetX = (x / rect.width) * 12;
+      const offsetY = (y / rect.height) * 10;
+      button.style.setProperty('--mx', `${offsetX.toFixed(2)}px`);
+      button.style.setProperty('--my', `${offsetY.toFixed(2)}px`);
+    });
+
+    button.addEventListener('mouseleave', () => {
+      button.style.setProperty('--mx', '0px');
+      button.style.setProperty('--my', '0px');
+    });
   });
 }
 
