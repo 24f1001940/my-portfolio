@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   setCurrentYear();
   initIntersectionObserver();
   initFloating3D();
+  initHeroDepthScene();
 });
 
 // Theme Toggle Functionality
@@ -391,6 +392,54 @@ function initFloating3D() {
       const y = (event.clientY / window.innerHeight - 0.5) * 18;
       floatingEl.style.transform = `translate3d(${x}px, ${y}px, 0)`;
     });
+  });
+}
+
+function initHeroDepthScene() {
+  const hero = document.getElementById('home');
+  if (!hero) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  hero.classList.add('hero-3d-scene');
+
+  const heading = hero.querySelector('h1');
+  const subHeading = hero.querySelector('h2');
+  const actions = hero.querySelector('.flex.gap-16');
+
+  if (heading) heading.classList.add('hero-depth-layer', 'hero-depth-front');
+  if (subHeading) subHeading.classList.add('hero-depth-layer', 'hero-depth-mid');
+  if (actions) actions.classList.add('hero-depth-layer', 'hero-depth-back');
+
+  if (prefersReducedMotion) return;
+
+  let frameId = null;
+
+  const applyTilt = (event) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    const rotateX = Number((-y * 8).toFixed(2));
+    const rotateY = Number((x * 10).toFixed(2));
+
+    hero.style.setProperty('--hero-rotate-x', `${rotateX}deg`);
+    hero.style.setProperty('--hero-rotate-y', `${rotateY}deg`);
+    hero.style.setProperty('--hero-glow-x', `${((x + 0.5) * 100).toFixed(1)}%`);
+    hero.style.setProperty('--hero-glow-y', `${((y + 0.5) * 100).toFixed(1)}%`);
+    hero.classList.add('hero-3d-active');
+  };
+
+  hero.addEventListener('mousemove', (event) => {
+    if (frameId) cancelAnimationFrame(frameId);
+    frameId = requestAnimationFrame(() => applyTilt(event));
+  });
+
+  hero.addEventListener('mouseleave', () => {
+    hero.style.setProperty('--hero-rotate-x', '0deg');
+    hero.style.setProperty('--hero-rotate-y', '0deg');
+    hero.style.setProperty('--hero-glow-x', '50%');
+    hero.style.setProperty('--hero-glow-y', '50%');
+    hero.classList.remove('hero-3d-active');
   });
 }
 

@@ -720,6 +720,58 @@ select.form-control {
   line-height: var(--line-height-normal);
 }
 
+.hero-3d-scene {
+  --hero-rotate-x: 0deg;
+  --hero-rotate-y: 0deg;
+  --hero-glow-x: 50%;
+  --hero-glow-y: 50%;
+  position: relative;
+  perspective: 1100px;
+  transform-style: preserve-3d;
+  transition: filter 260ms ease;
+}
+
+.hero-3d-scene::before {
+  content: '';
+  position: absolute;
+  inset: 14% 18% 18%;
+  border-radius: 24px;
+  background: radial-gradient(circle at var(--hero-glow-x) var(--hero-glow-y), rgba(99, 102, 241, 0.22), transparent 58%);
+  filter: blur(18px);
+  opacity: 0;
+  transition: opacity 260ms ease;
+  pointer-events: none;
+}
+
+.hero-3d-scene.hero-3d-active::before {
+  opacity: 1;
+}
+
+.hero-depth-layer {
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+.hero-depth-front {
+  transform: translateZ(58px) rotateX(var(--hero-rotate-x)) rotateY(var(--hero-rotate-y));
+}
+
+.hero-depth-mid {
+  transform: translateZ(34px) rotateX(var(--hero-rotate-x)) rotateY(var(--hero-rotate-y));
+}
+
+.hero-depth-back {
+  transform: translateZ(18px) rotateX(var(--hero-rotate-x)) rotateY(var(--hero-rotate-y));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-scene::before,
+  .hero-depth-layer {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
 /* Section Titles */
 .section-title {
   text-align: center;
