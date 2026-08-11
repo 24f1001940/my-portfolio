@@ -413,6 +413,172 @@
     "institution": "IIT Madras",
     "type": "Online Course"
   }
+  ,
+  {
+    "title": "Market Research",
+    "code": "BSMS3002",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Introduction to Big Data",
+    "code": "BSDA5001",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Managerial Economics",
+    "code": "BSMS3033",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Game Theory and Strategy",
+    "code": "BSMS4023",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Corporate Finance",
+    "code": "BSMS3034",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Deep Learning Practice",
+    "code": "BSDA5013",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "Machine Learning Operations (MLOps)",
+    "code": "BSDA5014",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  {
+    "title": "POSH Training",
+    "code": "POSH",
+    "institution": "IIT Madras",
+    "type": "Online"
+  },
+  
+  {
+    "title": "Cryptography & Network Security",
+    "code": "MCEN-101",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Data Analytics",
+    "code": "MCEN-102",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Advance Communication Network",
+    "code": "MCEN-103",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Algorithm Design",
+    "code": "MCEN-104",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "ADBMS",
+    "code": "MCEN-105",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Algorithm & Data Base Design Lab",
+    "code": "MCEN-191",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Data Analytics Lab",
+    "code": "MCEN-192",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Machine Learning (CBCS)",
+    "code": "MCEN-201",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Parallel Computing",
+    "code": "MCEN-202",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Soft Computing",
+    "code": "MCEN-203",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Wireless Technologies for WSN & IoT",
+    "code": "MCEN-204",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Intelligent Systems",
+    "code": "MCEN-205",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Soft Computing Lab",
+    "code": "MCEN-291",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Machine Learning & IoT Lab",
+    "code": "MCEN-292",
+    "institution": "Jamia Millia Islamia",
+    "type": "Lab"
+  },
+  {
+    "title": "Seminar",
+    "code": "MCEN-293",
+    "institution": "Jamia Millia Islamia",
+    "type": "Seminar"
+  },
+  {
+    "title": "Image Processing",
+    "code": "MCEN-302",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Deep Learning",
+    "code": "MCEN-303",
+    "institution": "Jamia Millia Islamia",
+    "type": "Theory"
+  },
+  {
+    "title": "Minor Project",
+    "code": "MCEN-391",
+    "institution": "Jamia Millia Islamia",
+    "type": "Project"
+  },
+  {
+    "title": "Dissertation",
+    "code": "CEN-491",
+    "institution": "Jamia Millia Islamia",
+    "type": "Dissertation"
+  }
+
+
 ]
 
 

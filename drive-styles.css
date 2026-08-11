@@ -2536,5 +2536,38 @@ pre {
     0% { background-position: 0 0; }
     100% { background-position: 20px 0; }
 }
+/* Audio preview */
+.preview-audio-container {
+    width: 100%;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+}
 
+.preview-audio {
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Text / code preview */
+.preview-text-container {
+    margin-top: var(--spacing-md);
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    background: var(--bg-secondary);
+}
+
+.preview-code {
+    margin: 0;
+    padding: var(--spacing-md);
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: var(--font-family-mono);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+    background: transparent;
+    border: 0;
+}
 /* End of comprehensive styles */

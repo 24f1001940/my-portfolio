@@ -383,6 +383,62 @@
                 return null;
             }
         },
+                /**
+         * Save user preferences
+         */
+        savePreferences() {
+            try {
+                localStorage.setItem('driveExplorerPreferences', JSON.stringify({
+                    theme: STATE.theme,
+                    viewMode: STATE.viewMode,
+                    sortBy: STATE.sortBy,
+                    sortOrder: STATE.sortOrder,
+                    filterType: STATE.filterType,
+                    isNavCollapsed: STATE.isNavCollapsed,
+                    isPreviewCollapsed: STATE.isPreviewCollapsed
+                }));
+            } catch (error) {
+                console.warn('Could not save preferences:', error);
+            }
+        },
+
+        /**
+         * Load user preferences
+         */
+        loadPreferences() {
+            try {
+                const saved = localStorage.getItem('driveExplorerPreferences');
+                if (!saved) return;
+
+                const preferences = JSON.parse(saved);
+
+                if (preferences.theme === 'light' || preferences.theme === 'dark') {
+                    STATE.theme = preferences.theme;
+                }
+
+                if (preferences.viewMode === 'list' || preferences.viewMode === 'grid') {
+                    STATE.viewMode = preferences.viewMode;
+                }
+
+                if (['name', 'modified', 'size', 'type'].includes(preferences.sortBy)) {
+                    STATE.sortBy = preferences.sortBy;
+                }
+
+                if (['asc', 'desc'].includes(preferences.sortOrder)) {
+                    STATE.sortOrder = preferences.sortOrder;
+                }
+
+                if (typeof preferences.filterType === 'string') {
+                    STATE.filterType = preferences.filterType;
+                }
+
+                STATE.isNavCollapsed = Boolean(preferences.isNavCollapsed);
+                STATE.isPreviewCollapsed = Boolean(preferences.isPreviewCollapsed);
+
+            } catch (error) {
+                console.warn('Could not load preferences:', error);
+            }
+        },
 
         /**
          * Calculate relative time
@@ -875,7 +931,29 @@
                         </iframe>
                     </div>
                 `;
-            } else if (file.webViewLink) {
+                         } else if (fileType === 'audio' && file.webContentLink) {
+                previewHTML += `
+                    <div class="preview-audio-container">
+                        <audio
+                            class="preview-audio"
+                            controls
+                            preload="metadata">
+                            <source src="${file.webContentLink}" type="${file.mimeType}">
+                            Your browser does not support audio playback.
+                        </audio>
+                    </div>
+                `;
+                         }
+
+                         else if (fileType === 'text' && file.webContentLink) {
+                previewHTML += `
+                    <div class="preview-text-container">
+                        <div class="preview-text-loading">
+                            Loading preview...
+                        </div>
+                    </div>
+                `;    }         
+            else if (file.webViewLink) {
                 previewHTML += `
                     <div class="preview-iframe-container">
                         <iframe src="${file.webViewLink}" 
@@ -891,7 +969,8 @@
                 <div class="preview-actions">
                     ${file.webViewLink ? `
                         <a href="${file.webViewLink}" 
-                           target="_blank" 
+                           target="_blank"
+rel="noopener noreferrer" 
                            class="preview-action-btn primary">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -904,7 +983,8 @@
                     
                     ${file.webContentLink ? `
                         <a href="${file.webContentLink}" 
-                           target="_blank" 
+                           target="_blank"
+rel="noopener noreferrer" 
                            class="preview-action-btn">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -918,13 +998,43 @@
             `;
             
             DOM.previewContainer.innerHTML = previewHTML;
+                        if (fileType === 'text') {
+                this.loadTextPreview(file);
+            }
             
             // Show preview pane if collapsed
             if (STATE.isPreviewCollapsed) {
                 this.togglePreviewPane();
             }
         },
+                    /**
+         * Load text file preview
+         */
+        async loadTextPreview(file) {
+            const container = DOM.previewContainer.querySelector('.preview-text-container');
 
+            if (!container) return;
+
+            try {
+                const content = await API.getFileContent(file.id);
+
+                const text = typeof content === 'string'
+                    ? content
+                    : JSON.stringify(content, null, 2);
+
+                container.innerHTML = `
+                    <pre class="preview-code"><code>${Utils.escapeHtml(text)}</code></pre>
+                `;
+            } catch (error) {
+                console.error('Text preview failed:', error);
+
+                container.innerHTML = `
+                    <div class="preview-error">
+                        Unable to load text preview.
+                    </div>
+                `;
+            }
+        },
         /**
          * Hide file preview
          */
@@ -1019,7 +1129,7 @@
         toggleTheme() {
             STATE.theme = STATE.theme === 'light' ? 'dark' : 'light';
             document.documentElement.setAttribute('data-theme', STATE.theme);
-            
+                Utils.savePreferences();
             // Update button aria-label
             DOM.themeToggleBtn.setAttribute('aria-label', 
                 STATE.theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
@@ -1934,15 +2044,16 @@
          */
         async init() {
             try {
-                // Initialize DOM references
+// Initialize DOM references
                 UI.initDOMReferences();
-                
+
+                // Load saved user preferences
+                Utils.loadPreferences();
+
                 // Initialize event handlers
                 EventHandlers.init();
-                
-                // Set initial theme
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                STATE.theme = prefersDark ? 'dark' : 'light';
+
+                // Apply saved theme
                 document.documentElement.setAttribute('data-theme', STATE.theme);
                 
                 // Validate configuration
@@ -1962,8 +2073,10 @@
                 ]);
                 
                 UI.renderBreadcrumb();
-                UI.updateStatus('Ready');
-                
+UI.updateStatus(
+    `${STATE.filteredFiles.length} items loaded`,
+    'success'
+);                
                 // Show welcome message
                 UI.showSnackbar('Welcome to Drive Explorer! Press ? for keyboard shortcuts.');
                 

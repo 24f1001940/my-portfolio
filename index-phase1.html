@@ -614,7 +614,71 @@ a, button { cursor: none; }
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
+/* =========================================
+   Udemy Carousel Custom Styles
+   ========================================= */
+.udemy-carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
+.udemy-carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.udemy-carousel-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
+}
+
+.udemy-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+}
+
+.udemy-slide-img {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.udemy-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-card-border, #e2e8f0);
+  color: var(--color-primary, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.2s ease;
+}
+
+.udemy-carousel-arrow:hover {
+  background: var(--color-primary, #6366f1);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.udemy-carousel-arrow.prev { left: -22px; }
+.udemy-carousel-arrow.next { right: -22px; }
+
+@media (max-width: 768px) {
+  .udemy-carousel-arrow.prev { left: 4px; }
+  .udemy-carousel-arrow.next { right: 4px; }
+}
 
     /* Add this style to handle the active state */
     .nav-link-active {
@@ -683,155 +747,83 @@ a, button { cursor: none; }
     100% { transform: translate(-5%, 5%) scale(0.9); }
 }
 
-/* --- Carousel Structural Layout --- */
+
+/* Carousel Structural Layout */
 .udemy-carousel-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 10px 0;
 }
 
-/* Viewport with modern gradient fade masks at left/right boundaries */
 .udemy-carousel-viewport {
   width: 100%;
   overflow: hidden;
   border-radius: 16px;
-  mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
 }
 
-/* Infinite Track Engine */
 .udemy-carousel-track {
   display: flex;
-  gap: 1.5rem;
-  width: max-content;
-  /* Smooth, continuous infinite animation */
-  align-items: stretch;
-  animation: continuousScroll 25s linear infinite;
-  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  width: 100%;
 }
 
-/* Pause animation on user hover for accessibility & usability */
-.udemy-carousel-viewport:hover .udemy-carousel-track {
-  animation-play-state: paused;
-}
-
-/* Keyframe for 1:1 Seamless Loop (Requires doubling items in HTML) */
-@keyframes continuousScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(calc(-50% - 0.75rem)); /* Offset half width + track gap */
-  }
-}
-
-/* --- Slide Styling --- */
 .udemy-slide {
-  /* Set strictly identical width for every card */
-  flex: 0 0 420px;
-  width: 420px;
-  min-width: 420px;
-  max-width: 420px;
-
-  /* Stretch content vertically */
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex: 0 0 100%;
+  min-width: 100%;
   box-sizing: border-box;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.udemy-slide:hover {
-  transform: translateY(-4px) scale(1.02);
 }
 
 .udemy-slide-img {
   position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9; /* Enforces identical image height across all slides */
-  border-radius: 12px;
-  overflow: hidden;
   flex-shrink: 0;
 }
 
-.udemy-slide-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Crops images cleanly to fit without distortion */
-  display: block;
-}
-
-/* --- Premium Control Arrows (Glassmorphism Effect) --- */
+/* Control Arrows Styling */
 .udemy-carousel-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: var(--color-surface, rgba(255, 255, 255, 0.85));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--color-card-border, rgba(255, 255, 255, 0.3));
-  color: var(--color-text, #0f172a);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-card-border, rgba(0, 0, 0, 0.1));
+  color: var(--color-text, #1e293b);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
 }
 
 .udemy-carousel-arrow:hover {
   background: var(--color-primary, #6366f1);
   color: #ffffff;
-  border-color: transparent;
-  transform: translateY(-50%) scale(1.12);
-  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.35);
-}
-
-.udemy-carousel-arrow:active {
-  transform: translateY(-50%) scale(0.95);
+  transform: translateY(-50%) scale(1.08);
 }
 
 .udemy-carousel-arrow.prev {
-  left: -24px;
+  left: -20px;
 }
 
 .udemy-carousel-arrow.next {
-  right: -24px;
+  right: -20px;
 }
 
-/* --- Mobile Responsiveness --- */
+/* Mobile responsive arrow placement */
 @media (max-width: 768px) {
-  
-  .udemy-slide {
-    flex: 0 0 300px;
-    width: 300px;
-    min-width: 300px;
-    max-width: 300px;
-  }
-
-  .udemy-carousel-arrow {
-    width: 40px;
-    height: 40px;
-  }
-
   .udemy-carousel-arrow.prev {
-    left: 4px;
+    left: 8px;
   }
-
   .udemy-carousel-arrow.next {
-    right: 4px;
+    right: 8px;
   }
 }
 </style>
-</link></link>
-
-</head>
+</link></link></head>
 <body style="background-image: radial-gradient(#6366f1 0.5px, transparent 0.5px), radial-gradient(#6366f1 0.5px, var(--color-background) 0.5px); background-size: 20px 20px; background-position: 0 0, 10px 10px; background-attachment: fixed;"> <div id="particles-container"></div>
 <!-- 3D Background Canvas -->
 <canvas id="canvas-3d" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none;"></canvas>
@@ -1194,11 +1186,8 @@ if (window.annyang) {
 <button aria-label="Previous Course" class="udemy-carousel-arrow prev" id="udemyPrev">
 <i class="fa-solid fa-chevron-left"></i>
 </button>
-<div
-  class="udemy-carousel-viewport"
-  role="region"
-  aria-label="Featured Udemy courses"
-  aria-roledescription="carousel"><div class="udemy-carousel-track" id="udemyTrack">
+<div class="udemy-carousel-viewport">
+<div class="udemy-carousel-track" id="udemyTrack">
 <!-- Slide 1: Flagship GenAI & RAG Course -->
 <div class="udemy-slide">
 <div class="card card__body flex flex-col md:flex-row gap-16 items-center spotlight-card">
@@ -2214,8 +2203,8 @@ if (window.annyang) {
 <span class="yt-views-count-large" id="yt-live-views-dup">Loading...</span>
 <span class="yt-views-label-large">YouTube Views</span>
 </div>
-</div> 
- <div class="yt-views-badge-large">
+</div>
+<div class="yt-views-badge-large">
 <i class="fa-brands fa-youtube yt-views-icon-large"></i>
 <div class="yt-views-text-large">
 <span class="yt-views-count-large">Mohd Saqib Channel</span>
@@ -2620,11 +2609,8 @@ const MAX_VIDEOS = 6;
 
 // Function to display videos
 function displayYoutubeVideos(videos) {
-const grid = document.getElementById('youtube-videos-grid');
-
-if (!grid) return;
-
-grid.innerHTML = '';
+  const grid = document.getElementById('youtube-videos-grid');
+  grid.innerHTML = '';
 
   if (!videos || !videos.length) {
     grid.innerHTML = '<p style="grid-column: 1 / -1; color: var(--color-text-secondary);">No videos available right now.</p>';

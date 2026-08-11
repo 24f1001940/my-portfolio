@@ -60,3 +60,8 @@ body.global-fx-reveal {
   .fx-shape,
   body.global-fx-reveal { transition: none !important; animation: none !important; }
 }
+
+.container {
+    position: relative;
+    z-index: 2;
+}

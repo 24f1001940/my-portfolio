@@ -1,126 +1,327 @@
-# 📄 Portfolio Website – README.md
+# Mohd Saqib — AI & ML Portfolio
 
-## Mohd Saqib – Professional Portfolio
+<div align="center">
 
-Welcome to the repository for **Mohd Saqib’s Portfolio Website**. This is a modern, high-fidelity, fully responsive portfolio site built with HTML, CSS, and JavaScript. It showcases your education, skills, projects, achievements, and contact information in a clean, professional design with dark/light theme support.
+### M.Tech AI & ML • Generative AI • AI Agents • Data Science • Full-Stack Development
+
+A modern, responsive personal portfolio showcasing my academic journey, technical skills, projects, AI work, teaching, achievements, and professional experience.
+
+</div>
 
 ---
 
-## 🚀 Features
+## 👨‍💻 About Me
 
-- **Modern UI/UX**: Clean, minimalist, and professional layout
-- **Dark/Light Theme**: Easily toggle between color schemes
-- **Responsive Design**: Looks great on desktop, tablet, and mobile
-- **Smooth Animations**: Interactive elements with transitions
-- **Contact Form**: Functional and user-friendly form with validation
-- **SEO Optimized**: Proper HTML structure and meta tags
-- **Easy Customization**: All content is modular and easy to edit
+I'm **Mohd Saqib**, a Computer Engineer and Data Science practitioner currently pursuing an **M.Tech in Computer Engineering with a focus on Artificial Intelligence & Machine Learning at Jamia Millia Islamia**.
+
+Alongside my M.Tech, I am completing a **BS in Data Science & Applications from IIT Madras**.
+
+My technical interests include:
+
+- Artificial Intelligence & Machine Learning
+- Generative AI
+- Large Language Models (LLMs)
+- AI Agents & Agentic AI
+- Retrieval-Augmented Generation (RAG)
+- LLM-powered automation
+- Data Science
+- Full-Stack Development
+- Cloud & DevOps
+- Quantum Computing
+
+I also create and teach practical technical courses on **Udemy**.
+
+---
+
+## 🎓 Education
+
+### M.Tech in Computer Engineering (AI & ML)
+**Jamia Millia Islamia, New Delhi**  
+2026 – Present
+
+Focus areas include Artificial Intelligence, Machine Learning, Generative AI and Agentic AI.
+
+### B.Tech in Computer Engineering
+**Jamia Millia Islamia, New Delhi**  
+2022 – 2026
+
+- CPI: **8.39/10**
+- First Division
+- 193 Credits
+
+### BS in Data Science & Applications
+**Indian Institute of Technology Madras**  
+2024 – 2026
+
+- Data Science & Artificial Intelligence
+- Currently completing the program
+
+---
+
+## 🚀 Featured Projects
+
+### Visual Question Answering System
+
+A deep-learning based Visual Question Answering system for image and video inputs.
+
+**Technologies:**
+
+- Python
+- PyTorch
+- BLIP
+- Hugging Face Transformers
+- Flask
+
+---
+
+### EventOps — Sound & Light Rental Operations Platform
+
+A small-business operations platform designed around sound and light rental workflows and operational management.
+
+**Focus:**
+
+- Full-Stack Development
+- Database Systems
+- Business Operations
+- Web Application Development
+
+---
+
+### Quiz Master V2
+
+A full-stack quiz and examination platform supporting multiple user roles and asynchronous application workflows.
+
+**Technologies:**
+
+- Flask
+- Vue.js
+- SQLite
+- Redis
+- Celery
+- Bootstrap
+
+---
+
+### LLM-based Automation Agent
+
+An LLM-powered automation system designed for practical workflow automation, file processing, SQL-related tasks and other operations.
+
+**Technologies:**
+
+- Python
+- LLM APIs
+- Shell
+- Docker
+
+---
+
+### TDS Solver — LLM API
+
+A REST API that uses Large Language Models to answer assignment questions and supports file uploads with structured responses.
+
+**Technologies:**
+
+- Python
+- FastAPI
+- LLM APIs
+- Vercel
+
+---
+
+### Machine Learning Regression Project
+
+A machine-learning regression project involving feature engineering, model development, evaluation and ensemble methods.
+
+**Technologies:**
+
+- Python
+- Pandas
+- Scikit-Learn
+- XGBoost
+- Matplotlib
+
+---
+
+### Smart Hospital Management System
+
+A web-based hospital management application designed to manage users, workflows and healthcare-related operations.
+
+**Technologies:**
+
+- Python
+- Flask
+- Database Systems
+- Web Development
+
+---
+
+## 🎥 Teaching & Udemy
+
+I create practical technology courses focused on programming, data science, machine learning and Generative AI.
+
+### Complete Generative AI, Agentic AI & RAG Bootcamp
+
+A comprehensive practical course covering:
+
+- Generative AI
+- Large Language Models
+- Prompt Engineering
+- Retrieval-Augmented Generation
+- AI Agents
+- Agentic AI workflows
+- Tool Calling
+- LLM Applications
+- Automation
+- Practical AI development
+
+**Platform:** Udemy
+
+---
+
+## 🛠️ Technical Skills
+
+### Programming
+
+- Python
+- C++
+- C
+- Java
+- JavaScript
+- R
+- SQL
+
+### Web Development
+
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- React.js
+- Node.js
+- Express.js
+- Flask
+- FastAPI
+- Tailwind CSS
+
+### Data Science & Machine Learning
+
+- NumPy
+- Pandas
+- Matplotlib
+- Scikit-Learn
+- TensorFlow
+- XGBoost
+- LightGBM
+- Jupyter Notebook
+
+### Generative AI & AI
+
+- Generative AI
+- Large Language Models
+- RAG
+- AI Agents
+- Agentic AI
+- Prompt Engineering
+- LLM Integration
+- Tool Calling
+- AI Automation
+
+### Databases
+
+- MySQL
+- MongoDB
+- SQLite
+- PostgreSQL
+- Redis
+
+### Cloud & DevOps
+
+- AWS
+- Google Cloud Platform
+- Docker
+- Kubernetes
+- Git
+- GitHub
+
+### Tools
+
+- VS Code
+- Postman
+- Excel
+- PowerPoint
+- Celery
+- ReportLab
+
+---
+
+## ✨ Portfolio Features
+
+The portfolio includes:
+
+- Modern responsive UI
+- Dark / Light theme
+- Responsive navigation
+- Education timeline
+- Skills showcase
+- Project portfolio
+- Course showcase
+- Achievements
+- Certifications
+- Experience & journey timeline
+- AI-powered portfolio chatbot
+- Contact form
+- YouTube integration
+- Google Drive integration
+- Online code execution integration
+- PWA support
+- Service worker and caching
+- SEO and social sharing metadata
+- Smooth animations and interactive elements
 
 ---
 
 ## 📂 Project Structure
-/
-├── index.html # Main HTML file (website structure & content)
-├── style.css # All styles and responsive design
-├── app.js # Theme toggle, animations, form logic
-└── README.md # This file
 
----
-
-## 🛠️ Getting Started
-
-### 1. Clone or Download
-
-Download this repository as a ZIP or clone it using:
-git clone https://github.com/yourusername/your-portfolio-repo.git
-
-
-### 2. File Setup
-
-Place the following files in the same directory:
-
-- `index.html`
-- `style.css`
-- `app.js`
-- (Optional) Add your own images/assets if you want to personalize further
-
-### 3. Open in Browser
-
-Double-click `index.html` or open it in your preferred browser.
-
----
-
-## 🎨 Customization
-
-- **Content**: Edit `index.html` to update your name, bio, education, skills, projects, achievements, and contact details.
-- **Colors/Fonts**: Modify variables in `style.css` for your preferred color palette or font.
-- **Images**: Replace or add images as needed for your profile or projects.
-- **Contact Form**: The form currently simulates submission. For real email sending, connect it to a backend service (e.g., Formspree, EmailJS, or your own API).
-
----
-
-## 📱 Responsive Design
-
-The site is fully responsive and adapts to all screen sizes. Test it on mobile and desktop for the best experience.
-
----
-
-## 🌙 Dark/Light Theme
-
-Click the theme toggle button (moon/sun icon) in the navbar to switch between dark and light modes. Your preference is remembered for future visits.
-
----
-
-## 📝 Sections Included
-
-- **Home**: Name, tagline, and quick links
-- **About**: Bio, stats, and personal details
-- **Education**: Timeline of academic journey
-- **Skills**: Categorized technical and soft skills
-- **Projects**: Detailed showcase of your top projects
-- **Achievements**: Major academic and extracurricular milestones
-- **Contact**: Address, email, phone, LinkedIn, and contact form
-
----
-
-## 🔗 Social Links
-
-Update your GitHub and LinkedIn URLs in the contact and footer sections for direct access.
-
----
-
-## 🧑‍💻 Deployment
-
-You can deploy this static site easily on:
-
-- **GitHub Pages**
-- **Netlify**
-- **Vercel**
-- **Firebase Hosting**
-- Or any static web hosting platform
-
----
-
-## 📄 License
-
-This project is open-source and free to use for personal portfolio purposes. Attribution appreciated but not required.
-
----
-
-## 🙏 Credits
-
-- Design and code structured for clarity, performance, and easy customization.
-- Icons from [Font Awesome](https://fontawesome.com/).
-- Fonts from [Google Fonts](https://fonts.google.com/).
-
----
-
-## 💬 Questions or Feedback?
-
-Feel free to reach out via the contact form on the site or email:  
-**saqib29abubkar@gmail.com**
-
-**Impress the world with your work!**  
-_Your portfolio is now ready for recruiters, collaborators, and the world to see._
-
-
+```text
+mohd-saqib-portfolio/
+│
+├── api/
+│   ├── chat/
+│   ├── contact/
+│   ├── judge0/
+│   └── youtube/
+│
+├── game/
+│
+├── images/
+│
+├── index.html
+├── style.css
+├── app.js
+├── chatbot.js
+│
+├── courses.json
+├── saqib_certifications.json
+│
+├── server.js
+├── appdrive.js
+├── drive.html
+├── drive-styles.css
+├── editor.html
+│
+├── effects.css
+├── effects.js
+│
+├── typing.html
+├── typing.css
+├── typing.js
+│
+├── manifest.json
+├── service-worker.js
+├── 404.html
+│
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── .env.example
+└── README.md

@@ -1,6 +1,7 @@
 {
-  "name": "Mohd Saqib Portfolio",
-  "short_name": "Saqib",
+  "name": "Mohd Saqib | AI & ML Portfolio",
+  "short_name": "Mohd Saqib",
+  "description": "Portfolio of Mohd Saqib — M.Tech AI & ML student, Generative AI developer, AI agent builder, Data Science practitioner, and Udemy instructor.",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#0b0b0b",
@@ -10,12 +11,12 @@
     {
       "src": "images/profile.jpg",
       "sizes": "192x192",
-      "type": "image/jpg"
+      "type": "image/jpeg"
     },
     {
       "src": "images/profile.jpg",
       "sizes": "512x512",
-      "type": "image/jpg"
+      "type": "image/jpeg"
     }
   ]
 }
