@@ -3615,3 +3615,151 @@ select:focus-visible {
     color: #000 !important;
   }
 }
+
+
+/* === Accessibility & interaction upgrades (additive) === */
+html {
+  scroll-padding-top: 6rem;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-primary, #6366f1);
+  outline-offset: 4px;
+}
+
+#portfolio-skip-link {
+  position: fixed;
+  top: -5rem;
+  left: 1rem;
+  z-index: 100000000;
+  padding: 0.75rem 1rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  background: var(--color-primary, #6366f1);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+  transition: top 0.2s ease;
+}
+
+#portfolio-skip-link:focus {
+  top: 0;
+}
+
+#site-announcer {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mobile-menu-toggle[aria-expanded="true"] {
+  color: var(--color-primary, #6366f1);
+}
+
+@media (hover: none), (pointer: coarse) {
+  body,
+  html,
+  a,
+  button {
+    cursor: auto;
+  }
+
+  .card:hover,
+  .achievement-card:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* === Search and contact utilities (additive) === */
+.portfolio-search-trigger {
+  gap: 0.45rem;
+}
+
+#search-bar {
+  position: relative;
+}
+
+#portfolio-search-results {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(22rem, calc(100vw - 2rem));
+  max-height: 20rem;
+  margin: 0;
+  padding: 0.4rem;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  z-index: 1001;
+}
+
+#portfolio-search-results[hidden] {
+  display: none;
+}
+
+#portfolio-search-results a,
+.portfolio-search-empty {
+  display: block;
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+#portfolio-search-results a:hover,
+#portfolio-search-results a:focus-visible {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.portfolio-copy-email {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+}
+
+.portfolio-copy-email:hover {
+  background: var(--color-secondary);
+}
+
+@media (max-width: 640px) {
+  .portfolio-search-trigger span {
+    display: none;
+  }
+
+  #portfolio-search-results {
+    right: auto;
+    left: 0;
+  }
+}
