@@ -681,6 +681,7 @@ select.form-control {
   margin: 0;
   padding: 0;
   /* display: none; */
+  min-width: 0;
 }
 
 .nav-link {
@@ -697,6 +698,15 @@ select.form-control {
   background-color: var(--color-secondary);
   /* display: flex;
   flex-direction: column; */
+}
+
+.hero-actions {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-actions .btn {
+  gap: 0.5rem;
 }
 
 
@@ -871,6 +881,54 @@ select.form-control {
 .carousel-btn.next { right: 0.5rem; }
 @media (max-width: 600px) {
   .testimonial-card p { font-size: 1rem; }
+}
+
+@media (min-width: 769px) {
+  .header nav {
+    gap: 1rem;
+  }
+
+  .header .nav-links {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .header .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header .nav-link {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: calc(100svh - 64px);
+    padding: 96px 1rem 3rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  .hero h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn {
+    flex: 1 1 140px;
+    min-height: 46px;
+  }
 }
 
 
@@ -3239,6 +3297,7 @@ section,
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 84px;
+  overflow-x: hidden;
 }
 
 body {

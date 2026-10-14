@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Mohd Saqib designed a multi-user quiz portal with real-time scoring and background jobs.">
+  <title>How I Built a Multi-User Quiz Portal | Mohd Saqib</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+  <main class="article-shell">
+    <nav class="article-nav"><a href="../index.html">← Back to portfolio</a></nav>
+    <article class="article">
+      <h1>How I Built a Multi-User Quiz Portal</h1>
+      <p class="article-meta">July 2025 · Full-stack development</p>
+      <div class="article-body">
+        <p>The Quiz Master portal was built to make assessments easier to create, deliver, and review for multiple users at the same time.</p>
+        <h2>Architecture</h2>
+        <p>The application uses Flask for the API layer, Vue for the interactive client, SQLite for local development, and Redis with Celery for background work.</p>
+        <h2>Real-time scoring</h2>
+        <p>Answers are validated on the server so that scoring remains consistent. A background task handles result aggregation and keeps longer operations away from the request path.</p>
+        <h2>What I learned</h2>
+        <p>The project reinforced the value of small API boundaries, clear ownership of state, and testing the complete flow from quiz creation to the final result.</p>
+      </div>
+      <a class="back-link" href="../index.html#projects">View the project section</a>
+    </article>
+  </main>
+</body>
+</html>

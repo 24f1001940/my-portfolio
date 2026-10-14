@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Course details, curriculum and learning information by Mohd Saqib."
+    >
+
+    <meta
+        name="theme-color"
+        content="#07111f"
+    >
+
+    <title>Course | Mohd Saqib</title>
+
+    <link
+        rel="stylesheet"
+        href="course.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="course-header">
+
+        <div class="header-container">
+
+            <a
+                href="../index.html"
+                class="brand"
+                aria-label="Back to Mohd Saqib portfolio"
+            >
+                <span class="brand-mark">
+                    MS
+                </span>
+
+                <span class="brand-text">
+                    Mohd Saqib
+                </span>
+            </a>
+
+
+            <nav class="main-nav" aria-label="Main navigation">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a href="courses.html">
+                    All Courses
+                </a>
+
+            </nav>
+
+
+            <a
+                href="courses.html"
+                class="back-button"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                All Courses
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main id="course-page">
+
+        <!-- Loading -->
+
+        <section
+            id="course-loading"
+            class="course-loading"
+        >
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Loading course...
+            </p>
+
+        </section>
+
+
+        <!-- Error -->
+
+        <section
+            id="course-error"
+            class="course-error"
+            hidden
+        >
+
+            <div class="error-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <h1>
+                Course Not Found
+            </h1>
+
+            <p>
+                We couldn't find the course you're looking for.
+            </p>
+
+            <a
+                href="courses.html"
+                class="primary-button"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                Browse Courses
+            </a>
+
+        </section>
+
+
+        <!-- =========================
+             COURSE CONTENT
+        ========================== -->
+
+        <div
+            id="course-content"
+            hidden
+        >
+
+            <!-- HERO -->
+
+            <section class="course-hero">
+
+                <div class="course-container">
+
+                    <div class="course-hero-grid">
+
+                        <!-- LEFT -->
+
+                        <div class="course-hero-info">
+
+                            <div
+                                id="course-breadcrumb"
+                                class="breadcrumb"
+                            >
+                                Courses
+                            </div>
+
+
+                            <div
+                                id="course-category"
+                                class="course-category"
+                            >
+                            </div>
+
+
+                            <h1
+                                id="course-title"
+                                class="course-title"
+                            >
+                            </h1>
+
+
+                            <p
+                                id="course-description"
+                                class="course-description"
+                            >
+                            </p>
+
+
+                            <div
+                                id="course-tags"
+                                class="course-tags"
+                            >
+                            </div>
+
+
+                            <div
+                                id="course-meta"
+                                class="course-meta"
+                            >
+                            </div>
+
+                        </div>
+
+
+                        <!-- RIGHT -->
+
+                        <aside class="course-purchase-card">
+
+                            <div class="course-cover">
+
+                                <img
+                                    id="course-thumbnail"
+                                    src=""
+                                    alt=""
+                                >
+
+                                <div
+                                    id="course-status"
+                                    class="course-status"
+                                >
+                                </div>
+
+                            </div>
+
+
+                            <div class="purchase-content">
+
+                                <div
+                                    id="course-price"
+                                    class="course-price"
+                                >
+                                </div>
+
+
+                                <p class="purchase-note">
+                                    Lifetime access to purchased
+                                    course content.
+                                </p>
+
+
+                                <button
+                                    id="buy-course-button"
+                                    type="button"
+                                    class="buy-button"
+                                >
+                                    <i class="fa-solid fa-lock"></i>
+                                    Buy Now
+                                </button>
+
+
+                                <button
+                                    id="preview-course-button"
+                                    type="button"
+                                    class="preview-button"
+                                >
+                                    <i class="fa-solid fa-play"></i>
+                                    Preview Course
+                                </button>
+
+
+                                <div class="purchase-features">
+
+                                    <div>
+                                        <i class="fa-solid fa-infinity"></i>
+                                        Lifetime access
+                                    </div>
+
+                                    <div>
+                                        <i class="fa-solid fa-mobile-screen"></i>
+                                        Learn on any device
+                                    </div>
+
+                                    <div>
+                                        <i class="fa-solid fa-certificate"></i>
+                                        Certificate of completion
+                                    </div>
+
+                                    <div>
+                                        <i class="fa-solid fa-rotate"></i>
+                                        Future updates
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 COURSE BODY
+            ========================== -->
+
+            <section class="course-body">
+
+                <div class="course-container">
+
+                    <div class="course-body-grid">
+
+                        <!-- MAIN CONTENT -->
+
+                        <div class="course-main">
+
+                            <!-- WHAT YOU WILL LEARN -->
+
+                            <section class="course-section">
+
+                                <div class="section-heading">
+
+                                    <span class="section-label">
+                                        LEARNING OUTCOMES
+                                    </span>
+
+                                    <h2>
+                                        What You'll Learn
+                                    </h2>
+
+                                </div>
+
+
+                                <div
+                                    id="learning-outcomes"
+                                    class="learning-outcomes"
+                                >
+                                </div>
+
+                            </section>
+
+
+                            <!-- REQUIREMENTS -->
+
+                            <section class="course-section">
+
+                                <div class="section-heading">
+
+                                    <span class="section-label">
+                                        BEFORE YOU START
+                                    </span>
+
+                                    <h2>
+                                        Requirements
+                                    </h2>
+
+                                </div>
+
+
+                                <ul
+                                    id="course-requirements"
+                                    class="requirements-list"
+                                >
+                                </ul>
+
+                            </section>
+
+
+                            <!-- DESCRIPTION -->
+
+                            <section class="course-section">
+
+                                <div class="section-heading">
+
+                                    <span class="section-label">
+                                        ABOUT THE COURSE
+                                    </span>
+
+                                    <h2>
+                                        Course Description
+                                    </h2>
+
+                                </div>
+
+
+                                <div
+                                    id="course-full-description"
+                                    class="course-full-description"
+                                >
+                                </div>
+
+                            </section>
+
+
+                            <!-- CURRICULUM -->
+
+                            <section
+                                id="curriculum-section"
+                                class="course-section"
+                            >
+
+                                <div class="section-heading">
+
+                                    <span class="section-label">
+                                        CURRICULUM
+                                    </span>
+
+                                    <h2>
+                                        Course Content
+                                    </h2>
+
+                                    <p
+                                        id="curriculum-summary"
+                                        class="section-subtitle"
+                                    >
+                                    </p>
+
+                                </div>
+
+
+                                <div
+                                    id="curriculum"
+                                    class="curriculum"
+                                >
+                                </div>
+
+                            </section>
+
+                        </div>
+
+
+                        <!-- SIDEBAR -->
+
+                        <aside class="course-sidebar">
+
+                            <div class="sidebar-card">
+
+                                <h3>
+                                    Course Information
+                                </h3>
+
+
+                                <div
+                                    id="course-information"
+                                    class="course-information"
+                                >
+                                </div>
+
+                            </div>
+
+
+                            <div class="sidebar-card instructor-card">
+
+                                <span class="section-label">
+                                    INSTRUCTOR
+                                </span>
+
+                                <div class="instructor-profile">
+
+                                    <div class="instructor-avatar">
+                                        MS
+                                    </div>
+
+                                    <div>
+
+                                        <h3>
+                                            Mohd Saqib
+                                        </h3>
+
+                                        <p>
+                                            Computer Science &
+                                            AI/ML
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <p>
+                                    Learn practical concepts through
+                                    structured explanations and
+                                    hands-on examples.
+                                </p>
+
+
+                                <a
+                                    href="../index.html#about"
+                                    class="instructor-link"
+                                >
+                                    View Profile
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="course-footer">
+
+        <div class="footer-container">
+
+            <p>
+                ©
+                <span id="current-year"></span>
+                Mohd Saqib. All rights reserved.
+            </p>
+
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Portfolio
+                </a>
+
+                <a href="courses.html">
+                    Courses
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         PREVIEW MODAL
+    ========================== -->
+
+    <div
+        id="preview-modal"
+        class="preview-modal"
+        hidden
+        aria-hidden="true"
+    >
+
+        <div
+            class="preview-backdrop"
+            data-close-preview
+        ></div>
+
+
+        <div
+            class="preview-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="preview-title"
+        >
+
+            <div class="preview-header">
+
+                <div>
+
+                    <span class="section-label">
+                        COURSE PREVIEW
+                    </span>
+
+                    <h2 id="preview-title">
+                        Preview
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="close-preview"
+                    type="button"
+                    class="close-preview"
+                    aria-label="Close preview"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
+            </div>
+
+
+            <div class="preview-body">
+
+                <div class="preview-placeholder">
+
+                    <i class="fa-solid fa-play"></i>
+
+                    <h3>
+                        Course Preview
+                    </h3>
+
+                    <p>
+                        Preview lectures will be available here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="course.js"></script>
+
+</body>
+</html>

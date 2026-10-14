@@ -2,7 +2,7 @@
   "functions": {
     "server.js": {
       "runtime": "@vercel/node@3.2.10",
-      "includeFiles": "{index.html,404.html,*.css,*.js,*.json,*.pdf,images/**,game/**}"
+      "includeFiles": "{index.html,404.html,*.css,*.js,*.json,*.pdf,images/**,game/**,courses/**,blog/**}"
     },
     "api/**/*.js": {
       "runtime": "@vercel/node@3.2.10"
@@ -12,6 +12,10 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/server.js"
     }
   ]
 }

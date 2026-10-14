@@ -28,6 +28,12 @@ module.exports = async function handler(req, res) {
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Name, email, and message are required' });
     }
+    if (name.length > 100 || email.length > 254 || subject.length > 160 || message.length > 4000) {
+      return res.status(400).json({ error: 'One or more fields are too long' });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ error: 'Please provide a valid email address' });
+    }
 
     const db = await getDb();
     await db.collection('contact_messages').insertOne({

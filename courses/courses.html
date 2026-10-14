@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Explore Mohd Saqib's online courses in Generative AI, Agentic AI, RAG, Python, Machine Learning and Data Science."
+    >
+
+    <title>My Courses | Mohd Saqib</title>
+
+    <link
+        rel="stylesheet"
+        href="courses.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <header class="courses-header">
+
+        <div class="header-container">
+
+            <a
+                href="../index.html"
+                class="brand"
+                aria-label="Back to Mohd Saqib portfolio"
+            >
+                <span class="brand-mark">MS</span>
+
+                <span class="brand-text">
+                    Mohd Saqib
+                </span>
+            </a>
+
+
+            <nav class="main-nav">
+
+                <a href="../index.html">
+                    Home
+                </a>
+
+                <a
+                    href="courses.html"
+                    class="active"
+                >
+                    Courses
+                </a>
+
+            </nav>
+
+
+            <a
+                href="../index.html"
+                class="back-button"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                Portfolio
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="courses-hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    LEARN • BUILD • GROW
+                </span>
+
+                <h1>
+                    Learn Practical
+                    <span>AI & Computer Science</span>
+                </h1>
+
+                <p>
+                    Explore my practical courses designed to help
+                    you build strong foundations and real-world
+                    skills in Python, Data Science, Machine Learning
+                    and Generative AI.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSE MARKETPLACE -->
+
+        <section class="course-marketplace">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        MY COURSES
+                    </span>
+
+                    <h2>
+                        Learn at Your Own Pace
+                    </h2>
+
+                    <p>
+                        Choose a course and start learning.
+                    </p>
+
+                </div>
+
+                <div
+                    id="course-count"
+                    class="course-count"
+                >
+                    0 courses
+                </div>
+
+            </div>
+
+
+            <!-- SEARCH + FILTER -->
+
+            <div class="course-controls">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        id="course-search"
+                        type="search"
+                        placeholder="Search courses..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div class="filter-buttons">
+
+                    <button
+                        type="button"
+                        class="filter-button active"
+                        data-category="all"
+                    >
+                        All
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="Generative AI"
+                    >
+                        Generative AI
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="Python"
+                    >
+                        Python
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="Machine Learning"
+                    >
+                        Machine Learning
+                    </button>
+
+                    <button
+                        type="button"
+                        class="filter-button"
+                        data-category="Data Science"
+                    >
+                        Data Science
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- COURSE GRID -->
+
+            <div
+                id="courses-grid"
+                class="courses-grid"
+            >
+
+                <div class="loading-state">
+
+                    <div class="loading-spinner"></div>
+
+                    <p>
+                        Loading courses...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="empty-state"
+                class="empty-state"
+                hidden
+            >
+
+                <div class="empty-icon">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+
+                <h3>
+                    No courses found
+                </h3>
+
+                <p>
+                    Try a different search or category.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="courses-footer">
+
+        <p>
+            © <span id="current-year"></span>
+            Mohd Saqib. All rights reserved.
+        </p>
+
+        <a href="../index.html">
+            Back to Portfolio
+        </a>
+
+    </footer>
+
+
+    <script src="courses.js"></script>
+
+</body>
+</html>

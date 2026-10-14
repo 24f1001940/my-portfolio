@@ -460,7 +460,16 @@ app.use(
             etag: true,
 
             // Do not expose directory listings.
-            index: 'index.html'
+            index: 'index.html',
+
+            // Static assets are content-addressed or versioned by deployment.
+            // A short cache reduces repeat latency without hiding new HTML.
+            maxAge: '1h',
+            setHeaders: (res, filePath) => {
+                if (filePath.endsWith('.html')) {
+                    res.setHeader('Cache-Control', 'no-cache');
+                }
+            }
         }
     )
 );
@@ -554,20 +563,23 @@ app.use(
 // START SERVER
 // ============================================================
 
-app.listen(
-    port,
-    () => {
+if (require.main === module) {
+    app.listen(
+        port,
+        () => {
+            console.log(
+                `Portfolio server running at http://localhost:${port}`
+            );
 
-        console.log(
-            `Portfolio server running at http://localhost:${port}`
-        );
+            console.log(
+                `Environment: ${
+                    isProduction
+                        ? 'production'
+                        : 'development'
+                }`
+            );
+        }
+    );
+}
 
-        console.log(
-            `Environment: ${
-                isProduction
-                    ? 'production'
-                    : 'development'
-            }`
-        );
-    }
-);
+module.exports = app;

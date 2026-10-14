@@ -1850,8 +1850,13 @@ class PortfolioChatbot {
 
     async checkBackendLive() {
         try {
+            const controller = new AbortController();
+            const timeout = setTimeout(() => controller.abort(), 5000);
             const res =
-                await fetch('/api/health');
+                await fetch('/api/health', {
+                    signal: controller.signal
+                });
+            clearTimeout(timeout);
 
             if (res.ok) {
                 this.setBotStatus(
@@ -1889,6 +1894,8 @@ class PortfolioChatbot {
             attempt <= maxRetries
         ) {
             try {
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 10000);
                 const res =
                     await fetch(
                         this.backendEndpoint,
@@ -1898,11 +1905,13 @@ class PortfolioChatbot {
                                 'Content-Type':
                                     'application/json'
                             },
+                            signal: controller.signal,
                             body: JSON.stringify({
                                 prompt
                             })
                         }
                     );
+                clearTimeout(timeout);
 
                 const data =
                     await res.json();

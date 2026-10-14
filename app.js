@@ -1279,7 +1279,7 @@
         }
       );
 
-    $(
+    $$(
       '.card, .achievement-item, .section-title, .fade-in'
     ).forEach(element => {
       revealObserver.observe(
@@ -1435,6 +1435,8 @@
         );
 
         try {
+          const controller = new AbortController();
+          const timeout = setTimeout(() => controller.abort(), 8000);
           const response =
             await fetch(
               endpoint,
@@ -1446,6 +1448,7 @@
                   'Content-Type':
                     'application/json'
                 },
+                signal: controller.signal,
                 body: JSON.stringify({
                   name,
                   email,
@@ -1455,6 +1458,7 @@
                 })
               }
             );
+          clearTimeout(timeout);
 
           if (!response.ok) {
             throw new Error(
@@ -2610,8 +2614,6 @@ async function loadYouTubeData() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadYouTubeData);
-  
   /* =========================================
      PUBLIC COMPATIBILITY HELPERS
      ========================================= */

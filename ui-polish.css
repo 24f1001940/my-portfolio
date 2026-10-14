@@ -1,0 +1,227 @@
+/*
+ * UI polish layer
+ *
+ * Kept separate from the legacy stylesheet so layout fixes remain easy to
+ * review and do not get lost among the page's generated styles.
+ */
+
+:root {
+  --ui-content-width: 1180px;
+  --ui-header-height: 72px;
+  --ui-shadow: 0 18px 45px rgba(15, 23, 42, 0.1);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.header {
+  min-height: var(--ui-header-height);
+  background: color-mix(in srgb, var(--color-background) 88%, transparent);
+  box-shadow: 0 1px 0 var(--color-border);
+}
+
+.header > nav {
+  width: min(100% - 2rem, var(--ui-content-width));
+  min-height: var(--ui-header-height);
+  margin-inline: auto;
+  padding-block: 0;
+}
+
+.imagelogo {
+  flex: 0 0 auto;
+}
+
+.logo {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 1.05rem;
+}
+
+.nav-links {
+  align-items: center;
+  min-width: 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.hero {
+  width: 100%;
+  min-height: 100svh;
+  padding-inline: 1rem;
+  padding-bottom: 4rem;
+}
+
+.hero h1 {
+  max-width: 100%;
+  text-wrap: balance;
+}
+
+.hero h2 {
+  max-width: min(100%, 44rem);
+}
+
+.hero-actions {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+
+.hero-actions .btn {
+  min-height: 44px;
+  white-space: nowrap;
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+main > section:not(.hero) {
+  width: min(100% - 2rem, var(--ui-content-width));
+  margin-inline: auto;
+  scroll-margin-top: calc(var(--ui-header-height) + 1rem);
+}
+
+.section-title {
+  text-wrap: balance;
+}
+
+.card,
+.project-card,
+.achievement-card,
+.instructor-card,
+.hobby-card {
+  box-shadow: var(--ui-shadow);
+}
+
+img {
+  height: auto;
+}
+
+.sidebar,
+.sidebar2 {
+  z-index: 900;
+}
+
+#color-palette-container {
+  bottom: 5.25rem !important;
+}
+
+#palette-toggle-btn {
+  width: 3rem !important;
+  height: 3rem !important;
+}
+
+.chatbot-float {
+  right: 1rem;
+  bottom: 1rem;
+}
+
+@media (max-width: 1100px) and (min-width: 769px) {
+  .header > nav {
+    width: calc(100% - 1.5rem);
+    gap: 0.5rem;
+  }
+
+  .nav-link {
+    padding-inline: 0.45rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --ui-header-height: 64px;
+  }
+
+  .header > nav {
+    width: calc(100% - 1rem);
+    gap: 0.5rem;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    flex: 0 0 auto;
+  }
+
+  .header .logo {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header .btn--sm {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+  }
+
+  .hero {
+    padding-top: calc(var(--ui-header-height) + 2rem);
+  }
+
+  main > section:not(.hero) {
+    width: min(100% - 1.25rem, var(--ui-content-width));
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .sidebar,
+  .sidebar2 {
+    display: none;
+  }
+
+  #color-palette-container {
+    right: 0.75rem !important;
+    bottom: 4.75rem !important;
+  }
+
+  .chatbot-float {
+    right: 0.75rem;
+    bottom: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

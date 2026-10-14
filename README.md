@@ -10,6 +10,36 @@ A modern, responsive personal portfolio showcasing my academic journey, technica
 
 ---
 
+## Run locally and deploy
+
+Requirements: Node.js 20 or newer.
+
+```bash
+npm install
+npm start
+```
+
+The site is available at `http://localhost:3000`. The `/api/health` endpoint reports which optional integrations are configured without exposing credentials.
+
+Configure the values in [.env.example](./.env.example) locally or in your deployment provider:
+
+- `MONGODB_URI` and `MONGODB_DB_NAME` enable contact-message persistence.
+- `YOUTUBE_API_KEY` enables live channel statistics and latest videos.
+- `GEMINI_API_KEY` and `GEMINI_MODEL` enable the portfolio chatbot.
+- `GOOGLE_DRIVE_API_KEY` enables the Drive resources proxy.
+- `ALLOWED_ORIGIN` restricts API CORS in production.
+
+### Vercel
+
+1. Import this repository into Vercel.
+2. Add the production environment variables in **Project Settings → Environment Variables**.
+3. Deploy with the default Node.js settings.
+4. Verify `/api/health`, the contact form, and the dynamic YouTube section after deployment.
+
+The project includes [vercel.json](./vercel.json), bounded upstream requests, server-side caching for YouTube data, and explicit unavailable states when optional credentials are not configured.
+
+---
+
 ## 👨‍💻 About Me
 
 I'm **Mohd Saqib**, a Computer Engineer and Data Science practitioner currently pursuing an **M.Tech in Computer Engineering with a focus on Artificial Intelligence & Machine Learning at Jamia Millia Islamia**.

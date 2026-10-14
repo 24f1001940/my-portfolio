@@ -30,6 +30,7 @@ module.exports = async function handler(req, res) {
     }
 
     const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
+    const request = withTimeout(9000);
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
       {
@@ -41,11 +42,12 @@ module.exports = async function handler(req, res) {
         })
       }
     );
+    request.clear();
 
     const data = await response.json();
     if (!response.ok) {
       const text = buildFallbackResponse(prompt);
-      return res.json({ text, fallback: true, details: data });
+      return res.status(502).json({ error: 'AI service is temporarily unavailable', text, fallback: true });
     }
 
     const text = data?.candidates?.[0]?.content?.parts?.map((part) => part.text).join('') || buildFallbackResponse(prompt);
@@ -53,7 +55,11 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     console.error('Chat API error:', error);
     const fallbackText = buildFallbackResponse(parseBody(req.body).prompt || parseBody(req.body).message || '');
-    return res.json({ text: fallbackText, fallback: true });
+    return res.status(error.name === 'AbortError' ? 504 : 502).json({
+      error: 'AI service is temporarily unavailable',
+      text: fallbackText,
+      fallback: true
+    });
   }
 };
 
@@ -90,3 +96,4 @@ function buildFallbackResponse(prompt) {
 
   return `I’m ${portfolio.name}, a ${portfolio.title}. Ask me about skills, projects, education, or contact details.`;
  }
+const { withTimeout } = require('./_http');

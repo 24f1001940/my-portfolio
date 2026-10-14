@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html data-color-scheme="light" lang="en">
 <head>
@@ -37,6 +37,8 @@
 <link href="https://fonts.googleapis.com/css?family=Amiri&amp;display=swap" rel="stylesheet"/>
 <!-- Styles -->
 <link href="style.css" rel="stylesheet">
+<link rel="stylesheet" href="effects.css" />
+<link rel="stylesheet" href="ui-polish.css" />
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 <!-- Schema for SEO -->
 <script type="application/ld+json">
@@ -840,7 +842,8 @@ a, button { cursor: none; }
 </div>
 <div class="cursor-dot" id="cursor-dot"></div>
 <div class="cursor-outline" id="cursor-outline"></div>
-<button id="backToTop" style="display:none;position:fixed;bottom:32px;right:32px;z-index:1000;" title="Back to top">
+<button aria-label="Back to top" id="backToTop" style="display:none;position:fixed;bottom:32px;right:32px;z-index:1000;" title="Back to top">
+<i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
 </button>
 <!-- === THEME COLOR PALETTE BUTTON === -->
 <div id="color-palette-container" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999;">
@@ -869,13 +872,13 @@ a, button { cursor: none; }
 <noscript>
 <img alt="" referrerpolicy="no-referrer-when-downgrade" src="https://vercel.com/analytics/track.gif"/>
 </noscript>
-<!-- 🧠 Your Name + Logo
+<!-- Your Name + Logo
     <a href="#home" class="logo text-lg font-bold flex items-center gap-2">
       <img src="./images/logo.png" alt="Logo" width="32" height="32" style="border-radius: 50%;" />
       Mohd Saqib
     </a>
 
-    <🍔 Hamburger Menu (Mobile) -->
+    Hamburger Menu (Mobile) -->
 <!-- <button id="menu-toggle" class="md:hidden text-xl">
       <i class="fa-solid fa-bars"></i>
     </button> -->
@@ -974,22 +977,22 @@ if (window.annyang) {
 <!-- ========================= MAIN ========================= -->
 <main>
 <nav class="sidebar">
-<a href="#home">🏠</a>
-<a href="#projects">💼</a>
-<a href="#blog">📝</a>
-<a href="#contact">📞</a>
+<a href="#home" aria-label="Home">⌂</a>
+<a href="#projects" aria-label="Projects">▣</a>
+<a href="#blog" aria-label="Blog">✎</a>
+<a href="#contact" aria-label="Contact">☎</a>
 </nav>
 <!-- right side navbar -->
 <nav class="sidebar2">
-<a href="#home">🏠</a>
-<a href="#projects">💼</a>
-<a href="#blog">📝</a>
-<a href="#contact">📞</a>
+<a href="#home" aria-label="Home">⌂</a>
+<a href="#projects" aria-label="Projects">▣</a>
+<a href="#blog" aria-label="Blog">✎</a>
+<a href="#contact" aria-label="Contact">☎</a>
 </nav>
 <!-- Floating Chatbot Icon -->
 <div class="chatbot-float" id="chatbotFloat">
 <div class="chatbot-icon">
-<span class="icon">🤖</span>
+<span class="icon" aria-hidden="true">🤖</span>
 <div class="pulse-ring"></div>
 <div class="notification-badge" id="notificationBadge">1</div>
 </div>
@@ -1011,7 +1014,7 @@ if (window.annyang) {
 <div class="header-right">
 <button class="icon-btn" id="settingsBtn" title="Settings">⚙️</button>
 <button class="icon-btn" id="exportBtn" title="Export Chat">📥</button>
-<button class="modal-close" id="closeModal">✕</button>
+<button class="modal-close" id="closeModal" aria-label="Close">✕</button>
 </div>
 </div>
 <!-- Mode Selector -->
@@ -1089,7 +1092,7 @@ if (window.annyang) {
 <div class="settings-panel hidden" id="settingsPanel">
 <div class="settings-header">
 <h3>Chat Settings</h3>
-<button class="icon-btn" id="closeSettings">✕</button>
+<button class="icon-btn" id="closeSettings" aria-label="Close settings">✕</button>
 </div>
 <div class="settings-content">
 <div class="setting-group">
@@ -1123,7 +1126,7 @@ if (window.annyang) {
 <div class="quiz-results hidden" id="quizResults">
 <div class="results-header">
 <h3>Quiz Results</h3>
-<button class="icon-btn" id="closeResults">✕</button>
+<button class="icon-btn" id="closeResults" aria-label="Close results">✕</button>
 </div>
 <div class="results-content">
 <div class="score-display">
@@ -1168,18 +1171,16 @@ if (window.annyang) {
 <span id="typewriter-text" style="color: var(--color-primary);"></span><span class="cursor-blink">|</span>
 </h2>
 <!-- <h2 class="mt-8" style="font-weight: var(--font-weight-medium); max-width: 600px;">Computer Engineering Student | Data Science Enthusiast | Full-Stack Developer</h2> -->
-<div class="flex gap-16 mt-8">
+<div class="hero-actions flex gap-16 mt-8">
 <a class="btn btn--primary" href="#contact"><i class="fa-solid fa-phone"></i>Contact Me</a>
 <!-- Home Section CTA -->
 <a class="btn btn--primary" href="#contact">
 <i class="fa-solid fa-paper-plane"></i> Hire Me
 </a>
 <a class="btn btn--outline" href="mohd saqib resume.pdf" rel="noopener noreferrer" target="_blank"> <i class="fa-solid fa-eye"></i>View Resume</a>
-<!-- <a href="resume.pdf" class="btn btn--outline" download>Download Resume (PDF)</a> -->
-<!-- <a href="portfolio.pdf" download class="btn btn--primary">Download Portfolio (PDF)</a> -->
-<!-- <a href="portfolio.pdf" class="btn btn--outline" download> -->
-<i class="fa-solid fa-file-pdf"></i> Download Portfolio PDF
-
+<a class="btn btn--outline" href="portfolio-clean.zip" download>
+<i class="fa-solid fa-file-zipper" aria-hidden="true"></i> Download Portfolio
+</a>
 </div>
 </section>
 <!-- About Section -->
@@ -1397,7 +1398,7 @@ if (window.annyang) {
 <div class="timeline-item">
 <div class="timeline-content card">
 <div class="card__body">
-<h3>CBSE (Class XII ‑ PCM)</h3>
+<h3>CBSE (Class XII - PCM)</h3>
 <p>RPVV Lajpat Nagar, New Delhi | 2020-2021</p>
 <p>Percentage: 94%</p>
 </div>
@@ -1482,8 +1483,8 @@ if (window.annyang) {
 <div class="hobby-card card">
 <div class="card__body flex flex-col items-center">
 <i class="fa-solid fa-book-quran fa-2x mb-4" style="color:#2e7d32"></i>
-<h3>Qur’an Reading &amp; Reflection</h3>
-<p>Spending time reciting and reflecting on the Qur’an to strengthen faith and character.</p>
+<h3>Qur'an Reading &amp; Reflection</h3>
+<p>Spending time reciting and reflecting on the Qur'an to strengthen faith and character.</p>
 </div>
 </div>
 <div class="hobby-card card">
@@ -1680,13 +1681,13 @@ if (window.annyang) {
 </div>
 <div class="project-card card">
 <div class="card__body">
-<h3>Quiz Master V2 – Multi-User Exam Portal</h3>
+<h3>Quiz Master V2 - Multi-User Exam Portal</h3>
 <p class="mt-8">Developed a full-stack multi-user web app for quiz management using Flask, VueJS, SQLite, Redis, Celery, and Bootstrap.</p>
 <p class="mt-8"><strong>Tech Stack:</strong> Flask, VueJS, SQLite, Redis, Celery, Bootstrap</p>
 <div class="flex gap-16 mt-16">
-<a class="btn btn--primary btn--sm" disabled="" href="#" rel="noopener noreferrer" target="_blank" title="Demo link coming soon">
+<span class="btn btn--primary btn--sm is-disabled" aria-disabled="true" title="Demo link coming soon">
 <i class="fa-solid fa-earth-americas"></i> Live Demo
-        </a>
+</span>
 <a class="btn btn--outline btn--sm" href="https://github.com/MOHDSAQIB695786" rel="noopener noreferrer" target="_blank">
 <i class="fa-brands fa-github"></i> Source Code
         </a>
@@ -1695,7 +1696,7 @@ if (window.annyang) {
 </div>
 <div class="project-card card">
 <div class="card__body">
-<h3>ML Regression Project – Kaggle Competition</h3>
+<h3>ML Regression Project - Kaggle Competition</h3>
 <p class="mt-8">Built and evaluated multiple ML models (Linear Regression, SVM, KNN, MLP, Ensembles) for a Kaggle regression competition.</p>
 <p class="mt-8"><strong>Tech Stack:</strong> Python, Scikit-learn, XGBoost, Pandas, Matplotlib, Seaborn</p>
 </div>
@@ -1718,7 +1719,7 @@ if (window.annyang) {
 </div>
 <div class="project-card card">
 <div class="card__body">
-<h3>TDS Solver – LLM API for Assignment Questions</h3>
+<h3>TDS Solver - LLM API for Assignment Questions</h3>
 <p class="mt-8">Developed a production-ready REST API that answers assignment questions using LLM-based inference.</p>
 <p class="mt-8"><strong>Tech Stack:</strong> Python, GPT-4o-mini, REST API, Vercel, JSON</p>
 </div>
@@ -1739,7 +1740,7 @@ if (window.annyang) {
 </div>
 <div class="project-card card">
 <div class="card__body">
-<h3>Visual Question Answering (VQA) System – Image &amp; Video</h3>
+<h3>Visual Question Answering (VQA) System - Image &amp; Video</h3>
 <p class="mt-8">
       Built a unified deep learning system that answers natural-language questions from both images and videos using a frame-based approach.
       Implemented multimodal fusion with BLIP (ViT + BERT) to combine visual and textual features and generate accurate answers.
@@ -1752,7 +1753,7 @@ if (window.annyang) {
 <strong>Tech Stack:</strong> Python, PyTorch, HuggingFace (BLIP), OpenCV, Flask, HTML, CSS, JavaScript
     </p>
 <p class="mt-8">
-<strong>Academic:</strong> Minor Project (B.Tech, Computer Engineering) — Jamia Millia Islamia, 2025–26
+<strong>Academic:</strong> Minor Project (B.Tech, Computer Engineering) - Jamia Millia Islamia, 2025-26
     </p>
 </div>
 </div>
@@ -1771,7 +1772,7 @@ if (window.annyang) {
 <strong>Tech Stack:</strong> Flask, SQLite, Jinja2, Bootstrap 5, Chart.js, Flask-Login
     </p>
 <p class="mt-8">
-<strong>Academic:</strong> Modern Application Development-I (MAD-I), IIT Madras BS — September 2025
+<strong>Academic:</strong> Modern Application Development-I (MAD-I), IIT Madras BS - September 2025
     </p>
 </div>
 </div>
@@ -1783,7 +1784,7 @@ if (window.annyang) {
 <h2 class="section-title">Blog</h2>
 <article>
 <h3>How I Built a Multi-User Quiz Portal</h3>
-<p>Short intro... <a href="#">Read more</a></p>
+<p>A practical look at the architecture, background jobs, and real-time scoring behind my quiz platform. <a href="blog/quiz-portal.html">Read more</a></p>
 </article>
 </section>
 <!-- ===== Publications & Articles ===== -->
@@ -1795,7 +1796,7 @@ if (window.annyang) {
 <div class="card__body">
 <h3>How I Built a Multi-User Quiz Portal</h3>
 <span class="article-date">Jul 2025</span>
-<p>From backend architecture to real-time scoring – see how I approached this project.</p>
+<p>From backend architecture to real-time scoring - see how I approached this project.</p>
 <a class="btn btn--primary btn--sm mt-4" href="/blog/quiz-portal.html">Read More</a>
 </div>
 </div>
@@ -1943,7 +1944,7 @@ if (window.annyang) {
 <i class="fa-solid fa-clock"></i> 1hr 35min
           </span>
 </div>
-<h3>Python for Data Science – Absolute Beginners</h3>
+<h3>Python for Data Science - Absolute Beginners</h3>
 <p class="course-desc">
           Master Python fundamentals for Data Science with hands-on practice. 
           Learn variables, loops, functions, logic building, and beginner mini-projects 
@@ -1990,9 +1991,9 @@ if (window.annyang) {
 <!-- <section id="achievements" class="container py-16">
       <h2 class="section-title">Achievements</h2>
       <ul class="achievements-list mt-16">
-        <li class="achievement-item status status--success mt-8">GATE CS&IT 2025 Qualified – CRL-19312</li>
-        <li class="achievement-item status status--success mt-8">JEE Advanced 2022 Qualified – CRL-24106</li>
-        <li class="achievement-item status status--success mt-8">JEE Main 2022 – CRL-13654</li>
+        <li class="achievement-item status status--success mt-8">GATE CS&IT 2025 Qualified - CRL-19312</li>
+        <li class="achievement-item status status--success mt-8">JEE Advanced 2022 Qualified - CRL-24106</li>
+        <li class="achievement-item status status--success mt-8">JEE Main 2022 - CRL-13654</li>
         <li class="achievement-item status status--info mt-8">Completed Memorization of the Qur'an</li>
       </ul>
     </section> -->
@@ -2018,7 +2019,7 @@ if (window.annyang) {
 <i class="fa-solid fa-medal"></i>
 </div>
 <div class="achievement-content">
-<h3>JEE Advanced 2022 – Qualified</h3>
+<h3>JEE Advanced 2022 - Qualified</h3>
 <p><strong>CRL 24,106</strong> among 1.6+ lakh top-ranked students.</p>
 </div>
 </div>
@@ -2038,7 +2039,7 @@ if (window.annyang) {
 <i class="fa-solid fa-ranking-star"></i>
 </div>
 <div class="achievement-content">
-<h3>Top 20 – Computer Engineering</h3>
+<h3>Top 20 - Computer Engineering</h3>
 <p>Ranked among the top 20 students at Jamia Millia Islamia.</p>
 </div>
 </div>
@@ -2049,7 +2050,7 @@ if (window.annyang) {
 </div>
 <div class="achievement-content">
 <h3>Exceptional Academic Consistency</h3>
-<p>Ranked 1st–2nd (Grades 1–5), 1st (Grades 6–10), and Top 3 (Grades 11–12).</p>
+<p>Ranked 1st-2nd (Grades 1-5), 1st (Grades 6-10), and Top 3 (Grades 11-12).</p>
 </div>
 </div>
 <!-- Qur'an Memorization -->
@@ -2058,7 +2059,7 @@ if (window.annyang) {
 <i class="fa-solid fa-book-quran"></i>
 </div>
 <div class="achievement-content">
-<h3>Completed Memorization of the Holy Qur’an</h3>
+<h3>Completed Memorization of the Holy Qur'an</h3>
 <p>Demonstrated exceptional retention ability and long-term disciplined commitment.</p>
 </div>
 </div>
@@ -2110,8 +2111,8 @@ if (window.annyang) {
 </div>
 </div>
 <!-- Navigation buttons -->
-<button aria-label="Previous testimonial" class="carousel-btn prev">❮</button>
-<button aria-label="Next testimonial" class="carousel-btn next">❯</button>
+<button aria-label="Previous testimonial" class="carousel-btn prev">‹</button>
+<button aria-label="Next testimonial" class="carousel-btn next">›</button>
 </div>
 </section>
 <section class="section py-16" id="certifications">
@@ -2227,10 +2228,10 @@ if (window.annyang) {
 <!-- YouTube Channel Videos Section -->
 <section class="youtube-section py-16">
 <div class="container">
-<h2 class="section-title">📺 My YouTube Channel – Latest Videos</h2>
+<h2 class="section-title">📺 My YouTube Channel - Latest Videos</h2>
 <div class="yt-videos-grid" id="youtube-videos-grid"></div>
 <div class="yt-channel-btn">
-<a class="btn btn--primary" href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" target="_blank">View Full Channel →</a>
+<a class="btn btn--primary" href="https://youtube.com/@mohdsaqib9625?si=bfPN2rzsUVxne_UP" target="_blank" rel="noopener noreferrer">View Full Channel →</a>
 </div>
 </div>
 </section>
@@ -2286,7 +2287,7 @@ if (window.annyang) {
 <div class="project-card card">
 <div class="card__body">
 <h3>🎮 Games Arcade</h3>
-<p class="mt-4">Play 20 small HTML/CSS/JS games — beginner to advanced. Open the arcade to try them all.</p>
+<p class="mt-4">Play 20 small HTML/CSS/JS games - beginner to advanced. Open the arcade to try them all.</p>
 <a class="btn btn--primary mt-4" href="game/index.html" rel="noopener noreferrer" target="_blank">Open Games Arcade</a>
 </div>
 </div>
@@ -2298,6 +2299,22 @@ if (window.annyang) {
 <a class="btn btn--primary mt-4" href="editor.html" rel="noopener noreferrer" target="_blank">Open Editor</a>
 </div>
 </div>
+<div class="project-card card">
+<div class="card__body">
+<h3>My Courses</h3>
+<p class="mt-4">Explore my premium video courses on Udemy, covering Python, Data Science, Generative AI, and more.</p>
+<a href="courses/courses.html">
+    <i class="fa-solid fa-graduation-cap"></i>
+    <span>My Courses</span>
+</a>
+</div>
+</div>
+
+
+
+
+
+
 </div>
 </div>
 </section>
@@ -2350,7 +2367,7 @@ if (window.annyang) {
 <iframe allowfullscreen="" height="250" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14010.501327756285!2d77.2308412!3d28.5934944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce394c35e5f23%3A0x724a7e5a1df4b9e9!2sNizamuddin%2C%20New%20Delhi%2C%20Delhi%20110013!5e0!3m2!1sen!2sin!4v1688851846791!5m2!1sen!2sin" style="border:0;" width="100%"></iframe>
 </div>
 </div>
-<p class="mb-8"><i class="fa-solid fa-location-dot"></i> Nizamuddin, New Delhi, India 110013</p>
+<p class="mb-8"><i class="fa-solid fa-location-dot"></i> Nizamuddin, New Delhi, India 110013</p>
 <p class="mb-8"><i class="fa-solid fa-envelope"></i> <a href="mailto:saqib29abubakar@gmail.com">saqib29abubakar@gmail.com</a></p>
 <p class="mb-8"><i class="fa-solid fa-phone"></i> <a href="tel:+919625035483">+91-9625035483</a></p>
 <div class="social-links flex gap-16 mt-16">
@@ -2400,7 +2417,7 @@ if (window.annyang) {
 <div class="hidden terminal-window" id="dev-terminal">
 <div class="terminal-header">
 <span>guest@mohd-saqib:~$</span>
-<button class="terminal-close" onclick="document.getElementById('dev-terminal').classList.add('hidden')">✖</button>
+<button class="terminal-close" aria-label="Close terminal" onclick="document.getElementById('dev-terminal').classList.add('hidden')">✕</button>
 </div>
 <div class="terminal-body" id="terminal-output">
         Welcome to SaqibOS (v1.0.0).<br/>Type 'help' to see available commands.<br/>
@@ -2631,23 +2648,44 @@ grid.innerHTML = '';
     return;
   }
   
-  videos.forEach((video, idx) => {
+  videos.forEach((video) => {
+    const videoId = video?.id?.videoId;
+    const title = video?.snippet?.title;
+    const thumbnail = video?.snippet?.thumbnails?.medium?.url;
+    if (!videoId || !title || !thumbnail) return;
+
     const videoDiv = document.createElement('div');
     videoDiv.className = "yt-video-card";
-    
-    const videoLink = `https://youtube.com/watch?v=${video.id.videoId}`;
-    
-    videoDiv.innerHTML = `
-      <div class="yt-thumb">
-        <a href="${videoLink}" target="_blank" rel="noopener noreferrer">
-          <img src="${video.snippet.thumbnails.medium.url}" alt="${video.snippet.title}" loading="lazy">
-          <div class="yt-play-btn">►</div>
-        </a>
-      </div>
-      <div class="yt-title">
-        <a href="${videoLink}" target="_blank" rel="noopener noreferrer">${video.snippet.title}</a>
-      </div>
-    `;
+    const videoLink = `https://youtube.com/watch?v=${encodeURIComponent(videoId)}`;
+    const thumbLink = document.createElement('a');
+    thumbLink.href = videoLink;
+    thumbLink.target = '_blank';
+    thumbLink.rel = 'noopener noreferrer';
+    const thumb = document.createElement('div');
+    thumb.className = 'yt-thumb';
+    const image = document.createElement('img');
+    image.src = thumbnail;
+    image.alt = title;
+    image.loading = 'lazy';
+    image.onerror = () => {
+      image.onerror = null;
+      image.src = 'images/profile.jpg';
+      image.alt = 'Mohd Saqib video thumbnail unavailable';
+    };
+    const play = document.createElement('div');
+    play.className = 'yt-play-btn';
+    play.textContent = '▶';
+    thumb.append(image, play);
+    thumbLink.appendChild(thumb);
+    const titleWrap = document.createElement('div');
+    titleWrap.className = 'yt-title';
+    const titleLink = document.createElement('a');
+    titleLink.href = videoLink;
+    titleLink.target = '_blank';
+    titleLink.rel = 'noopener noreferrer';
+    titleLink.textContent = title;
+    titleWrap.appendChild(titleLink);
+    videoDiv.append(thumbLink, titleWrap);
     grid.appendChild(videoDiv);
   });
 }
@@ -2655,20 +2693,29 @@ grid.innerHTML = '';
 // Fetch live data from backend
 function initYoutube() {
   const views = document.getElementById('yt-live-views');
+  if (!views) return;
   views.innerText = 'Loading...';
 
-  fetch(`/api/youtube/stats?channel=${YOUTUBE_CHANNEL_ID}`)
+  const fetchWithTimeout = (url, timeoutMs = 7000) => {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), timeoutMs);
+    return fetch(url, { signal: controller.signal }).finally(() => clearTimeout(timeout));
+  };
+
+  fetchWithTimeout(`/api/youtube/stats?channel=${encodeURIComponent(YOUTUBE_CHANNEL_ID)}`)
     .then(response => response.ok ? response.json() : null)
     .then(data => {
       if (data && data.viewCount) {
         views.innerText = data.viewCount + (data._fallback ? ' (demo)' : '');
+      } else {
+        views.innerText = 'Unavailable';
       }
     })
     .catch(() => {
       views.innerText = 'Unavailable';
     });
 
-  fetch(`/api/youtube/videos?channel=${YOUTUBE_CHANNEL_ID}&limit=${MAX_VIDEOS}`)
+  fetchWithTimeout(`/api/youtube/videos?channel=${encodeURIComponent(YOUTUBE_CHANNEL_ID)}&limit=${MAX_VIDEOS}`)
     .then(response => response.ok ? response.json() : null)
     .then(data => {
       if (data && data.videos && data.videos.length > 0) {
@@ -2694,14 +2741,21 @@ function getTodayNumber() {
 }
 
 const ayahNum = getTodayNumber();
-fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`)
+const ayahController = new AbortController();
+const ayahTimeout = setTimeout(() => ayahController.abort(), 7000);
+fetch(`https://api.alquran.cloud/v1/ayah/${ayahNum}/en.asad`, { signal: ayahController.signal })
+  .finally(() => clearTimeout(ayahTimeout))
   .then(r=>r.json())
   .then(data=>{
-    document.querySelector('.ayah-arabic').textContent = data.data.text;
-    document.querySelector('.ayah-translation').textContent = '"' + data.data.translation + '"';
-    document.querySelector('.ayah-meta').textContent = `(${data.data.surah.englishName} ${data.data.numberInSurah})`;
+    const arabic = document.querySelector('.ayah-arabic');
+    const translation = document.querySelector('.ayah-translation');
+    const meta = document.querySelector('.ayah-meta');
+    if (arabic) arabic.textContent = data.data.text;
+    if (translation) translation.textContent = '"' + data.data.translation + '"';
+    if (meta) meta.textContent = `(${data.data.surah.englishName} ${data.data.numberInSurah})`;
   }).catch(()=>{
-    document.querySelector('.ayah-widget').textContent = "Quote unavailable today. Try again later.";
+    const widget = document.querySelector('.ayah-widget');
+    if (widget) widget.textContent = "Quote unavailable today. Try again later.";
   });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/annyang@2.6.1/dist/annyang.min.js"></script>
@@ -3280,5 +3334,6 @@ document.addEventListener("DOMContentLoaded", () => {
         inputSequence = [];
     }
 </script>
+<script src="effects.js" defer></script>
 </body>
 </html>

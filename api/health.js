@@ -5,5 +5,13 @@ module.exports = function handler(req, res) {
   }
 
   res.statusCode = 200;
-  return res.json({ ok: true, status: 'ready' });
+  return res.json({
+    ok: true,
+    status: 'ready',
+    services: {
+      youtube: Boolean(process.env.YOUTUBE_API_KEY),
+      chat: Boolean(process.env.GEMINI_API_KEY),
+      contact: Boolean(process.env.MONGODB_URI)
+    }
+  });
 };

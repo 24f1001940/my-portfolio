@@ -1,0 +1,101 @@
+[
+  {
+    "id": "generative-ai-agentic-ai-rag",
+    "slug": "generative-ai-agentic-ai-rag",
+    "title": "Complete Generative AI, Agentic AI & RAG Bootcamp",
+    "shortTitle": "Generative AI, Agentic AI & RAG Bootcamp",
+    "description": "A complete practical bootcamp covering Generative AI, Large Language Models, RAG, Agentic AI, AI automation and modern LLM applications.",
+    "category": "Generative AI",
+    "level": "Beginner to Advanced",
+    "language": "English",
+    "lectures": 160,
+    "duration": "30+ Hours",
+    "price": 999,
+    "originalPrice": 1999,
+    "currency": "INR",
+    "featured": true,
+    "status": "Published",
+    "thumbnail": "../images/course-genai.jpg",
+    "tags": [
+      "Generative AI",
+      "LLMs",
+      "RAG",
+      "Agentic AI",
+      "AI Agents",
+      "Automation"
+    ]
+  },
+  {
+    "id": "python-absolute-beginners",
+    "slug": "python-absolute-beginners",
+    "title": "Python for Absolute Beginners",
+    "shortTitle": "Python for Absolute Beginners",
+    "description": "Learn Python from the ground up with beginner-friendly explanations, examples and hands-on programming.",
+    "category": "Python",
+    "level": "Beginner",
+    "language": "English",
+    "lectures": 30,
+    "duration": "2+ Hours",
+    "price": 299,
+    "originalPrice": 599,
+    "currency": "INR",
+    "featured": false,
+    "status": "Published",
+    "thumbnail": "../images/course-python.jpg",
+    "tags": [
+      "Python",
+      "Programming",
+      "Beginner",
+      "Coding"
+    ]
+  },
+  {
+    "id": "machine-learning-beginners",
+    "slug": "machine-learning-beginners",
+    "title": "Complete Machine Learning for Absolute Beginners",
+    "shortTitle": "Machine Learning for Absolute Beginners",
+    "description": "A beginner-friendly introduction to machine learning concepts, algorithms, data preparation and practical implementation.",
+    "category": "Machine Learning",
+    "level": "Beginner",
+    "language": "English",
+    "lectures": 40,
+    "duration": "5+ Hours",
+    "price": 499,
+    "originalPrice": 999,
+    "currency": "INR",
+    "featured": false,
+    "status": "Published",
+    "thumbnail": "../images/course-ml.jpg",
+    "tags": [
+      "Machine Learning",
+      "Python",
+      "ML Algorithms",
+      "Data Science"
+    ]
+  },
+  {
+    "id": "python-data-science",
+    "slug": "python-data-science",
+    "title": "Python for Data Science for Absolute Beginners",
+    "shortTitle": "Python for Data Science",
+    "description": "Learn the foundations of Python for data science with practical programming, data handling and analysis.",
+    "category": "Data Science",
+    "level": "Beginner",
+    "language": "English",
+    "lectures": 50,
+    "duration": "6+ Hours",
+    "price": 599,
+    "originalPrice": 1199,
+    "currency": "INR",
+    "featured": false,
+    "status": "Coming Soon",
+    "thumbnail": "../images/course-data-science.jpg",
+    "tags": [
+      "Python",
+      "Data Science",
+      "NumPy",
+      "Pandas",
+      "Data Analysis"
+    ]
+  }
+]

@@ -9,7 +9,11 @@ async function getDb() {
   }
 
   if (!clientPromise) {
-    const client = new MongoClient(uri);
+    const client = new MongoClient(uri, {
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 5000,
+      maxPoolSize: 10
+    });
     clientPromise = client.connect();
   }
 

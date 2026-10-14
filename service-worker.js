@@ -1,58 +1,40 @@
-const CACHE_NAME = "portfolio-cache-v3";
-const urlsToCache = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/app.js",
-  "/manifest.json",
-  "/images/profile.jpg",
+const CACHE_NAME = 'mohd-saqib-portfolio-v2026-3d';
+const ASSETS = [
+  '/',
+  '/index.html',
+  '/style.css',
+  '/effects.css',
+  '/app.js',
+  '/effects.js',
+  '/chatbot.js',
+  '/manifest.json'
 ];
 
-// Install SW and cache files
-self.addEventListener("install", (event) => {
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS).catch(() => {}))
   );
 });
 
-// Activate and clean old caches
-self.addEventListener("activate", (event) => {
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames.map((name) => {
-          if (name !== CACHE_NAME) {
-            return caches.delete(name);
-          }
-        })
-      )
-    )
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
+    ).then(() => self.clients.claim())
   );
 });
 
-// Fetch requests - Network first for HTML, cache first for static assets
-self.addEventListener("fetch", (event) => {
-  const { request } = event;
-  
-  // Network first for HTML pages
-  if (request.mode === 'navigate') {
-    event.respondWith(
-      fetch(request)
-        .then(response => {
-          // Cache the new version
-          if (response.ok) {
-            const cache = caches.open(CACHE_NAME);
-            cache.then(c => c.put(request, response.clone()));
-          }
-          return response;
-        })
-        .catch(() => caches.match(request))
-    );
-    return;
-  }
-  
-  // Cache first for other assets
+// Network-First Strategy so UI & 3D updates appear immediately
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
   event.respondWith(
-    caches.match(request).then((response) => response || fetch(request))
+    fetch(event.request)
+      .then((response) => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });

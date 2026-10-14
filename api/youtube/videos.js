@@ -1,3 +1,5 @@
+const { withTimeout, setPublicCache } = require('../_http');
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
@@ -6,53 +8,56 @@ module.exports = async function handler(req, res) {
 
   const apiKey = process.env.YOUTUBE_API_KEY;
   if (!apiKey) {
-    // Return sample video list as a graceful fallback when API key is missing.
-    const sample = [
-      {
-        id: { videoId: 'dQw4w9WgXcQ' },
-        snippet: {
-          title: 'Sample Video 1',
-          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+1' } }
-        }
-      },
-      {
-        id: { videoId: 'kJQP7kiw5Fk' },
-        snippet: {
-          title: 'Sample Video 2',
-          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+2' } }
-        }
-      },
-      {
-        id: { videoId: '3JZ_D3ELwOQ' },
-        snippet: {
-          title: 'Sample Video 3',
-          thumbnails: { medium: { url: 'https://via.placeholder.com/320x180?text=Video+3' } }
-        }
-      }
-    ];
-
-    return res.json({ videos: sample, _fallback: true });
+    setPublicCache(res, 60);
+    return res.status(503).json({
+      error: 'YouTube integration is not configured',
+      videos: [],
+      configured: false
+    });
   }
 
   try {
     const channel = String(req.query.channel || '').trim();
-    const limit = String(req.query.limit || '6').trim();
+    const parsedLimit = Number.parseInt(String(req.query.limit || '6'), 10);
+    const limit = Math.min(Math.max(Number.isFinite(parsedLimit) ? parsedLimit : 6, 1), 12);
 
     if (!channel) {
       return res.status(400).json({ error: 'Channel ID is required' });
     }
 
+    const request = withTimeout();
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${encodeURIComponent(channel)}&part=snippet,id&order=date&maxResults=${encodeURIComponent(limit)}`
+      `https://www.googleapis.com/youtube/v3/search?key=${encodeURIComponent(apiKey)}&channelId=${encodeURIComponent(channel)}&part=snippet,id&order=date&maxResults=${limit}`,
+      { signal: request.signal }
     );
+    request.clear();
     const data = await response.json();
+    if (!response.ok) {
+      console.error('YouTube videos upstream response:', response.status, data?.error?.message);
+      return res.status(502).json({ error: 'YouTube videos are temporarily unavailable', videos: [] });
+    }
+
     const videos = Array.isArray(data.items)
-      ? data.items.filter((item) => item?.id?.kind === 'youtube#video')
+      ? data.items
+        .filter((item) => item?.id?.kind === 'youtube#video' && item?.id?.videoId && item?.snippet?.title)
+        .map((item) => ({
+          id: { videoId: item.id.videoId },
+          snippet: {
+            title: item.snippet.title,
+            thumbnails: {
+              medium: { url: item.snippet.thumbnails?.medium?.url || '' }
+            }
+          }
+        }))
       : [];
 
+    setPublicCache(res);
     return res.json({ videos });
   } catch (error) {
     console.error('YouTube videos proxy error:', error);
-    return res.status(500).json({ error: 'Failed to fetch YouTube videos' });
+    return res.status(error.name === 'AbortError' ? 504 : 502).json({
+      error: 'YouTube videos are temporarily unavailable',
+      videos: []
+    });
   }
 };
