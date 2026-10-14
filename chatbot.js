@@ -214,7 +214,7 @@
 //         {
 //             "company": "Udemy",
 //             "position": "Instructor & Content Creator",
-//             "duration": "December 2025 - Present",
+//             "duration": "January 2026 - March 2026",
 //             "location": "Remote",
 //             "responsibilities": [
 //                 "Designed and published practical technical courses covering Python, Data Science, Machine Learning, and Generative AI.",
@@ -264,7 +264,7 @@
 //             "school": "Indian Institute of Technology Madras",
 //             "year": "2024 - 2026",
 //             "status": "In progress",
-//             "cgpa": "7.08"
+//             "cgpa": "7.24"
 //         },
 
 //         {
@@ -1585,7 +1585,7 @@ class PortfolioChatbot {
                 {
                     "company": "Udemy",
                     "position": "Instructor & Content Creator",
-                    "duration": "December 2025 - Present",
+                    "duration": "January 2026 - March 2026",
                     "location": "Remote",
                     "responsibilities": [
                         "Designed and published practical technical courses covering Python, Data Science, Machine Learning, and Generative AI.",
@@ -1610,7 +1610,7 @@ class PortfolioChatbot {
                 {
                     "degree": "M.Tech in Computer Engineering (AI & ML)",
                     "school": "Jamia Millia Islamia, New Delhi",
-                    "year": "2026 - Present",
+                    "year": "July 2026 - Present",
                     "status": "Currently pursuing",
                     "focus": [
                         "Artificial Intelligence",
@@ -1635,7 +1635,7 @@ class PortfolioChatbot {
                     "school": "Indian Institute of Technology Madras",
                     "year": "2024 - 2026",
                     "status": "In progress",
-                    "cgpa": "7.08"
+                    "cgpa": "7.24"
                 },
 
                 {

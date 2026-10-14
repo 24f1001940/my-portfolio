@@ -2595,9 +2595,8 @@ async function loadYouTubeData() {
       console.log(`Found ${targets.length} target element(s) to update.`);
 
       targets.forEach((el) => {
-        // If the container has sub-elements, update text directly; otherwise set full innerHTML
         const countSpan = el.querySelector('.yt-count') || el;
-        countSpan.innerHTML = `<i class="fa-solid fa-eye"></i> ${stats.viewCount} Views`;
+        countSpan.textContent = `${stats.viewCount} Views`;
       });
     } else {
       console.error('API Error or missing viewCount:', stats);

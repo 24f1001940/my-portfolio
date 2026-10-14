@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohd-saqib-portfolio.vercel.app/sitemap.xml

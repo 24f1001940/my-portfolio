@@ -21,6 +21,8 @@ npm start
 
 The site is available at `http://localhost:3000`. The `/api/health` endpoint reports which optional integrations are configured without exposing credentials.
 
+The public resume is served from `mohd saqib resume.pdf`; the page's download control uses the filename `Mohd-Saqib-Resume.pdf` for downloaded copies.
+
 Configure the values in [.env.example](./.env.example) locally or in your deployment provider:
 
 - `MONGODB_URI` and `MONGODB_DB_NAME` enable contact-message persistence.

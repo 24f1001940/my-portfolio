@@ -36,6 +36,7 @@ module.exports = async function handler(req, res) {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: request.signal,
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: { temperature: 0.7, maxOutputTokens: 512 }
@@ -71,7 +72,7 @@ function buildFallbackResponse(prompt) {
 
   const portfolio = {
     name: 'Mohd Saqib',
-    title: 'Computer Engineering Student | Aspiring Data Scientist & Full-Stack Developer',
+    title: 'M.Tech Computer Engineering (AI & ML) Student | Generative AI Developer',
     email: 'saqib29abubakar@gmail.com',
     phone: '+91-9625035483',
     linkedin: 'https://linkedin.com/in/mohd-saqib-94b6042ba',
@@ -91,7 +92,7 @@ function buildFallbackResponse(prompt) {
   }
 
   if (extractedUserMessage.includes('education') || extractedUserMessage.includes('study') || extractedUserMessage.includes('degree')) {
-    return `${portfolio.name} studies Computer Engineering at Jamia Millia Islamia and Data Science at IIT Madras.`;
+    return `${portfolio.name} is pursuing an M.Tech in Computer Engineering (AI & ML) at Jamia Millia Islamia and a BS in Data Science and Applications at IIT Madras, expected December 2026.`;
   }
 
   return `I’m ${portfolio.name}, a ${portfolio.title}. Ask me about skills, projects, education, or contact details.`;
