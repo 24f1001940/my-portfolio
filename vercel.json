@@ -1,1 +1,7 @@
-{}
+{
+  "functions": {
+    "server.js": {
+      "includeFiles": "**/*"
+    }
+  }
+}
