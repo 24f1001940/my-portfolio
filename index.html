@@ -1603,7 +1603,7 @@ if (window.annyang) {
 <span class="marquee-item"><i class="fa-solid fa-database" style="color:#4479A1; margin-right:8px;"></i> SQL</span>
 <span class="marquee-item"><i class="fa-brands fa-docker" style="color:#2496ED; margin-right:8px;"></i> Docker</span>
 <span class="marquee-item"><i class="fa-brands fa-github" style="margin-right:8px;"></i> Git</span>
-<span class="marquee-item"><i class="fa-brands fa-kotlin" style="color:#7387B8; margin-right:8px;"></i> Kotlin</span>
+<span class="marquee-item"><i class="fa-solid fa-code" style="color:#7387B8; margin-right:8px;" aria-hidden="true"></i> Kotlin</span>
 <span class="marquee-item"><i class="fa-brands fa-java" style="color:#007396; margin-right:8px;"></i> Java</span>
 </div>
 </div>
@@ -1640,7 +1640,7 @@ if (window.annyang) {
 <h4 class="text-center mb-4">Mobile Development</h4>
 <div class="flex flex-wrap justify-center gap-16">
 <i class="fa-brands fa-android tech-icon" title="Android SDK"></i>
-<i class="fa-brands fa-kotlin tech-icon" title="Kotlin
+<i class="fa-solid fa-code tech-icon" title="Kotlin
 "></i>
 </div>
 </div>
@@ -2667,11 +2667,15 @@ grid.innerHTML = '';
     image.src = thumbnail;
     image.alt = title;
     image.loading = 'lazy';
-    image.onerror = () => {
+    image.decoding = 'async';
+    const useThumbnailFallback = () => {
+      if (image.naturalWidth > 0) return;
       image.onerror = null;
       image.src = 'images/profile.jpg';
       image.alt = 'Mohd Saqib video thumbnail unavailable';
     };
+    image.onerror = useThumbnailFallback;
+    setTimeout(useThumbnailFallback, 2500);
     const play = document.createElement('div');
     play.className = 'yt-play-btn';
     play.textContent = '▶';

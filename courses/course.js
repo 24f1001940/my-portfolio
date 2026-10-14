@@ -516,6 +516,9 @@ function renderBasicInformation(
                 DOM.thumbnail.style.display =
                     'none';
             };
+    } else {
+        DOM.thumbnail.src = '../images/profile.jpg';
+        DOM.thumbnail.alt = 'Course thumbnail unavailable';
     }
 }
 
