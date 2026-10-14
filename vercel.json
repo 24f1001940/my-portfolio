@@ -1,11 +1,11 @@
 {
   "functions": {
     "server.js": {
-      "runtime": "nodejs24.x",
+      "runtime": "@vercel/node@24.0.0",
       "includeFiles": "{index.html,404.html,*.css,*.js,*.json,*.pdf,images/**,game/**,courses/**,blog/**}"
     },
     "api/**/*.js": {
-      "runtime": "nodejs24.x"
+      "runtime": "@vercel/node@24.0.0"
     }
   },
   "rewrites": [
